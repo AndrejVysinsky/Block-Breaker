@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.2735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.2735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.2735849
+      objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Name
@@ -25,12 +40,12 @@ PrefabInstance:
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
@@ -40,17 +55,17 @@ PrefabInstance:
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
