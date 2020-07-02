@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2483409888259934194}
   ballsText: {fileID: 2483409888062174613}
-  timeText: {fileID: 2483409887661113943}
   levelText: {fileID: 2483409888118603519}
+  timeText: {fileID: 2483409887661113943}
 --- !u!1001 &7594141125666787183
 PrefabInstance:
   m_ObjectHideFlags: 0

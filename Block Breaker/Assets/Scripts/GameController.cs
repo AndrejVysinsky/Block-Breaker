@@ -10,13 +10,12 @@ public class GameController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI ballsText;
-    [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] TextMeshProUGUI timeText;
 
     private int score = 0;
     private int balls = 5; //amount in reserve
-    private int activeBalls = 0; //balls on moving on screen
-    private float startTime = 0;
+    private int activeBalls = 0; //balls moving on screen
 
     private void Awake()
     {
@@ -31,14 +30,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void Update()
+    public TextMeshProUGUI GetLevelText()
     {
-        var levelTime = (Time.time - startTime);
+        return levelText;
+    }
 
-        string minutes = Mathf.Floor(levelTime / 60).ToString("00");
-        string seconds = (levelTime % 60).ToString("00");
-
-        timeText.text = string.Format("{0}:{1}", minutes, seconds);
+    public TextMeshProUGUI GetTimeText()
+    {
+        return timeText;
     }
 
     public void AddScore(int scoreToAdd)
@@ -86,14 +85,8 @@ public class GameController : MonoBehaviour
         balls += activeBalls;
         activeBalls = 0;
 
-        //add time bonus score
-        if (startTime != 0)
-            score += (int)Time.time;
-
         scoreText.text = score.ToString();
         ballsText.text = balls.ToString();
-        startTime = Time.time;
-        levelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
     }
 
     public void ResetGame()

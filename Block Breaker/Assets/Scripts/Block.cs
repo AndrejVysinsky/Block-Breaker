@@ -24,9 +24,6 @@ public class Block : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
 
         SetupGradient();
-
-        if (CompareTag("Breakable"))
-            level.AddBlock();
     }
 
     private void SetupGradient()
@@ -66,7 +63,7 @@ public class Block : MonoBehaviour
             if (hitCount >= maxHits)
             {
                 Destroy(gameObject);
-                level.RemoveBlock();
+                level.RemoveBlock(maxHits);
             }
             else
             {
@@ -75,5 +72,10 @@ public class Block : MonoBehaviour
                 mySpriteRenderer.color = color;
             }
         }
+    }
+
+    public int GetMaxHits()
+    {
+        return maxHits;
     }
 }
