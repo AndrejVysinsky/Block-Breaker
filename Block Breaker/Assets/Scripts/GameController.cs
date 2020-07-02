@@ -52,6 +52,11 @@ public class GameController : MonoBehaviour
         score -= scoreToSubtract;
         scoreText.text = score.ToString();
     }
+    
+    public int GetScore()
+    {
+        return score;
+    }
 
     public bool TryToShootBall()
     {
