@@ -6,20 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class LoseCollider : MonoBehaviour
 {
-    private GameController gameController;
+    private Level level;
 
     private void Start()
     {
-        gameController = GameController.Instance;        
+        level = FindObjectOfType<Level>();
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameController.BallOutOfScreen();
-        Destroy(collision.gameObject);
-
-        if (gameController.IsOutOfBalls())
-            SceneManager.LoadScene("Game Over");
+        level.RemoveBall(collision.gameObject.GetComponent<Ball>());
     }
 }

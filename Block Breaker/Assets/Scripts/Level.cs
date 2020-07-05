@@ -67,11 +67,7 @@ public class Level : MonoBehaviour
     public void ToggleBallsSpeed()
     {
         foreach (var ball in balls)
-        {
-            if (ball != null)
                 ball.ToggleSpeed();
-        }
-            
 
         isRegularSpeed = !isRegularSpeed;
     }
@@ -103,5 +99,16 @@ public class Level : MonoBehaviour
             gameController.NextLevel();
             sceneLoader.LoadNextScene();
         }
+    }
+
+    public void RemoveBall(Ball ball)
+    {
+        balls.Remove(ball);
+
+        gameController.BallOutOfScreen();
+        Destroy(ball.gameObject);
+
+        if (gameController.IsOutOfBalls())
+            SceneManager.LoadScene("Game Over");
     }
 }
