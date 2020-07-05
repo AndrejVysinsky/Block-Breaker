@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cf12d7aa292ce4a8e118eebc5fdeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockCount: 0
   sceneLoader: {fileID: 4060397329437032693, guid: bf2993395671cc748ab9b81f80aa9715,
     type: 3}
   ball: {fileID: 6952842416858491160, guid: aa71c4492f1bd0a4c893078d5423d4ab, type: 3}
   paddle: {fileID: 4678805280368675235, guid: 8bc58f068c5b91942b6959c97c1b6f4a, type: 3}
+  particlePrefab: {fileID: 627873678197089353, guid: c42a9b26ec4963e4a9008370308f925a,
+    type: 3}

@@ -52,7 +52,7 @@ public class Block : MonoBehaviour
         col.color = new MinMaxGradient(gradient);
 
         particles.Play();
-        Destroy(particles, particles.main.duration);
+        Destroy(particles.gameObject, particles.main.duration + particles.main.startLifetime.constant);
 
         if (CompareTag("Breakable"))
         {

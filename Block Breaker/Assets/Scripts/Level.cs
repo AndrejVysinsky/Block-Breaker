@@ -67,7 +67,11 @@ public class Level : MonoBehaviour
     public void ToggleBallsSpeed()
     {
         foreach (var ball in balls)
-            ball.ToggleSpeed();
+        {
+            if (ball != null)
+                ball.ToggleSpeed();
+        }
+            
 
         isRegularSpeed = !isRegularSpeed;
     }
