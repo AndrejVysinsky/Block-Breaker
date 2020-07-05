@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     private Rigidbody2D myRigidBody2D;
     private bool isRegularSpeed = true;
 
-    void Start()
+    private void Awake()
     {
         //launch ball
         velocityX *= UnityEngine.Random.Range(-1f, 1f);
@@ -19,27 +19,21 @@ public class Ball : MonoBehaviour
         myRigidBody2D.velocity = new Vector2(velocityX, velocityY);
     }
 
-    void Update()
+    public void ToggleSpeed()
     {
-        if (Input.GetMouseButton(1))
+        if (isRegularSpeed)
         {
-            if (isRegularSpeed)
-            {
-                SetSpeed(2);
-                isRegularSpeed = false;
-            }
-        }            
+            SetSpeed(2);
+            isRegularSpeed = false;
+        }
         else
         {
-            if (!isRegularSpeed)
-            {
-                SetSpeed(0.5f);
-                isRegularSpeed = true;
-            }
+            SetSpeed(0.5f);
+            isRegularSpeed = true;
         }
     }
 
-    public void SetSpeed(float scale)
+    private void SetSpeed(float scale)
     {
         float velX = myRigidBody2D.velocity.x;
         float velY = myRigidBody2D.velocity.y;

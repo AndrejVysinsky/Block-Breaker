@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
     private float startTime;
 
     private List<Ball> balls = new List<Ball>();
+    private bool isRegularSpeed = true;
     private int blockCount = 0;
 
     //amount of hits needed to destroy all blocks in current level
@@ -40,14 +41,14 @@ public class Level : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             LaunchBall();
         }
         UpdateTime();
     }
 
-    void LaunchBall()
+    private void LaunchBall()
     {
         if (gameController.TryToShootBall())
         { 
@@ -55,8 +56,20 @@ public class Level : MonoBehaviour
             Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
 
             Ball b = Instantiate(ball, ballPosition, Quaternion.identity);
+
+            if (!isRegularSpeed)
+                b.ToggleSpeed();
+
             balls.Add(b);
         }
+    }
+
+    public void ToggleBallsSpeed()
+    {
+        foreach (var ball in balls)
+            ball.ToggleSpeed();
+
+        isRegularSpeed = !isRegularSpeed;
     }
 
     private void UpdateTime()
