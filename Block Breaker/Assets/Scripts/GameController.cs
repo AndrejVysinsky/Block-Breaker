@@ -17,6 +17,12 @@ public class GameController : MonoBehaviour
     private int balls = 5; //amount in reserve
     private int activeBalls = 0; //balls moving on screen
 
+    private void Start()
+    {
+        scoreText.text = score.ToString();
+        ballsText.text = balls.ToString();
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -57,16 +63,15 @@ public class GameController : MonoBehaviour
         return score;
     }
 
-    public bool TryToShootBall()
+    public void BallLaunched()
     {
-        if (balls == 0)
-            return false;
-
         balls--;
-        activeBalls++;
         ballsText.text = balls.ToString();
+    }
 
-        return true;
+    public void NewBallOnScreen()
+    {
+        activeBalls++;
     }
 
     public void BallOutOfScreen()

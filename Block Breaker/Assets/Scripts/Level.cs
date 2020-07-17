@@ -50,12 +50,13 @@ public class Level : MonoBehaviour
 
     private void LaunchBall()
     {
-        if (gameController.TryToShootBall())
-        { 
+        if (gameController.IsOutOfBalls() == false)
+        {
             float distanceY = ball.transform.position.y - paddle.transform.position.y;
             Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
 
             InstantiateBall(ballPosition);
+            gameController.BallLaunched();
         }
     }
 
@@ -67,6 +68,8 @@ public class Level : MonoBehaviour
             b.ToggleSpeed();
 
         balls.Add(b);
+
+        gameController.NewBallOnScreen();
     }
 
     public void ToggleBallsSpeed()
