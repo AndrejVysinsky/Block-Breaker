@@ -10,6 +10,7 @@ public class Block : MonoBehaviour
     //cached references
     private Level level;
     private SpriteRenderer mySpriteRenderer;
+    private PowerUp myPowerUp;
 
     //state variables
     private int hitCount = 0;
@@ -19,6 +20,13 @@ public class Block : MonoBehaviour
     {
         level = FindObjectOfType<Level>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+
+        myPowerUp = GetComponent<PowerUpAddBall>();
+
+        if (myPowerUp != null)
+        {
+            myPowerUp.SetLevelReference(level);
+        }
 
         SetupGradient();
     }
@@ -59,6 +67,9 @@ public class Block : MonoBehaviour
             hitCount++;
             if (hitCount >= maxHits)
             {
+                if (myPowerUp != null)
+                    myPowerUp.Collect(collision.gameObject);
+
                 Destroy(gameObject);
                 level.RemoveBlock(maxHits);
             }

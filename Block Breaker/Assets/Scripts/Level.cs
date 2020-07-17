@@ -55,19 +55,24 @@ public class Level : MonoBehaviour
             float distanceY = ball.transform.position.y - paddle.transform.position.y;
             Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
 
-            Ball b = Instantiate(ball, ballPosition, Quaternion.identity);
-
-            if (!isRegularSpeed)
-                b.ToggleSpeed();
-
-            balls.Add(b);
+            InstantiateBall(ballPosition);
         }
+    }
+
+    public void InstantiateBall(Vector3 position)
+    {
+        Ball b = Instantiate(ball, position, Quaternion.identity);
+
+        if (!isRegularSpeed)
+            b.ToggleSpeed();
+
+        balls.Add(b);
     }
 
     public void ToggleBallsSpeed()
     {
         foreach (var ball in balls)
-                ball.ToggleSpeed();
+            ball.ToggleSpeed();
 
         isRegularSpeed = !isRegularSpeed;
     }

@@ -9,6 +9,7 @@ TagManager:
   - Unbreakable
   - MainCanvas
   - MainUI
+  - Ball
   layers:
   - Default
   - TransparentFX
