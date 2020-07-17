@@ -15,9 +15,22 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
+        image = GetComponent<Image>();
+        level = FindObjectOfType<Level>();
+    }
+
+    private void OnLevelWasLoaded(int n)
+    {
+        /*
+            ak je level len v Start tak pri OnPointerClick po zmene sceny je null
+            zaroven farba aj selected si zanechavaju stav z minulej sceny???? 
+            (image.color v Start po zmene sceny nema efekt)
+         */
+
         level = FindObjectOfType<Level>();
         image = GetComponent<Image>();
-        //image.color = inactiveColor;
+        image.color = inactiveColor;
+        selected = false;
     }
 
     public void OnPointerClick(PointerEventData eventData)
