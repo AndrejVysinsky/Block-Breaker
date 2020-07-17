@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour
         var gameController = GameController.Instance;
         scoreText.text = gameController.GetScore().ToString();
 
-        if (gameController.IsOutOfBalls())
+        if (gameController.GetBallCount() == 0)
         {
             gameOverText.text = "Game Over";
         }

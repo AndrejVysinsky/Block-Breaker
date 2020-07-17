@@ -50,7 +50,7 @@ public class Level : MonoBehaviour
 
     private void LaunchBall()
     {
-        if (gameController.IsOutOfBalls() == false)
+        if (gameController.GetBallCount() > 0)
         {
             float distanceY = ball.transform.position.y - paddle.transform.position.y;
             Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
@@ -116,7 +116,10 @@ public class Level : MonoBehaviour
         gameController.BallOutOfScreen();
         Destroy(ball.gameObject);
 
-        if (gameController.IsOutOfBalls())
+        if (gameController.GetBallCount() == 0 
+            && gameController.GetActiveBallCount() == 0)
+        {
             SceneManager.LoadScene("Game Over");
+        }
     }
 }

@@ -63,6 +63,24 @@ public class GameController : MonoBehaviour
         return score;
     }
 
+    /// <summary>
+    /// Balls in reserve.
+    /// </summary>
+    /// <returns></returns>
+    public int GetBallCount()
+    {
+        return balls;
+    }
+
+    /// <summary>
+    /// Balls moving on screen.
+    /// </summary>
+    /// <returns></returns>
+    public int GetActiveBallCount()
+    {
+        return activeBalls;
+    }
+
     public void BallLaunched()
     {
         balls--;
@@ -78,11 +96,6 @@ public class GameController : MonoBehaviour
     {
         activeBalls--;
         SubtractScore(50);
-    }
-
-    public bool IsOutOfBalls()
-    {
-        return balls == 0 && activeBalls == 0;
     }
 
     public void NextLevel()
