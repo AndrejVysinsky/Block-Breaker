@@ -23,11 +23,6 @@ public class Block : MonoBehaviour
 
         myPowerUp = GetComponent<PowerUpAddBall>();
 
-        if (myPowerUp != null)
-        {
-            myPowerUp.SetLevelReference(level);
-        }
-
         SetupGradient();
     }
 

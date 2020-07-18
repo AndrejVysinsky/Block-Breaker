@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
 {
-    private Level level;
+    private Player player;
     private Image image;
     private bool selected = false;
 
@@ -16,18 +16,17 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         image = GetComponent<Image>();
-        level = FindObjectOfType<Level>();
+        player = FindObjectOfType<Player>();
     }
 
     private void OnLevelWasLoaded(int n)
     {
         /*
-            ak je level len v Start tak pri OnPointerClick po zmene sceny je null
-            zaroven farba aj selected si zanechavaju stav z minulej sceny???? 
-            (image.color v Start po zmene sceny nema efekt)
+         * po zmene sceny sa neresetnu atributy (selected, image.color)
+         * a zaroven su priradene stare referencie pre image a player???
          */
 
-        level = FindObjectOfType<Level>();
+        player = FindObjectOfType<Player>();
         image = GetComponent<Image>();
         image.color = inactiveColor;
         selected = false;
@@ -37,6 +36,6 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
     {
         selected = !selected;
         image.color = selected ? activeColor : inactiveColor;
-        level.ToggleBallsSpeed();
+        player.ToggleBallsSpeed();
     }
 }

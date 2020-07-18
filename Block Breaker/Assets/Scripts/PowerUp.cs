@@ -8,15 +8,16 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     //cached references
-    protected Level level;
+    protected Player player;
     private SpriteRenderer mySpriteRenderer;
 
     //state variables
     private bool expiresImmediately;
 
-    private void Start()
+    protected void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        player = FindObjectOfType<Player>();
     }
 
     public void Collect(GameObject gameObjectCollectingPowerUp)
@@ -32,10 +33,4 @@ public class PowerUp : MonoBehaviour
     public virtual void ActivatePowerUp(GameObject gameObjectCollectingPowerUp)
     {
     }
-
-    public void SetLevelReference(Level levelRef)
-    {
-        level = levelRef;
-    }
-
 }

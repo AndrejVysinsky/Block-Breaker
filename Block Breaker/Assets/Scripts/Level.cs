@@ -8,18 +8,13 @@ using UnityEngine.SceneManagement;
 public class Level : MonoBehaviour
 {
     [SerializeField] SceneLoader sceneLoader;
-    [SerializeField] Ball ball;
-    [SerializeField] Paddle paddle;
 
     private GameController gameController;
 
     private TextMeshProUGUI timeText;
     private float startTime;
 
-    private List<Ball> balls = new List<Ball>();
-    private bool isRegularSpeed = true;
     private int blockCount = 0;
-
     //amount of hits needed to destroy all blocks in current level
     private int hitsNeeded = 0;
     private int scoreMultiplier = 10;
@@ -32,8 +27,6 @@ public class Level : MonoBehaviour
         timeText = gameController.GetTimeText();
         startTime = Time.time;
 
-        paddle = Instantiate(paddle);
-
         Block[] breakableBlocks = FindObjectsOfType<Block>().Where(b => b.CompareTag("Breakable")).ToArray();
         hitsNeeded = breakableBlocks.Sum(b => b.GetMaxHits());
         blockCount = breakableBlocks.Count();
@@ -41,43 +34,7 @@ public class Level : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            LaunchBall();
-        }
         UpdateTime();
-    }
-
-    private void LaunchBall()
-    {
-        if (gameController.GetBallCount() > 0)
-        {
-            float distanceY = ball.transform.position.y - paddle.transform.position.y;
-            Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
-
-            InstantiateBall(ballPosition);
-            gameController.BallLaunched();
-        }
-    }
-
-    public void InstantiateBall(Vector3 position)
-    {
-        Ball b = Instantiate(ball, position, Quaternion.identity);
-
-        if (!isRegularSpeed)
-            b.ToggleSpeed();
-
-        balls.Add(b);
-
-        gameController.NewBallOnScreen();
-    }
-
-    public void ToggleBallsSpeed()
-    {
-        foreach (var ball in balls)
-            ball.ToggleSpeed();
-
-        isRegularSpeed = !isRegularSpeed;
     }
 
     private void UpdateTime()
@@ -106,20 +63,6 @@ public class Level : MonoBehaviour
 
             gameController.NextLevel();
             sceneLoader.LoadNextScene();
-        }
-    }
-
-    public void RemoveBall(Ball ball)
-    {
-        balls.Remove(ball);
-
-        gameController.BallOutOfScreen();
-        Destroy(ball.gameObject);
-
-        if (gameController.GetBallCount() == 0 
-            && gameController.GetActiveBallCount() == 0)
-        {
-            SceneManager.LoadScene("Game Over");
         }
     }
 }
