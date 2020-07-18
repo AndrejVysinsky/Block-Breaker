@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
 
+    [SerializeField] SceneLoader sceneLoader;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI ballsText;
     [SerializeField] TextMeshProUGUI levelText;
@@ -63,22 +64,9 @@ public class GameController : MonoBehaviour
         return score;
     }
 
-    /// <summary>
-    /// Balls in reserve.
-    /// </summary>
-    /// <returns></returns>
-    public int GetBallCount()
+    public bool IsOutOfBalls()
     {
-        return balls;
-    }
-
-    /// <summary>
-    /// Balls moving on screen.
-    /// </summary>
-    /// <returns></returns>
-    public int GetActiveBallCount()
-    {
-        return activeBalls;
+        return balls != 0;
     }
 
     public void BallLaunched()
@@ -96,15 +84,27 @@ public class GameController : MonoBehaviour
     {
         activeBalls--;
         SubtractScore(50);
+
+        if (balls == 0 && activeBalls == 0)
+        {
+            LoadGameOverScene();
+        }
     }
 
-    public void NextLevel()
+    private void LoadGameOverScene()
+    {
+        sceneLoader.LoadGameOverScene();
+    }
+
+    public void LoadNextLevel()
     {
         balls += activeBalls;
         activeBalls = 0;
 
         scoreText.text = score.ToString();
         ballsText.text = balls.ToString();
+
+        sceneLoader.LoadNextScene();
     }
 
     public void ResetGame()

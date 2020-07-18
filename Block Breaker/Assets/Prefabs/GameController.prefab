@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776a3ed6a6338de4a8d4dc7a98191953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 4060397329437032693, guid: bf2993395671cc748ab9b81f80aa9715,
+    type: 3}
   scoreText: {fileID: 2483409888259934194}
   ballsText: {fileID: 2483409888062174613}
   levelText: {fileID: 2483409888118603519}

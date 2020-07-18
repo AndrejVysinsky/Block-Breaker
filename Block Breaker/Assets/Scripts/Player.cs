@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void LaunchBall()
     {
-        if (gameController.GetBallCount() > 0)
+        if (gameController.IsOutOfBalls() == false)
         {
             float distanceY = ball.transform.position.y - paddle.transform.position.y;
             Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
@@ -62,14 +62,8 @@ public class Player : MonoBehaviour
     public void RemoveBall(Ball ball)
     {
         balls.Remove(ball);
-
-        gameController.BallOutOfScreen();
         Destroy(ball.gameObject);
 
-        if (gameController.GetBallCount() == 0
-            && gameController.GetActiveBallCount() == 0)
-        {
-            SceneManager.LoadScene("Game Over");
-        }
+        gameController.BallOutOfScreen();
     }
 }

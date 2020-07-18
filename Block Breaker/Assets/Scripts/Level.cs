@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] SceneLoader sceneLoader;
-
     private GameController gameController;
 
     private TextMeshProUGUI timeText;
@@ -61,8 +59,7 @@ public class Level : MonoBehaviour
             if (timeBonus > 0)
                 gameController.AddScore(timeBonus);
 
-            gameController.NextLevel();
-            sceneLoader.LoadNextScene();
+            gameController.LoadNextLevel();            
         }
     }
 }

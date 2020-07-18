@@ -21,6 +21,11 @@ public class SceneLoader : MonoBehaviour
             
     }
 
+    public void LoadGameOverScene()
+    {
+        SceneManager.LoadScene("Game Over");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
