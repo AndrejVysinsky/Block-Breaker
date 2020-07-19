@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PowerUpAddBall : PowerUp
 {
-    public override void ActivatePowerUp(GameObject ball)
+    protected override void ActivatePowerUp(GameObject ballObject)
     {
-        base.ActivatePowerUp(ball);
+        base.ActivatePowerUp(ballObject);
 
-        player.InstantiateBall(ball.transform.position);
+        player.InstantiateBall(ballObject.transform.position);
     }
 }
