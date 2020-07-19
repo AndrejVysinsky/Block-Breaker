@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,21 +9,41 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
 
     [SerializeField] SceneLoader sceneLoader;
-    [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI ballsText;
-    [SerializeField] TextMeshProUGUI levelText;
-    [SerializeField] TextMeshProUGUI timeText;
+
+    public event Action<int> ScoreUpdate;
+    public event Action<int> BallAmountUpdate;
+    public event Action<int> LevelUpdate;
 
     private int score = 0;
-    private int balls = 5; //amount in reserve
-    private int activeBalls = 0; //balls moving on screen
-
-    private void Start()
-    {
-        scoreText.text = score.ToString();
-        ballsText.text = balls.ToString();
+    public int Score 
+    { 
+        get 
+        { 
+            return score; 
+        } 
+        set 
+        {
+            ScoreUpdate(value);
+            score = value;
+        }
     }
 
+    private int balls = 5; //amount in reserve
+    public int Balls
+    {
+        get
+        {
+            return balls;
+        }
+        set
+        {
+            BallAmountUpdate(value);
+            balls = value;
+        }
+    }
+
+    public int ActiveBalls { get; set; } = 0;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -37,74 +57,41 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public TextMeshProUGUI GetLevelText()
+    public void ForceUpdate()
     {
-        return levelText;
-    }
-
-    public TextMeshProUGUI GetTimeText()
-    {
-        return timeText;
-    }
-
-    public void AddScore(int scoreToAdd)
-    {
-        score += scoreToAdd;
-        scoreText.text = score.ToString();
-    }
-
-    public void SubtractScore(int scoreToSubtract)
-    {
-        score -= scoreToSubtract;
-        scoreText.text = score.ToString();
-    }
-    
-    public int GetScore()
-    {
-        return score;
-    }
-
-    public bool IsOutOfBalls()
-    {
-        return balls == 0;
-    }
-
-    public void BallLaunched()
-    {
-        balls--;
-        ballsText.text = balls.ToString();
-    }
-
-    public void NewBallOnScreen()
-    {
-        activeBalls++;
+        ScoreUpdate(Score);
+        BallAmountUpdate(Balls);
+        LevelUpdate(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BallOutOfScreen()
     {
-        activeBalls--;
-        SubtractScore(50);
+        ActiveBalls--;
+        Score -= 50;
 
-        if (balls == 0 && activeBalls == 0)
+        if (Balls == 0 && ActiveBalls == 0)
         {
-            LoadGameOverScene();
+            sceneLoader.LoadGameOverScene();
         }
-    }
-
-    private void LoadGameOverScene()
-    {
-        sceneLoader.LoadGameOverScene();
     }
 
     public void LoadNextLevel()
     {
-        balls += activeBalls;
-        activeBalls = 0;
-
-        scoreText.text = score.ToString();
-        ballsText.text = balls.ToString();
-
+        Balls += ActiveBalls;
+        ActiveBalls = 0;
+        
         sceneLoader.LoadNextScene();
+    }
+
+    public void AddTimeBonus(int hitsNeeded, int baseBlockScore)
+    {
+        int levelTime = (int)Time.timeSinceLevelLoad;
+        int timeBonus = hitsNeeded * baseBlockScore - (levelTime % 60);
+
+        if (timeBonus > 0)
+        {
+            Score += timeBonus;
+        }
     }
 
     public void ResetGame()

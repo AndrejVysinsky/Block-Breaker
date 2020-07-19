@@ -12,9 +12,9 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         var gameController = GameController.Instance;
-        scoreText.text = gameController.GetScore().ToString();
+        scoreText.text = gameController.Score.ToString();
 
-        if (gameController.IsOutOfBalls())
+        if (gameController.Balls == 0)
         {
             gameOverText.text = "Game Over";
         }

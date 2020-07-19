@@ -30,13 +30,13 @@ public class Player : MonoBehaviour
 
     private void LaunchBall()
     {
-        if (gameController.IsOutOfBalls() == false)
+        if (gameController.Balls > 0)
         {
             float distanceY = ball.transform.position.y - paddle.transform.position.y;
             Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
 
             InstantiateBall(ballPosition);
-            gameController.BallLaunched();
+            gameController.Balls--;
         }
     }
 
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
         balls.Add(newBall);
 
-        gameController.NewBallOnScreen();
+        gameController.ActiveBalls++;
     }
 
     private void SendBallInitializedMessage(Ball ball)
