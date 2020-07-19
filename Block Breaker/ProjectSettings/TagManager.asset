@@ -10,6 +10,7 @@ TagManager:
   - MainCanvas
   - MainUI
   - Ball
+  - Listener
   layers:
   - Default
   - TransparentFX
