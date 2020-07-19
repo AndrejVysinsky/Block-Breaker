@@ -13,10 +13,6 @@ public class Player : MonoBehaviour
     private GameController gameController;
 
     private List<Ball> balls = new List<Ball>();
-    private bool isSpeedUpButtonActive = false;
-
-    //cached for later ball initialization
-    private float speedUpButtonModifier = 0;
 
     void Start()
     {
@@ -48,26 +44,18 @@ public class Player : MonoBehaviour
     {
         Ball newBall = Instantiate(ball, position, Quaternion.identity);
 
-        if (isSpeedUpButtonActive)
-            newBall.IncreaseSpeedModifier(speedUpButtonModifier);
+        SendBallInitializedMessage(newBall);
 
         balls.Add(newBall);
 
         gameController.NewBallOnScreen();
     }
 
-    public void SpeedUpButtonToggled(float speedAmount)
+    private void SendBallInitializedMessage(Ball ball)
     {
-        isSpeedUpButtonActive = !isSpeedUpButtonActive;
-        speedUpButtonModifier = speedAmount;
-
-        if (isSpeedUpButtonActive)
+        foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
-            IncreaseSpeedModifier(speedAmount);
-        }
-        else
-        {
-            DecreaseSpeedModifier(speedAmount);
+            ExecuteEvents.Execute<IBallEvent>(gameObject, null, (x, y) => x.OnBallInitialized(ball));
         }
     }
 

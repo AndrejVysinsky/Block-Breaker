@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
+public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallEvent
 {
     private Player player;
     private Image image;
@@ -38,6 +38,23 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
     {
         selected = !selected;
         image.color = selected ? activeColor : inactiveColor;
-        player.SpeedUpButtonToggled(speedToAdd);
+
+        if (selected)
+        {
+            player.IncreaseSpeedModifier(speedToAdd);
+        }
+        else
+        {
+            player.DecreaseSpeedModifier(speedToAdd);
+        }
+    }
+
+    public void OnBallInitialized(Ball ball)
+    {
+        if (selected)
+        {
+            ball.IncreaseSpeedModifier(speedToAdd);
+        }
+        Debug.Log("Event called!!!!");
     }
 }
