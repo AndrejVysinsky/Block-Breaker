@@ -21,7 +21,7 @@ public class Block : MonoBehaviour
         level = FindObjectOfType<Level>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
 
-        myPowerUp = GetComponent<PowerUpAddBall>();
+        myPowerUp = GetComponent<PowerUp>();
 
         SetupGradient();
     }
@@ -62,17 +62,11 @@ public class Block : MonoBehaviour
             hitCount++;
             if (hitCount >= maxHits)
             {
-                if (myPowerUp != null)
-                    myPowerUp.Collect(collision.gameObject);
-
-                Destroy(gameObject);
-                level.RemoveBlock(maxHits);
+                HandleBlockDestroy(collision.gameObject);
             }
             else
             {
-                Color color = mySpriteRenderer.color;
-                color.a = 1 - ((float)hitCount / maxHits);
-                mySpriteRenderer.color = color;
+                HandleBlockDamage();
             }
         }
     }
@@ -80,5 +74,28 @@ public class Block : MonoBehaviour
     public int GetMaxHits()
     {
         return maxHits;
+    }
+
+    private void HandleBlockDamage()
+    {
+        Color color = mySpriteRenderer.color;
+        color.a = 1 - ((float)hitCount / maxHits);
+        mySpriteRenderer.color = color;
+    }
+
+    private void HandleBlockDestroy(GameObject collidingGameObject)
+    {
+        /*
+         * if block has powerup -> powerup will handle destroying in case powerup has some expiration time
+         */
+        if (myPowerUp != null)
+        {
+            myPowerUp.Collect(collidingGameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        level.RemoveBlock(maxHits);
     }
 }
