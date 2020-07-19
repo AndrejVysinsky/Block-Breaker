@@ -13,6 +13,8 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
     private Color activeColor = new Color32(255, 255, 255, 255);
     private Color inactiveColor = new Color32(123, 123, 123, 255);
 
+    private float speedToAdd = 1.0f;
+
     void Start()
     {
         image = GetComponent<Image>();
@@ -36,6 +38,6 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler
     {
         selected = !selected;
         image.color = selected ? activeColor : inactiveColor;
-        player.ToggleBallsSpeed();
+        player.SpeedUpButtonToggled(speedToAdd);
     }
 }

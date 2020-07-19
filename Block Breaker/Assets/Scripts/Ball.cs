@@ -9,35 +9,36 @@ public class Ball : MonoBehaviour
     [SerializeField] float velocityY = 15f;
 
     private Rigidbody2D myRigidBody2D;
-    private bool isRegularSpeed = true;
+
+    private float currentSpeedModifier = 1.0f;
 
     private void Awake()
     {
         //launch ball
-        velocityX *= UnityEngine.Random.Range(-1f, 1f);
+        velocityX *= UnityEngine.Random.Range(-0.1f, 0.1f);
         myRigidBody2D = GetComponent<Rigidbody2D>();
         myRigidBody2D.velocity = new Vector2(velocityX, velocityY);
     }
 
-    public void ToggleSpeed()
+    public void IncreaseSpeedModifier(float modifier)
     {
-        if (isRegularSpeed)
-        {
-            SetSpeed(2);
-            isRegularSpeed = false;
-        }
-        else
-        {
-            SetSpeed(0.5f);
-            isRegularSpeed = true;
-        }
+        myRigidBody2D.velocity /= currentSpeedModifier;
+
+        currentSpeedModifier += modifier;
+
+        myRigidBody2D.velocity *= currentSpeedModifier;
+
+        Debug.Log($"Increased speed modifier to: {currentSpeedModifier}");
     }
 
-    private void SetSpeed(float scale)
+    public void DecreaseSpeedModifier(float modifier)
     {
-        float velX = myRigidBody2D.velocity.x;
-        float velY = myRigidBody2D.velocity.y;
+        myRigidBody2D.velocity /= currentSpeedModifier;
 
-        myRigidBody2D.velocity = new Vector2(velX * scale, velY * scale);
+        currentSpeedModifier -= modifier;
+
+        myRigidBody2D.velocity *= currentSpeedModifier;
+
+        Debug.Log($"Decreased speed modifier to: {currentSpeedModifier}");
     }
 }

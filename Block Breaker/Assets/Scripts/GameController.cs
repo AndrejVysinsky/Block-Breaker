@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
 
     public bool IsOutOfBalls()
     {
-        return balls != 0;
+        return balls == 0;
     }
 
     public void BallLaunched()

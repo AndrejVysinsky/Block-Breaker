@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -11,7 +13,10 @@ public class Player : MonoBehaviour
     private GameController gameController;
 
     private List<Ball> balls = new List<Ball>();
-    private bool isRegularSpeed = true;
+    private bool isSpeedUpButtonActive = false;
+
+    //cached for later ball initialization
+    private float speedUpButtonModifier = 0;
 
     void Start()
     {
@@ -41,22 +46,45 @@ public class Player : MonoBehaviour
 
     public void InstantiateBall(Vector3 position)
     {
-        Ball b = Instantiate(ball, position, Quaternion.identity);
+        Ball newBall = Instantiate(ball, position, Quaternion.identity);
 
-        if (!isRegularSpeed)
-            b.ToggleSpeed();
+        if (isSpeedUpButtonActive)
+            newBall.IncreaseSpeedModifier(speedUpButtonModifier);
 
-        balls.Add(b);
+        balls.Add(newBall);
 
         gameController.NewBallOnScreen();
     }
 
-    public void ToggleBallsSpeed()
+    public void SpeedUpButtonToggled(float speedAmount)
+    {
+        isSpeedUpButtonActive = !isSpeedUpButtonActive;
+        speedUpButtonModifier = speedAmount;
+
+        if (isSpeedUpButtonActive)
+        {
+            IncreaseSpeedModifier(speedAmount);
+        }
+        else
+        {
+            DecreaseSpeedModifier(speedAmount);
+        }
+    }
+
+    public void IncreaseSpeedModifier(float modifier)
     {
         foreach (var ball in balls)
-            ball.ToggleSpeed();
+        {
+            ball.IncreaseSpeedModifier(modifier);
+        }
+    }
 
-        isRegularSpeed = !isRegularSpeed;
+    public void DecreaseSpeedModifier(float modifier)
+    {
+        foreach (var ball in balls)
+        {
+            ball.DecreaseSpeedModifier(modifier);
+        }
     }
 
     public void RemoveBall(Ball ball)
