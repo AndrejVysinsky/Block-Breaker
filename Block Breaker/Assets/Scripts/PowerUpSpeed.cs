@@ -5,13 +5,24 @@ using UnityEngine;
 public class PowerUpSpeed : PowerUp
 {
     private float speedModifier = 2.0f;
-    private int speedChangeSteps = 20;
-    private float speedUpDurationInSeconds = 10.0f;
-
-    private float timeForSpeedChangeStep;
     private float speedChangeAmount;
 
-    private float currentTimeStep;
+    private Gradient powerUpGradient = new Gradient();
+
+    /*
+     * https://docs.unity3d.com/ScriptReference/Color.Lerp.html?_ga=2.120109064.1657794911.1595002912-325438407.1590147552
+     * 
+     * https://docs.unity3d.com/ScriptReference/Gradient.Evaluate.html
+     */
+    //prerobit
+    private Color poweredUpColor = new Color(255, 167, 255, 255);
+    private float[] colorChangeAmount = new float[3];
+    private Color originalColor;
+
+    private float powerUpDuration = 10.0f;
+    private int powerUpChangeSteps = 20;
+    private float timeForChangeStep;
+    private float currentStepTime;
     
     private Ball poweredUpBall;
 
@@ -20,8 +31,9 @@ public class PowerUpSpeed : PowerUp
         base.Start();
         expiresImmediately = false;
 
-        speedChangeAmount = speedModifier / speedChangeSteps;
-        timeForSpeedChangeStep = speedUpDurationInSeconds / speedChangeSteps;
+        speedChangeAmount = speedModifier / powerUpChangeSteps;
+        timeForChangeStep = powerUpDuration / powerUpChangeSteps;
+
     }
 
     protected override void ActivatePowerUp(GameObject ballObject)
@@ -29,6 +41,13 @@ public class PowerUpSpeed : PowerUp
         base.ActivatePowerUp(ballObject);
 
         poweredUpBall = ballObject.GetComponent<Ball>();
+
+        originalColor = poweredUpBall.GetColor();
+
+        colorChangeAmount[0] = (poweredUpColor.r - originalColor.r) / powerUpChangeSteps;
+        
+        poweredUpBall.SetColor(poweredUpColor);
+        poweredUpBall.SetTrailColor(poweredUpColor);
         poweredUpBall.IncreaseSpeedModifier(speedModifier);
     }
 
@@ -36,34 +55,37 @@ public class PowerUpSpeed : PowerUp
     {
         if (powerUpState == PowerUpState.IsActive)
         {
-            if (poweredUpBall == null || speedUpDurationInSeconds <= 0)
+            if (poweredUpBall == null || powerUpDuration <= 0)
             {
                 PowerUpHasExpired();
             }
 
-            speedUpDurationInSeconds -= Time.deltaTime;
+            powerUpDuration -= Time.deltaTime;
             
-            currentTimeStep += Time.deltaTime;
-            int numberOfSteps = (int)(currentTimeStep / timeForSpeedChangeStep);
+            currentStepTime += Time.deltaTime;
+            int numberOfSteps = (int)(currentStepTime / timeForChangeStep);
 
             if (numberOfSteps > 0)
             {
                 ChangeBallSpeed(numberOfSteps);
-                ChangeBallColor(numberOfSteps);
+                //ChangeBallColor(numberOfSteps);
             }
         }
     }
 
     private void ChangeBallSpeed(int numberOfSteps)
     {
-        speedChangeSteps -= numberOfSteps;
-        currentTimeStep -= numberOfSteps * timeForSpeedChangeStep;
+        powerUpChangeSteps -= numberOfSteps;
+        currentStepTime -= numberOfSteps * timeForChangeStep;
         poweredUpBall.DecreaseSpeedModifier(numberOfSteps * speedChangeAmount);
     }
 
     private void ChangeBallColor(int numberOfSteps)
     {
         //TODO
+        poweredUpBall.ChangeColorBy(-colorChangeAmount[0], -colorChangeAmount[1], -colorChangeAmount[2]);
+
+        
     }
 
     protected override void PowerUpHasExpired()

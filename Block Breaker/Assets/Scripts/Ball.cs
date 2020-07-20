@@ -72,13 +72,48 @@ public class Ball : MonoBehaviour
         Debug.Log($"Changed size modifier by {amount} to {sizeModifier}");
     }
 
+    public void ChangeColorBy(float r = 0, float g = 0, float b = 0, float a = 0)
     {
-        myRigidBody2D.velocity /= currentSpeedModifier;
+        Color color = spriteRenderer.color;
 
-        currentSpeedModifier -= modifier;
+        color.r += r;
+        color.g += g;
+        color.b += b;
+        color.a += a;
 
-        myRigidBody2D.velocity *= currentSpeedModifier;
+        Color color2 = trailRenderer.startColor;
 
-        Debug.Log($"Decreased speed modifier to: {currentSpeedModifier}");
+        color2.r += r;
+        color2.g += g;
+        color2.b += b;
+        color2.a += a;
+
+        spriteRenderer.color = color;
+        trailRenderer.startColor = color2;
+        trailRenderer.endColor = color2;
+
+        Debug.Log($"Color changed to {color}");
+        Debug.Log($"Sprite changed to {color}");
+    }
+
+    public void SetColor(Color color)
+    {
+        spriteRenderer.color = color;
+    }
+
+    public Color GetColor()
+    {
+        return spriteRenderer.color;
+    }
+
+    public void SetTrailColor(Color color)
+    {
+        trailRenderer.startColor = color;
+        trailRenderer.endColor = color;
+    }
+
+    public void SetTrailGradient(Gradient gradient)
+    {
+        trailRenderer.colorGradient = gradient;
     }
 }
