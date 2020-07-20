@@ -9,8 +9,8 @@ public class Block : MonoBehaviour
 
     //cached references
     private Level level;
-    private SpriteRenderer mySpriteRenderer;
-    private PowerUp myPowerUp;
+    private SpriteRenderer spriteRenderer;
+    private PowerUp powerUp;
 
     //state variables
     private int hitCount = 0;
@@ -19,16 +19,17 @@ public class Block : MonoBehaviour
     private void Start()
     {
         level = FindObjectOfType<Level>();
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        myPowerUp = GetComponent<PowerUp>();
+        powerUp = GetComponent<PowerUp>();
 
+        //for particles
         SetupGradient();
     }
 
     private void SetupGradient()
     {
-        Color myColor = mySpriteRenderer.color;
+        Color myColor = spriteRenderer.color;
 
         gradient = new Gradient()
         {
@@ -78,9 +79,9 @@ public class Block : MonoBehaviour
 
     private void HandleBlockDamage()
     {
-        Color color = mySpriteRenderer.color;
+        Color color = spriteRenderer.color;
         color.a = 1 - ((float)hitCount / maxHits);
-        mySpriteRenderer.color = color;
+        spriteRenderer.color = color;
     }
 
     private void HandleBlockDestroy(GameObject collidingGameObject)
@@ -88,14 +89,15 @@ public class Block : MonoBehaviour
         /*
          * if block has powerup -> powerup will handle destroying in case powerup has some expiration time
          */
-        if (myPowerUp != null)
+        if (powerUp != null)
         {
-            myPowerUp.Collect(collidingGameObject);
+            powerUp.Collect(collidingGameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+        
         level.RemoveBlock(maxHits);
     }
 }
