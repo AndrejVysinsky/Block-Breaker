@@ -13,7 +13,7 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallEvent
     private Color activeColor = new Color32(255, 255, 255, 255);
     private Color inactiveColor = new Color32(123, 123, 123, 255);
 
-    private float speedToAdd = 1.0f;
+    private float speedModifier = 1.0f;
 
     void Start()
     {
@@ -41,11 +41,11 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallEvent
 
         if (selected)
         {
-            player.IncreaseSpeedModifier(speedToAdd);
+            player.IncreaseSpeedModifier(speedModifier);
         }
         else
         {
-            player.DecreaseSpeedModifier(speedToAdd);
+            player.DecreaseSpeedModifier(speedModifier);
         }
     }
 
@@ -53,7 +53,7 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallEvent
     {
         if (selected)
         {
-            ball.IncreaseSpeedModifier(speedToAdd);
+            ball.IncreaseSpeedModifier(speedModifier);
         }
         Debug.Log("Event called!!!!");
     }
