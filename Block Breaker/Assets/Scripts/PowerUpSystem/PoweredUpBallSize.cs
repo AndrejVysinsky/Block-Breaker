@@ -11,10 +11,10 @@ public class PoweredUpBallSize : PoweredUpBall
     private float remainingSize;
     private float sizeChangePerStep;
 
-    public PoweredUpBallSize(Ball ball, float duration, int numberOfSteps, float wearOffTime, float speed)
+    public PoweredUpBallSize(Ball ball, float duration, int numberOfSteps, float wearOffTime, float size)
                             : base(ball, duration, numberOfSteps, wearOffTime)
     {
-        totalSize = speed;
+        totalSize = size;
         remainingSize = 0;
         sizeChangePerStep = totalSize / numberOfSteps;
 
