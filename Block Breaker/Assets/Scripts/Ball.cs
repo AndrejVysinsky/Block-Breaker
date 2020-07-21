@@ -47,8 +47,6 @@ public class Ball : MonoBehaviour
         speedModifier += amount;
 
         rigidBody2D.velocity *= speedModifier;
-
-        Debug.Log($"Changed speed modifier by {amount} to {speedModifier}");
     }
 
     public void IncreaseSizeModifier(float modifier)
@@ -68,52 +66,21 @@ public class Ball : MonoBehaviour
         sizeModifier += amount;
 
         transform.localScale *= sizeModifier;
-
-        Debug.Log($"Changed size modifier by {amount} to {sizeModifier}");
     }
 
-    public void ChangeColorBy(float r = 0, float g = 0, float b = 0, float a = 0)
+    public void SetColor32(Color32 color)
     {
-        Color color = spriteRenderer.color;
+        Color32 original = spriteRenderer.color;
 
-        color.r += r;
-        color.g += g;
-        color.b += b;
-        color.a += a;
-
-        Color color2 = trailRenderer.startColor;
-
-        color2.r += r;
-        color2.g += g;
-        color2.b += b;
-        color2.a += a;
-
-        spriteRenderer.color = color;
-        trailRenderer.startColor = color2;
-        trailRenderer.endColor = color2;
-
-        Debug.Log($"Color changed to {color}");
-        Debug.Log($"Sprite changed to {color}");
+        spriteRenderer.color = new Color32(color.r, color.g, color.b, original.a);
     }
 
-    public void SetColor(Color color)
+    public void SetTrailColor32(Color32 color)
     {
-        spriteRenderer.color = color;
-    }
+        Color32 originalStart = trailRenderer.startColor;
+        Color32 originalEnd = trailRenderer.endColor;
 
-    public Color GetColor()
-    {
-        return spriteRenderer.color;
-    }
-
-    public void SetTrailColor(Color color)
-    {
-        trailRenderer.startColor = color;
-        trailRenderer.endColor = color;
-    }
-
-    public void SetTrailGradient(Gradient gradient)
-    {
-        trailRenderer.colorGradient = gradient;
-    }
+        trailRenderer.startColor = new Color32(color.r, color.g, color.b, originalStart.a);
+        trailRenderer.endColor = new Color32(color.r, color.g, color.b, originalEnd.a);
+    }    
 }

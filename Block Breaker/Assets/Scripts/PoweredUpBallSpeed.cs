@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
+using UnityEngine;
 
 public class PoweredUpBallSpeed : PoweredUpBall
 {
@@ -11,11 +12,16 @@ public class PoweredUpBallSpeed : PoweredUpBall
     private float remainingSpeed;
     private float speedChangePerStep;
 
-    public PoweredUpBallSpeed(Ball ball, float duration, int numberOfSteps, float speed) : base(ball, duration, numberOfSteps)
+    private Gradient gradient;
+
+    public PoweredUpBallSpeed(Ball ball, float duration, int numberOfSteps, float speed, Gradient powerUpGradient) 
+                            : base(ball, duration, numberOfSteps)
     {
         totalSpeed = speed;
         remainingSpeed = 0;
         speedChangePerStep = totalSpeed / numberOfSteps;
+
+        gradient = powerUpGradient;
 
         RefreshPowerUp();
     }
@@ -27,7 +33,8 @@ public class PoweredUpBallSpeed : PoweredUpBall
         poweredUpBall.IncreaseSpeedModifier(totalSpeed - remainingSpeed);
         remainingSpeed = totalSpeed;
 
-        //+ reset color
+        poweredUpBall.SetColor32(gradient.Evaluate(1));
+        poweredUpBall.SetTrailColor32(gradient.Evaluate(1));
     }
 
     protected override void UpdatePowerUp(int numberOfSteps)
@@ -35,7 +42,7 @@ public class PoweredUpBallSpeed : PoweredUpBall
         base.UpdatePowerUp(numberOfSteps);
 
         UpdateSpeed(numberOfSteps);
-        UpdateColor(numberOfSteps);
+        UpdateColor();
     }
 
     private void UpdateSpeed(int numberOfSteps)
@@ -46,8 +53,13 @@ public class PoweredUpBallSpeed : PoweredUpBall
         poweredUpBall.DecreaseSpeedModifier(speedChange);
     }
 
-    private void UpdateColor(int numberOfSteps)
+    private void UpdateColor()
     {
+        float colorValue = (float)remainingSteps / totalSteps;
 
+        Debug.Log("Color value" + colorValue);
+
+        poweredUpBall.SetColor32(gradient.Evaluate(colorValue));
+        poweredUpBall.SetTrailColor32(gradient.Evaluate(colorValue));
     }
 }

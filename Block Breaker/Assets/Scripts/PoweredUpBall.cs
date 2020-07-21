@@ -7,13 +7,13 @@ using UnityEngine;
 
 public abstract class PoweredUpBall
 {
-    private float totalDuration;
-    private int totalSteps;
-    private float timeForStep;
-    private float currentStepTime;
+    protected float totalDuration;
+    protected int totalSteps;
+    protected float timeForStep;
+    protected float currentStepTime;
 
     protected float remainingDuration;
-    protected int remainingSteps;    
+    protected int remainingSteps;
 
     protected Ball poweredUpBall;
 
@@ -24,8 +24,6 @@ public abstract class PoweredUpBall
         totalDuration = duration;
         totalSteps = numberOfSteps;
         timeForStep = totalDuration / numberOfSteps;
-
-        RefreshPowerUp();
     }
 
     public virtual void RefreshPowerUp()
