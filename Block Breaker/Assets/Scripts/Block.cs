@@ -47,14 +47,7 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        ParticleSystem particles = Instantiate(damageParticles, transform.position, transform.rotation);
-        
-        //get copy of colorOverLifeTime and set gradient
-        ColorOverLifetimeModule col = particles.colorOverLifetime;
-        col.color = new MinMaxGradient(gradient);
-
-        particles.Play();
-        Destroy(particles.gameObject, particles.main.duration + particles.main.startLifetime.constant);
+        InstantiateParticles(collision);
 
         if (CompareTag("Breakable"))
         {
@@ -68,6 +61,18 @@ public class Block : MonoBehaviour
                 HandleBlockDamage();
             }
         }
+    }
+
+    private void InstantiateParticles(Collision2D collision)
+    {
+        ParticleSystem particles = Instantiate(damageParticles, collision.GetContact(0).point, transform.rotation);
+
+        //get copy of colorOverLifeTime and set gradient
+        ColorOverLifetimeModule col = particles.colorOverLifetime;
+        col.color = new MinMaxGradient(gradient);
+
+        particles.Play();
+        Destroy(particles.gameObject, particles.main.duration + particles.main.startLifetime.constant);
     }
 
     public int GetMaxHits()
