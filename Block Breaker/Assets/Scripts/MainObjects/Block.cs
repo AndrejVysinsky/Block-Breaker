@@ -51,7 +51,7 @@ public class Block : MonoBehaviour
 
         if (CompareTag("Breakable"))
         {
-            hitCount++;
+            hitCount += collision.gameObject.GetComponent<Ball>().GetStrength();
             if (hitCount >= maxHits)
             {
                 HandleBlockDestroy(collision.gameObject);

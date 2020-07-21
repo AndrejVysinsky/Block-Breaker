@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
 
     private float speedModifier = 1.0f;
     private float sizeModifier = 1.0f;
+    private int strengthModifier = 1;
 
     private void Awake()
     {
@@ -79,6 +80,21 @@ public class Ball : MonoBehaviour
         transform.localScale *= sizeModifier;
         trailRenderer.startWidth *= sizeModifier;
         trailRenderer.endWidth *= sizeModifier;
+    }
+
+    public void IncreaseStrengthModifier(int modifier)
+    {
+        strengthModifier += modifier;
+    }
+
+    public void DecreaseStrengthModifier(int modifier)
+    {
+        strengthModifier += modifier;
+    }
+
+    public int GetStrength()
+    {
+        return strengthModifier;
     }
 
     public void SetColor32(Color32 color)
