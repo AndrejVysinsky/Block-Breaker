@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class PoweredUpBallStrength : PoweredUpBall
 {
@@ -10,12 +12,16 @@ public class PoweredUpBallStrength : PoweredUpBall
     private float remainingStrength;
     private float strengthChangePerStep;
 
-    public PoweredUpBallStrength(Ball ball, float duration, int numberOfSteps, float wearOffTime, float strength)
+    private ParticleSystem strengthParticles;
+
+    public PoweredUpBallStrength(Ball ball, float duration, int numberOfSteps, float wearOffTime, float strength, ParticleSystem particles)
                             : base(ball, duration, numberOfSteps, wearOffTime)
     {
         totalStrength = strength;
         remainingStrength = 0;
         strengthChangePerStep = totalStrength / numberOfSteps;
+
+        strengthParticles = particles;
 
         RefreshPowerUp();
     }
@@ -39,8 +45,14 @@ public class PoweredUpBallStrength : PoweredUpBall
     {
         float strengthChange = numberOfSteps * strengthChangePerStep;
 
+        strengthParticles.transform.parent = poweredUpBall.transform;
+
         remainingStrength -= strengthChange;
         poweredUpBall.DecreaseStrengthModifier((int)strengthChange);
     }
 
+    public ParticleSystem GetParticles()
+    {
+        return strengthParticles;
+    }
 }

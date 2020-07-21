@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class PowerUpStrength : PowerUp
 {
+    [SerializeField] ParticleSystem strengthParticles;
+
     private float strengthModifier = 5.0f;
     private float duration = 5.0f;
     private int numberOfSteps = 5;
@@ -32,7 +35,10 @@ public class PowerUpStrength : PowerUp
 
         if (poweredUpBall == null)
         {
-            var newPoweredUpBall = new PoweredUpBallStrength(ball, duration, numberOfSteps, wearOffTime, strengthModifier);
+            var particles = InstantiateParticles(ball);
+
+            var newPoweredUpBall = new PoweredUpBallStrength(ball, duration, numberOfSteps, wearOffTime, strengthModifier, particles);
+
             poweredUpBalls.Add(newPoweredUpBall);
         }
         else
@@ -41,11 +47,29 @@ public class PowerUpStrength : PowerUp
         }
     }
 
+    private ParticleSystem InstantiateParticles(Ball ball)
+    {
+        ParticleSystem particles = Instantiate(strengthParticles, ball.transform.position, ball.transform.rotation);
+
+        ColorOverLifetimeModule colorOverLifetime = particles.colorOverLifetime;
+        colorOverLifetime.color = new MinMaxGradient(ball.GetTrailGradient());
+
+        particles.Play();
+
+        particles.transform.parent = ball.transform;
+
+        return particles;
+    }
+
     private void Update()
     {
         if (poweredUpBalls.Count > 0)
         {
-            poweredUpBalls.RemoveAll(x => x.IsExpired());
+            var expired = poweredUpBalls.FindAll(x => x.IsExpired());
+            
+            expired.ForEach(x => Destroy(x.GetParticles()));
+
+            poweredUpBalls.RemoveAll(x => expired.Contains(x));
             poweredUpBalls.ForEach(x => x.UpdateTime(Time.deltaTime));
         }
     }

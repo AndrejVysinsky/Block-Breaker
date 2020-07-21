@@ -111,5 +111,10 @@ public class Ball : MonoBehaviour
 
         trailRenderer.startColor = new Color32(color.r, color.g, color.b, originalStart.a);
         trailRenderer.endColor = new Color32(color.r, color.g, color.b, originalEnd.a);
-    }    
+    }
+    
+    public Gradient GetTrailGradient()
+    {
+        return trailRenderer.colorGradient;
+    }
 }
