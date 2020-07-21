@@ -11,19 +11,22 @@ public abstract class PoweredUpBall
     protected int totalSteps;
     protected float timeForStep;
     protected float currentStepTime;
+    protected float wearOffStartTime;
 
     protected float remainingDuration;
     protected int remainingSteps;
 
     protected Ball poweredUpBall;
 
-    public PoweredUpBall(Ball ball, float duration, int numberOfSteps)
+    public PoweredUpBall(Ball ball, float duration, int numberOfSteps, float wearOffTime)
     {
         poweredUpBall = ball;
 
         totalDuration = duration;
         totalSteps = numberOfSteps;
-        timeForStep = totalDuration / numberOfSteps;
+        wearOffStartTime = wearOffTime;
+
+        timeForStep = wearOffStartTime / numberOfSteps;
     }
 
     public virtual void RefreshPowerUp()
@@ -35,9 +38,10 @@ public abstract class PoweredUpBall
 
     public void UpdateTime(float deltaTime)
     {
-        if (remainingDuration > 0)
+        remainingDuration -= deltaTime;
+
+        if (remainingDuration <= wearOffStartTime)
         {      
-            remainingDuration -= deltaTime;
             currentStepTime += deltaTime;
 
             int numberOfSteps = (int)(currentStepTime / timeForStep);

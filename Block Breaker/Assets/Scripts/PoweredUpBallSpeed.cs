@@ -14,8 +14,8 @@ public class PoweredUpBallSpeed : PoweredUpBall
 
     private Gradient gradient;
 
-    public PoweredUpBallSpeed(Ball ball, float duration, int numberOfSteps, float speed, Gradient powerUpGradient) 
-                            : base(ball, duration, numberOfSteps)
+    public PoweredUpBallSpeed(Ball ball, float duration, int numberOfSteps, float wearOffTime, float speed, Gradient powerUpGradient) 
+                            : base(ball, duration, numberOfSteps, wearOffTime)
     {
         totalSpeed = speed;
         remainingSpeed = 0;

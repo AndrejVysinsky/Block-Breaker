@@ -8,6 +8,7 @@ public class PowerUpSpeed : PowerUp
     private float speedModifier = 2.0f;
     private float duration = 5.0f;
     private int numberOfSteps = 20;
+    private float wearOffTime = 3.0f;
 
     private Gradient gradient = new Gradient();
     private Color originalColor = new Color32(0, 167, 255, 255);
@@ -45,7 +46,7 @@ public class PowerUpSpeed : PowerUp
 
         if (poweredUpBall == null)
         {
-            var newPoweredUpBall = new PoweredUpBallSpeed(ball, duration, numberOfSteps, speedModifier, gradient);
+            var newPoweredUpBall = new PoweredUpBallSpeed(ball, duration, numberOfSteps, wearOffTime, speedModifier, gradient);
             poweredUpBalls.Add(newPoweredUpBall);
         }
         else
