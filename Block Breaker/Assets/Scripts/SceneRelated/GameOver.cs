@@ -23,5 +23,4 @@ public class GameOver : MonoBehaviour
             gameOverText.text = "You win!";
         }
     }
-
 }
