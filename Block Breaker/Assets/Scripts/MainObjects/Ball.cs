@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -70,10 +71,14 @@ public class Ball : MonoBehaviour
     private void ChangeSizeModifierBy(float amount)
     {
         transform.localScale /= sizeModifier;
+        trailRenderer.startWidth /= sizeModifier;
+        trailRenderer.endWidth /= sizeModifier;
 
         sizeModifier += amount;
 
         transform.localScale *= sizeModifier;
+        trailRenderer.startWidth *= sizeModifier;
+        trailRenderer.endWidth *= sizeModifier;
     }
 
     public void SetColor32(Color32 color)
