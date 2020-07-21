@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class PoweredUpBallSize : PoweredUpBall
+public class PoweredUpBallSize : PoweredUpBall
 {
     private float totalSize;
     private float remainingSize;
@@ -33,14 +33,14 @@ class PoweredUpBallSize : PoweredUpBall
     {
         base.UpdatePowerUp(numberOfSteps);
 
-        UpdateSpeed(numberOfSteps);
+        UpdateSize(numberOfSteps);
     }
 
-    private void UpdateSpeed(int numberOfSteps)
+    private void UpdateSize(int numberOfSteps)
     {
-        float speedChange = numberOfSteps * sizeChangePerStep;
+        float sizeChange = numberOfSteps * sizeChangePerStep;
 
-        remainingSize -= speedChange;
-        poweredUpBall.DecreaseSizeModifier(speedChange);
+        remainingSize -= sizeChange;
+        poweredUpBall.DecreaseSizeModifier(sizeChange);
     }
 }
