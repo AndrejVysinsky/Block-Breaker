@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000036679782, y: 0.00054194377}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1592484
+  m_Radius: 0.16
 --- !u!114 &6952842416858491160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b44d941bb3ebea4a81bced6c752e191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityX: 5
-  velocityY: 10
+  velocityX: 3
+  velocityY: 15
 --- !u!96 &4450973164526234905
 TrailRenderer:
   serializedVersion: 2
