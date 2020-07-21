@@ -24,9 +24,17 @@ public class Ball : MonoBehaviour
         LaunchBall();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (Math.Abs(rigidBody2D.velocity.y) <= 1)
+        {
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y * 2);
+        }
+    }
+
     private void LaunchBall()
     {
-        velocityX *= UnityEngine.Random.Range(-0.1f, 0.1f);
+        velocityX *= UnityEngine.Random.Range(-1f, 1f);
         rigidBody2D.velocity = new Vector2(velocityX, velocityY);
     }
 
