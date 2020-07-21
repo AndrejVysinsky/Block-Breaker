@@ -9,59 +9,24 @@ public class PowerUp : MonoBehaviour
 {
     //cached references
     protected Player player;
-    private SpriteRenderer mySpriteRenderer;
-    private BoxCollider2D myBoxCollider2D;
-
-    protected bool expiresImmediately;
-
-    protected enum PowerUpState
-    {
-        IsWaiting,
-        IsActive,
-        IsExpired
-    }
-
-    protected PowerUpState powerUpState;
 
     protected virtual void Start()
     {
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
-        myBoxCollider2D = GetComponent<BoxCollider2D>();
         player = FindObjectOfType<Player>();
-
-        powerUpState = PowerUpState.IsWaiting;
     }
 
-    public virtual void Collect(GameObject gameObjectCollectingPowerUp)
+    public virtual void Collect(GameObject gameObject)
     {
-        if (gameObjectCollectingPowerUp.tag != "Ball")
+        if (gameObject.tag != "Ball")
         {
             return;
         }
 
-        ActivatePowerUp(gameObjectCollectingPowerUp);
+        ActivatePowerUp(gameObject);
     }
 
-    protected virtual void ActivatePowerUp(GameObject gameObjectCollectingPowerUp)
+    protected virtual void ActivatePowerUp(GameObject gameObject)
     {
-        mySpriteRenderer.enabled = false;
-        myBoxCollider2D.enabled = false;
-        powerUpState = PowerUpState.IsActive;
-
-        if (expiresImmediately)
-        {
-            PowerUpHasExpired();
-        }
     }
 
-    protected virtual void PowerUpHasExpired()
-    {
-        powerUpState = PowerUpState.IsExpired;
-        DestroyAfterDelay();
-    }
-
-    protected virtual void DestroyAfterDelay()
-    {
-        Destroy(gameObject, 10f);
-    }
 }

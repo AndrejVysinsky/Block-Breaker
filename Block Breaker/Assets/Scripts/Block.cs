@@ -6,11 +6,11 @@ public class Block : MonoBehaviour
     //config params
     [SerializeField] int maxHits;
     [SerializeField] ParticleSystem damageParticles;
+    [SerializeField] PowerUp powerUp;
 
     //cached references
     private Level level;
     private SpriteRenderer spriteRenderer;
-    private PowerUp powerUp;
 
     //state variables
     private int hitCount = 0;
@@ -20,8 +20,6 @@ public class Block : MonoBehaviour
     {
         level = FindObjectOfType<Level>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        powerUp = GetComponent<PowerUp>();
 
         //for particles
         SetupGradient();
@@ -86,18 +84,13 @@ public class Block : MonoBehaviour
 
     private void HandleBlockDestroy(GameObject collidingGameObject)
     {
-        /*
-         * if block has powerup -> powerup will handle destroying in case powerup has some expiration time
-         */
         if (powerUp != null)
         {
             powerUp.Collect(collidingGameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
         
         level.RemoveBlock(maxHits);
+
+        Destroy(gameObject);
     }
 }
