@@ -84,7 +84,7 @@ public class Ball : MonoBehaviour
 
     public void IncreaseStrengthModifier(int modifier)
     {
-        Debug.Log($"strength increased by {modifier} to {strengthModifier}");
+        strengthModifier += modifier;
     }
 
     public void DecreaseStrengthModifier(int modifier)
