@@ -64,10 +64,10 @@ public class GameController : MonoBehaviour
         LevelUpdate(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void BallOutOfScreen()
+    public void BallOutOfScreen(int scorePenalty)
     {
         ActiveBalls--;
-        Score -= 50;
+        Score -= scorePenalty;
 
         if (Balls == 0 && ActiveBalls == 0)
         {

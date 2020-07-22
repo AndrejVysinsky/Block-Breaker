@@ -77,9 +77,9 @@ public class Player : MonoBehaviour
 
     public void RemoveBall(Ball ball)
     {
+        gameController.BallOutOfScreen(ball.GetScorePenalty());
+
         balls.Remove(ball);
         Destroy(ball.gameObject);
-
-        gameController.BallOutOfScreen();
     }
 }

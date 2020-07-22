@@ -17,6 +17,8 @@ public class Ball : MonoBehaviour
     private float sizeModifier = 1.0f;
     private int strengthModifier = 1;
 
+    private int scorePenalty = -50;
+
     private void Awake()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -116,5 +118,10 @@ public class Ball : MonoBehaviour
     public Gradient GetTrailGradient()
     {
         return trailRenderer.colorGradient;
+    }
+
+    public int GetScorePenalty()
+    {
+        return scorePenalty;
     }
 }
