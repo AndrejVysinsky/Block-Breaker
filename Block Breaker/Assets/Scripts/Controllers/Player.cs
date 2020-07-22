@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
-            ExecuteEvents.Execute<IBallEvent>(gameObject, null, (x, y) => x.OnBallInitialized(ball));
+            ExecuteEvents.Execute<IBallInitializedEvent>(gameObject, null, (x, y) => x.OnBallInitialized(ball));
         }
     }
 

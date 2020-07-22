@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.EventSystems;
 
-public interface IBallEvent : IEventSystemHandler
+public interface IBallInitializedEvent : IEventSystemHandler
 {
     void OnBallInitialized(Ball ball);
 }

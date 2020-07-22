@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallEvent
+public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallInitializedEvent
 {
     private Player player;
     private Image image;
