@@ -80,6 +80,9 @@ public class Player : MonoBehaviour
         gameController.BallOutOfScreen(ball.GetScorePenalty());
 
         balls.Remove(ball);
+
+        ball.SendOutOfScreenMessage();
+
         Destroy(ball.gameObject);
     }
 }

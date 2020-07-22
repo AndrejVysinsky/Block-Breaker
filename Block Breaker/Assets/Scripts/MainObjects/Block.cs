@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using static UnityEngine.ParticleSystem;
 
 public class Block : MonoBehaviour
@@ -101,6 +102,11 @@ public class Block : MonoBehaviour
         }
         
         level.RemoveBlock(maxHits * blockScore);
+
+        foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
+        {
+            ExecuteEvents.Execute<IScoreChangeEvent>(gameObject, null, (x, y) => x.DisplayScoreChangeText(transform.position, maxHits * blockScore));
+        }
 
         Destroy(gameObject);
     }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Ball : MonoBehaviour
 {
@@ -123,5 +124,13 @@ public class Ball : MonoBehaviour
     public int GetScorePenalty()
     {
         return scorePenalty;
+    }
+
+    public void SendOutOfScreenMessage()
+    {
+        foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
+        {
+            ExecuteEvents.Execute<IScoreChangeEvent>(gameObject, null, (x, y) => x.DisplayScoreChangeText(transform.position, scorePenalty));
+        }
     }
 }
