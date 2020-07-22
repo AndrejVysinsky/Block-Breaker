@@ -21,19 +21,6 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallInitializ
         player = FindObjectOfType<Player>();
     }
 
-    private void OnLevelWasLoaded(int n)
-    {
-        /*
-         * po zmene sceny sa neresetnu atributy (selected, image.color)
-         * a zaroven su priradene stare referencie pre image a player???
-         */
-
-        player = FindObjectOfType<Player>();
-        image = GetComponent<Image>();
-        image.color = inactiveColor;
-        selected = false;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         selected = !selected;
@@ -55,6 +42,5 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallInitializ
         {
             ball.IncreaseSpeedModifier(speedModifier);
         }
-        Debug.Log("Event called!!!!");
     }
 }
