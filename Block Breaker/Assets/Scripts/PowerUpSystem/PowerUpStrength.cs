@@ -67,7 +67,7 @@ public class PowerUpStrength : PowerUp
         {
             var expired = poweredUpBalls.FindAll(x => x.IsExpired());
             
-            expired.ForEach(x => Destroy(x.GetParticles()));
+            expired.ForEach(x => Destroy(x.GetParticles().gameObject));
 
             poweredUpBalls.RemoveAll(x => expired.Contains(x));
             poweredUpBalls.ForEach(x => x.UpdateTime(Time.deltaTime));
