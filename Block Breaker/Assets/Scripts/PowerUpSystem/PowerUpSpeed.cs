@@ -59,7 +59,7 @@ public class PowerUpSpeed : PowerUp
     {
         if (poweredUpBalls.Count > 0)
         {
-            poweredUpBalls.RemoveAll(x => x.IsExpired());
+            poweredUpBalls.RemoveAll(x => x.IsExpired() || x.IsDestroyed());
             poweredUpBalls.ForEach(x => x.UpdateTime(Time.deltaTime));
         }
     }

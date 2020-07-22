@@ -61,7 +61,12 @@ public abstract class PoweredUpBall
 
     public virtual bool IsExpired()
     {
-        return remainingDuration <= 0 || poweredUpBall == null;
+        return remainingDuration <= 0;
+    }
+
+    public virtual bool IsDestroyed()
+    {
+        return poweredUpBall == null;
     }
 
     public virtual bool IsPoweredUp(Ball ball)
