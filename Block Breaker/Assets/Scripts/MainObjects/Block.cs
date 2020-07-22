@@ -105,7 +105,7 @@ public class Block : MonoBehaviour
 
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
-            ExecuteEvents.Execute<IScoreChangeEvent>(gameObject, null, (x, y) => x.DisplayScoreChangeText(transform.position, maxHits * blockScore));
+            ExecuteEvents.Execute<IScoreChangedEvent>(gameObject, null, (x, y) => x.OnScoreChanged(transform.position, maxHits * blockScore));
         }
 
         Destroy(gameObject);

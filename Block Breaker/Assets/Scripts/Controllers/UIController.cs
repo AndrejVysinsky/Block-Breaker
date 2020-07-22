@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIController : MonoBehaviour, IScoreChangeEvent
+public class UIController : MonoBehaviour, IScoreChangedEvent
 {
     
     [SerializeField] TextMeshProUGUI scoreText;
@@ -55,7 +55,7 @@ public class UIController : MonoBehaviour, IScoreChangeEvent
         timeText.text = string.Format("{0}:{1}", minutes.ToString("00"), seconds.ToString("00"));
     }
 
-    public void DisplayScoreChangeText(Vector3 position, int score)
+    public void OnScoreChanged(Vector3 position, int score)
     {
         Debug.Log($"Score change at {position}, for {score} score.");
     }

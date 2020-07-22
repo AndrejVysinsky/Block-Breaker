@@ -130,7 +130,7 @@ public class Ball : MonoBehaviour
     {
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
-            ExecuteEvents.Execute<IScoreChangeEvent>(gameObject, null, (x, y) => x.DisplayScoreChangeText(transform.position, scorePenalty));
+            ExecuteEvents.Execute<IScoreChangedEvent>(gameObject, null, (x, y) => x.OnScoreChanged(transform.position, scorePenalty));
         }
     }
 }
