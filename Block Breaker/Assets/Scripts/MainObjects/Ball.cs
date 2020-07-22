@@ -28,7 +28,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Math.Abs(rigidBody2D.velocity.y) <= 1)
+        if (Math.Abs(rigidBody2D.velocity.y) <= 2)
         {
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y * 2);
         }
