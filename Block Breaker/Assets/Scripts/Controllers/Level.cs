@@ -11,25 +11,27 @@ public class Level : MonoBehaviour
 
     private int blockCount = 0;
     private int hitsNeededToDestroyAllBlocks = 0;
-    private int baseBlockScore = 10;
+    private int blockScoreMean = 0;
 
     void Start()
     {
         gameController = GameController.Instance;
 
         Block[] breakableBlocks = FindObjectsOfType<Block>().Where(b => b.CompareTag("Breakable")).ToArray();
-        hitsNeededToDestroyAllBlocks = breakableBlocks.Sum(b => b.GetMaxHits());
+
         blockCount = breakableBlocks.Count();
+        hitsNeededToDestroyAllBlocks = breakableBlocks.Sum(b => b.GetMaxHits());
+        blockScoreMean = breakableBlocks.Sum(x => x.GetBlockScore()) / blockCount;
     }
 
-    public void RemoveBlock(int maxHits)
+    public void RemoveBlock(int scoreToAdd)
     {
         blockCount--;
-        gameController.Score += maxHits * baseBlockScore;
+        gameController.Score += scoreToAdd;
 
         if (blockCount == 0)
         {
-            gameController.AddTimeBonus(hitsNeededToDestroyAllBlocks, baseBlockScore);
+            gameController.AddTimeBonus(hitsNeededToDestroyAllBlocks, blockScoreMean);
             gameController.LoadNextLevel();         
         }
     }

@@ -5,6 +5,7 @@ public class Block : MonoBehaviour
 {
     //config params
     [SerializeField] int maxHits;
+    [SerializeField] int blockScore = 10;
     [SerializeField] ParticleSystem damageParticles;
     [SerializeField] PowerUp powerUp;
 
@@ -80,6 +81,11 @@ public class Block : MonoBehaviour
         return maxHits;
     }
 
+    public int GetBlockScore()
+    {
+        return blockScore;
+    }
+
     private void HandleBlockDamage()
     {
         Color color = spriteRenderer.color;
@@ -94,7 +100,7 @@ public class Block : MonoBehaviour
             powerUp.Collect(collidingGameObject);
         }
         
-        level.RemoveBlock(maxHits);
+        level.RemoveBlock(maxHits * blockScore);
 
         Destroy(gameObject);
     }

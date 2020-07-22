@@ -83,10 +83,10 @@ public class GameController : MonoBehaviour
         sceneLoader.LoadNextScene();
     }
 
-    public void AddTimeBonus(int hitsNeeded, int baseBlockScore)
+    public void AddTimeBonus(int hitsNeeded, int blockScoreMean)
     {
         int levelTime = (int)Time.timeSinceLevelLoad;
-        int timeBonus = hitsNeeded * baseBlockScore - (levelTime % 60);
+        int timeBonus = hitsNeeded * blockScoreMean - (levelTime % 60);
 
         if (timeBonus > 0)
         {
