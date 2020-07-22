@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,8 @@ public class UIController : MonoBehaviour, IScoreChangedEvent
     [SerializeField] TextMeshProUGUI ballsText;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] TextMeshProUGUI timeText;
+
+    [SerializeField] ScoreTextScript scoreTextScript;
 
     private void Start()
     {
@@ -57,6 +60,8 @@ public class UIController : MonoBehaviour, IScoreChangedEvent
 
     public void OnScoreChanged(Vector3 position, int score)
     {
-        Debug.Log($"Score change at {position}, for {score} score.");
+        ScoreTextScript script = Instantiate(scoreTextScript, position, Quaternion.identity);
+        
+        script.DisplayScore = score.ToString();
     }
 }

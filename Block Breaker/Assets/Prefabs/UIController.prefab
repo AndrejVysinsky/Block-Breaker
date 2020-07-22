@@ -136,6 +136,8 @@ MonoBehaviour:
   ballsText: {fileID: 2483409888062174613}
   levelText: {fileID: 2483409888118603519}
   timeText: {fileID: 2483409887661113943}
+  scoreTextScript: {fileID: 7465075301240750349, guid: 93b62be5d9f50a640b7bc7eec5855189,
+    type: 3}
 --- !u!1 &4387096513962625953
 GameObject:
   m_ObjectHideFlags: 0

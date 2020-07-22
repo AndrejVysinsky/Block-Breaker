@@ -67,7 +67,7 @@ public class GameController : MonoBehaviour
     public void BallOutOfScreen(int scorePenalty)
     {
         ActiveBalls--;
-        Score -= scorePenalty;
+        Score += scorePenalty;
 
         if (Balls == 0 && ActiveBalls == 0)
         {
