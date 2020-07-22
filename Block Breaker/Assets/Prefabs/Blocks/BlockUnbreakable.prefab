@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Name
-      value: Unbreakable Block Variant
+      value: BlockUnbreakable
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
