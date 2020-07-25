@@ -603,6 +603,11 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1920
       objectReference: {fileID: 0}
+    - target: {fileID: 5410256078090162142, guid: fd92606ccce37544588c9f13bdbd2285,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8587181778857591636, guid: fd92606ccce37544588c9f13bdbd2285,
         type: 3}
       propertyPath: m_LocalPosition.x
