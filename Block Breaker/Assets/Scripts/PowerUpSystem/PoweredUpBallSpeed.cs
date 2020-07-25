@@ -57,8 +57,6 @@ public class PoweredUpBallSpeed : PoweredUpBall
     {
         float colorValue = (float)remainingSteps / totalSteps;
 
-        Debug.Log("Color value" + colorValue);
-
         poweredUpBall.SetColor32(gradient.Evaluate(colorValue));
         poweredUpBall.SetTrailColor32(gradient.Evaluate(colorValue));
     }
