@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoseCollider : MonoBehaviour
 {
     private Player player;
+    public bool isAllowedToTrigger = true;
 
     private void Start()
     {
@@ -15,6 +16,9 @@ public class LoseCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.RemoveBall(collision.gameObject.GetComponent<Ball>());
+        if (isAllowedToTrigger)
+        {
+            player.RemoveBall(collision.gameObject.GetComponent<Ball>());
+        }
     }
 }

@@ -83,6 +83,9 @@ public class GameController : MonoBehaviour
     {
         Balls += ActiveBalls;
         ActiveBalls = 0;
+
+        var loseCollider = FindObjectOfType<LoseCollider>();
+        loseCollider.isAllowedToTrigger = false;
         
         sceneLoader.LoadNextScene();
     }
