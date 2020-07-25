@@ -8,7 +8,9 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
 
-    [SerializeField] SceneLoader sceneLoader;
+    [SerializeField] GameObject sceneLoaderPrefab;
+
+    private SceneLoader sceneLoader;
 
     public event Action<int> ScoreUpdate;
     public event Action<int> BallAmountUpdate;
@@ -62,6 +64,8 @@ public class GameController : MonoBehaviour
         ScoreUpdate(Score);
         BallAmountUpdate(Balls);
         LevelUpdate(SceneManager.GetActiveScene().buildIndex);
+
+        sceneLoader = Instantiate(sceneLoaderPrefab).GetComponent<SceneLoader>();
     }
 
     public void BallOutOfScreen(int scorePenalty)
