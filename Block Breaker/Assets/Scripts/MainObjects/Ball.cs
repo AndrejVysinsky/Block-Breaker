@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class Ball : MonoBehaviour
 {
     [SerializeField] float velocityX = 3f;
-    [SerializeField] float velocityY = 15f;
+    [SerializeField] float velocityY = 10f;
 
     private Rigidbody2D rigidBody2D;
     private SpriteRenderer spriteRenderer;
