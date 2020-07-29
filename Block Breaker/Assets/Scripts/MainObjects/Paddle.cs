@@ -26,6 +26,14 @@ public class Paddle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.GetContact(0).point.y >= transform.position.y)
+        {
+            BounceOffBall(collision);
+        }
+    }
+
+    private void BounceOffBall(Collision2D collision)
+    {
         var ball = collision.gameObject.GetComponent<Ball>();
 
         float ballX = collision.transform.position.x;
