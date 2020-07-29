@@ -10,8 +10,8 @@ public class PowerUpStrength : PowerUp
 {
     [SerializeField] ParticleSystem strengthParticles;
 
-    private float strengthModifier = 5.0f;
-    private float duration = 5.0f;
+    private float strengthModifier = 3.0f;
+    private float duration = 10.0f;
     private int numberOfSteps = 5;
     private float wearOffTime = 1.0f;
 

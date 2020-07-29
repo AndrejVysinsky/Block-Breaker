@@ -6,9 +6,9 @@ using UnityEngine;
 public class PowerUpSize : PowerUp
 {
     private float sizeModifier = 2.0f;
-    private float duration = 5.0f;
+    private float duration = 10.0f;
     private int numberOfSteps = 20;
-    private float wearOffTime = 1.0f;
+    private float wearOffTime = 2.0f;
 
     private List<PoweredUpBallSize> poweredUpBalls;
 

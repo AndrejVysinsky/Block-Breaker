@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PowerUpSpeed : PowerUp
 {
-    private float speedModifier = 2.0f;
-    private float duration = 5.0f;
+    private float speedModifier = 0.5f;
+    private float duration = 10.0f;
     private int numberOfSteps = 20;
     private float wearOffTime = 3.0f;
 
