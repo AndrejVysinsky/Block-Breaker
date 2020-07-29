@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] float velocityX = 3f;
-    [SerializeField] float velocityY = 10f;
+    private float baseVelocity = 15f;
+    private float maxVariation = 1.0f;
 
     private Rigidbody2D rigidBody2D;
     private SpriteRenderer spriteRenderer;
@@ -26,21 +27,51 @@ public class Ball : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
 
-        LaunchBall();
+        rigidBody2D.velocity = new Vector2(0, baseVelocity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Math.Abs(rigidBody2D.velocity.y) <= 2)
+        HandleVelocityChanges();
+    }
+
+    private void HandleVelocityChanges()
+    {
+        float velX = rigidBody2D.velocity.x;
+        float velY = rigidBody2D.velocity.y;
+
+        if (Math.Abs(velY) <= 2)
         {
-            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y * 2);
+            float newVelY = velY * 2;
+            float newVelX = Math.Abs(velX) - Math.Abs(velY);
+
+            if (velX < 0)
+                newVelX = -newVelX;
+
+            rigidBody2D.velocity = new Vector2(newVelX, newVelY);
+        }
+
+        float velocityVariation = baseVelocity * speedModifier - Math.Abs(velX) - Math.Abs(velY);
+
+        if (Math.Abs(velocityVariation) > maxVariation)
+        {
+            if (velY < 0)
+                velocityVariation = -velocityVariation;
+
+            rigidBody2D.velocity = new Vector2(velX, velY + velocityVariation);
         }
     }
 
-    private void LaunchBall()
+    public Vector2 GetVelocityVector()
     {
-        velocityX *= UnityEngine.Random.Range(-1f, 1f);
-        rigidBody2D.velocity = new Vector2(velocityX, velocityY);
+        return rigidBody2D.velocity;
+    }
+
+    public void SetVelocityVector(Vector2 vector)
+    {
+        Debug.Log($"Old velocity: {Math.Abs(rigidBody2D.velocity.x) + Math.Abs(rigidBody2D.velocity.y)}, new velocity: {Math.Abs(vector.x) + Math.Abs(vector.y)}");
+
+        rigidBody2D.velocity = vector;
     }
 
     public void IncreaseSpeedModifier(float modifier)
