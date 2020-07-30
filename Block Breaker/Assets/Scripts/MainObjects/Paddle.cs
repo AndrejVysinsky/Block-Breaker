@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Paddle : MonoBehaviour
 {
@@ -19,9 +20,36 @@ public class Paddle : MonoBehaviour
     void Update()
     {
         //position in units
-        float mousePosX = Input.mousePosition.x / Screen.width * screenWidthInUnits;
-        paddlePos.x = Mathf.Clamp(mousePosX, minX, maxX);
-        transform.position = paddlePos;
+        if (!IsPointerOverGameObject())
+        {
+            float mousePosX = Input.mousePosition.x / Screen.width * screenWidthInUnits;
+            paddlePos.x = Mathf.Clamp(mousePosX, minX, maxX);
+            transform.position = paddlePos;
+        }
+    }
+
+    private bool IsPointerOverGameObject()
+    {
+        // Check mouse
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return true;
+        }
+
+        // Check touches
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            var touch = Input.GetTouch(i);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
