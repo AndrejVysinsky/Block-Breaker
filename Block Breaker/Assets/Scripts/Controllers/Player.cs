@@ -20,15 +20,7 @@ public class Player : MonoBehaviour
         paddle = Instantiate(paddle);
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            LaunchBall();
-        }
-    }
-
-    private void LaunchBall()
+    public void LaunchBall()
     {
         if (gameController.Balls > 0)
         {
