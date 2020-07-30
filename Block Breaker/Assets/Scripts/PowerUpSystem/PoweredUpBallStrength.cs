@@ -14,6 +14,9 @@ public class PoweredUpBallStrength : PoweredUpBall
 
     private ParticleSystem strengthParticles;
 
+    private ShapeModule particlesShape;
+    private float particlesSizeModifier = 1.0f;
+
     public PoweredUpBallStrength(Ball ball, float duration, int numberOfSteps, float wearOffTime, float strength, ParticleSystem particles)
                             : base(ball, duration, numberOfSteps, wearOffTime)
     {
@@ -22,6 +25,9 @@ public class PoweredUpBallStrength : PoweredUpBall
         strengthChangePerStep = totalStrength / numberOfSteps;
 
         strengthParticles = particles;
+
+        strengthParticles.transform.parent = poweredUpBall.transform;
+        particlesShape = strengthParticles.shape;
 
         RefreshPowerUp();
     }
@@ -38,14 +44,26 @@ public class PoweredUpBallStrength : PoweredUpBall
     {
         base.UpdatePowerUp(numberOfSteps);
 
-        UpdateSpeed(numberOfSteps);
+        UpdateStrenght(numberOfSteps);
     }
 
-    private void UpdateSpeed(int numberOfSteps)
+    public void UpdateParticles()
+    {
+        if (poweredUpBall.GetSizeModifier() != particlesSizeModifier)
+        {
+            particlesShape.radius /= particlesSizeModifier;
+            particlesSizeModifier = poweredUpBall.GetSizeModifier();
+            particlesShape.radius *= particlesSizeModifier;
+        }
+
+        var colorOverLife = strengthParticles.colorOverLifetime;
+
+        colorOverLife.color = new MinMaxGradient(poweredUpBall.GetTrailGradient());
+    }
+
+    private void UpdateStrenght(int numberOfSteps)
     {
         float strengthChange = numberOfSteps * strengthChangePerStep;
-
-        strengthParticles.transform.parent = poweredUpBall.transform;
 
         remainingStrength -= strengthChange;
         poweredUpBall.DecreaseStrengthModifier((int)strengthChange);

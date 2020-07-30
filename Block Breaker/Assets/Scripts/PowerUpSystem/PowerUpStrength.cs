@@ -11,8 +11,8 @@ public class PowerUpStrength : PowerUp
     [SerializeField] ParticleSystem strengthParticles;
 
     private float strengthModifier = 3.0f;
-    private float duration = 10.0f;
-    private int numberOfSteps = 5;
+    private float duration = 15.0f;
+    private int numberOfSteps = 1;
     private float wearOffTime = 1.0f;
 
     private List<PoweredUpBallStrength> poweredUpBalls;
@@ -70,6 +70,8 @@ public class PowerUpStrength : PowerUp
 
             poweredUpBalls.RemoveAll(x => expired.Contains(x) || x.IsDestroyed());
             poweredUpBalls.ForEach(x => x.UpdateTime(Time.deltaTime));
+
+            poweredUpBalls.ForEach(x => x.UpdateParticles());
         }
     }
 }

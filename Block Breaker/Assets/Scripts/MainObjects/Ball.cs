@@ -129,6 +129,11 @@ public class Ball : MonoBehaviour
         trailRenderer.endWidth *= sizeModifier;
     }
 
+    public float GetSizeModifier()
+    {
+        return sizeModifier;
+    }
+
     public void IncreaseStrengthModifier(int modifier)
     {
         strengthModifier += modifier;
