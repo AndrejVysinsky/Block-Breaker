@@ -10,8 +10,8 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallInitializ
     private Image image;
     private bool selected = false;
 
-    private Color activeColor = new Color32(255, 255, 255, 255);
-    private Color inactiveColor = new Color32(123, 123, 123, 255);
+    private Color activeColor = new Color32(255, 255, 255, 212);
+    private Color inactiveColor = new Color32(171, 171, 171, 212);
 
     private float speedModifier = 1.0f;
 
