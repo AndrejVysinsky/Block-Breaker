@@ -40,7 +40,7 @@ public class UIController : MonoBehaviour, IScoreChangedEvent
 
     public void OnBallAmountUpdate(int balls)
     {
-        ballsText.text = balls.ToString();
+        ballsText.text = $"x{balls}";
     }
 
     public void OnLevelUpdate(int level)
