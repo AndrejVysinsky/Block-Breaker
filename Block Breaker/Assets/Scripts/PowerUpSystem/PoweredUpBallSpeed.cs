@@ -30,7 +30,7 @@ public class PoweredUpBallSpeed : PoweredUpBall
     {
         base.RefreshPowerUp();
 
-        poweredUpBall.IncreaseSpeedModifier(totalSpeed - remainingSpeed);
+        poweredUpBall.IncreaseSpeedModifierBy(totalSpeed - remainingSpeed);
         remainingSpeed = totalSpeed;
 
         poweredUpBall.SetColor32(gradient.Evaluate(1));
@@ -50,7 +50,7 @@ public class PoweredUpBallSpeed : PoweredUpBall
         float speedChange = numberOfSteps * speedChangePerStep;
 
         remainingSpeed -= speedChange;
-        poweredUpBall.DecreaseSpeedModifier(speedChange);
+        poweredUpBall.DecreaseSpeedModifierBy(speedChange);
     }
 
     private void UpdateColor()

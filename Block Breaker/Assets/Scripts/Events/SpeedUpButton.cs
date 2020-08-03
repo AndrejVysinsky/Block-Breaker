@@ -40,7 +40,7 @@ public class SpeedUpButton : MonoBehaviour, IPointerClickHandler, IBallInitializ
     {
         if (selected)
         {
-            ball.IncreaseSpeedModifier(speedModifier);
+            ball.IncreaseSpeedModifierBy(speedModifier);
         }
     }
 }

@@ -36,7 +36,7 @@ public class PoweredUpBallStrength : PoweredUpBall
     {
         base.RefreshPowerUp();
 
-        poweredUpBall.IncreaseStrengthModifier((int)(totalStrength - remainingStrength));
+        poweredUpBall.IncreaseStrengthModifierBy((int)(totalStrength - remainingStrength));
         remainingStrength = totalStrength;
     }
 
@@ -66,7 +66,7 @@ public class PoweredUpBallStrength : PoweredUpBall
         float strengthChange = numberOfSteps * strengthChangePerStep;
 
         remainingStrength -= strengthChange;
-        poweredUpBall.DecreaseStrengthModifier((int)strengthChange);
+        poweredUpBall.DecreaseStrengthModifierBy((int)strengthChange);
     }
 
     public ParticleSystem GetParticles()

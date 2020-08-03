@@ -11,6 +11,8 @@ TagManager:
   - MainUI
   - Ball
   - Listener
+  - Paddle
+  - LoseCollider
   layers:
   - Default
   - TransparentFX

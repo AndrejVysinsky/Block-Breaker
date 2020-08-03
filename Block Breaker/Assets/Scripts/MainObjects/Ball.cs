@@ -75,6 +75,11 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public float GetBaseVelocity()
+    {
+        return baseVelocity;
+    }
+
     public Vector2 GetVelocityVector()
     {
         return rigidBody2D.velocity;
@@ -82,17 +87,15 @@ public class Ball : MonoBehaviour
 
     public void SetVelocityVector(Vector2 vector)
     {
-        Debug.Log($"Old velocity: {Math.Abs(rigidBody2D.velocity.x) + Math.Abs(rigidBody2D.velocity.y)}, new velocity: {Math.Abs(vector.x) + Math.Abs(vector.y)}");
-
         rigidBody2D.velocity = vector;
     }
 
-    public void IncreaseSpeedModifier(float modifier)
+    public void IncreaseSpeedModifierBy(float modifier)
     {
         ChangeSpeedModifierBy(modifier);
     }
 
-    public void DecreaseSpeedModifier(float modifier)
+    public void DecreaseSpeedModifierBy(float modifier)
     {
         ChangeSpeedModifierBy(-modifier);
     }
@@ -106,12 +109,12 @@ public class Ball : MonoBehaviour
         rigidBody2D.velocity *= speedModifier;
     }
 
-    public void IncreaseSizeModifier(float modifier)
+    public void IncreaseSizeModifierBy(float modifier)
     {
         ChangeSizeModifierBy(modifier);
     }
 
-    public void DecreaseSizeModifier(float modifier)
+    public void DecreaseSizeModifierBy(float modifier)
     {
         ChangeSizeModifierBy(-modifier);
     }
@@ -134,12 +137,12 @@ public class Ball : MonoBehaviour
         return sizeModifier;
     }
 
-    public void IncreaseStrengthModifier(int modifier)
+    public void IncreaseStrengthModifierBy(int modifier)
     {
         strengthModifier += modifier;
     }
 
-    public void DecreaseStrengthModifier(int modifier)
+    public void DecreaseStrengthModifierBy(int modifier)
     {
         strengthModifier -= modifier;
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1005442905474314806
+--- !u!1 &7079906443210561999
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8432535480168538523}
-  - component: {fileID: 6263524064016311066}
+  - component: {fileID: 7079906443210561997}
+  - component: {fileID: 7079906443210561996}
   m_Layer: 0
-  m_Name: PowerUpAddBall
+  m_Name: CollectibleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8432535480168538523
+--- !u!4 &7079906443210561997
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005442905474314806}
+  m_GameObject: {fileID: 7079906443210561999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.2913685, y: 7.4883046, z: -0.24609375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6263524064016311066
+--- !u!114 &7079906443210561996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005442905474314806}
+  m_GameObject: {fileID: 7079906443210561999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d64507b2db5b643a39b035663b06e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3816944f3247cca41988df7b8f5a12dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpVariations:
-  - modifier: 1
-    sprite: {fileID: 21300000, guid: 62710c8266f73954bab943dfafb8946b, type: 3}
-  - modifier: 2
-    sprite: {fileID: 21300000, guid: bafa6abe24b638b4e875554eef24b25c, type: 3}
-  collectiblePrefab: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
-    type: 3}
+  collectibles:
+  - powerUp: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
+      type: 3}
+    spawnChance: 100

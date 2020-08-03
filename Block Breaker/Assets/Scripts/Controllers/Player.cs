@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         foreach (var ball in balls)
         {
-            ball.IncreaseSpeedModifier(modifier);
+            ball.IncreaseSpeedModifierBy(modifier);
         }
     }
 
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     {
         foreach (var ball in balls)
         {
-            ball.DecreaseSpeedModifier(modifier);
+            ball.DecreaseSpeedModifierBy(modifier);
         }
     }
 
@@ -76,5 +76,10 @@ public class Player : MonoBehaviour
         Destroy(ball.gameObject);
 
         gameController.BallOutOfScreen(scorePenalty);
+    }
+
+    public List<Ball> GetBalls()
+    {
+        return balls;
     }
 }

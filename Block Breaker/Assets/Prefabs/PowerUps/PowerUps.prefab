@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc04eb2061d51f4c8fce930664fb653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpVariations: []
+  collectiblePrefab: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
+    type: 3}
 --- !u!1 &2256426518823476477
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,6 +116,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUpStrength
       objectReference: {fileID: 0}
+    - target: {fileID: 6360677574831282785, guid: b71d518091125c34287dda97014bd4b9,
+        type: 3}
+      propertyPath: collectiblePrefab
+      value: 
+      objectReference: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b71d518091125c34287dda97014bd4b9, type: 3}
 --- !u!4 &4536845632359447010 stripped
@@ -219,6 +228,39 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
+        type: 3}
+      propertyPath: powerUpVariations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].modifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 62710c8266f73954bab943dfafb8946b,
+        type: 3}
+    - target: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[1].modifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bafa6abe24b638b4e875554eef24b25c,
+        type: 3}
+    - target: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
+        type: 3}
+      propertyPath: collectiblePrefab
+      value: 
+      objectReference: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
+        type: 3}
     - target: {fileID: 8432535480168538523, guid: 818bd39f9421bf0408c668aeea6f0523,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -349,6 +391,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUpSpeed
       objectReference: {fileID: 0}
+    - target: {fileID: 7442964130070555923, guid: dccd285ce5b4c7b4995bc81eccd3c806,
+        type: 3}
+      propertyPath: collectiblePrefab
+      value: 
+      objectReference: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dccd285ce5b4c7b4995bc81eccd3c806, type: 3}
 --- !u!4 &6970103639258081808 stripped

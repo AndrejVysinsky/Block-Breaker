@@ -3,48 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PowerUpSize : PowerUp
+public class PowerUpSize : PowerUpWithDuration, IBallInitializedEvent
 {
-    private float sizeModifier = 2.0f;
-    private float duration = 10.0f;
-    private int numberOfSteps = 20;
-    private float wearOffTime = 2.0f;
-
-    private List<PoweredUpBallSize> poweredUpBalls;
-
     protected override void Start()
     {
         base.Start();
-
-        poweredUpBalls = new List<PoweredUpBallSize>();
+        
+        modifier = 2.0f;
+        duration = 10.0f;
+        numberOfSteps = 20;
+        wearOffTime = 2.0f;
     }
 
-    protected override void ActivatePowerUp(GameObject ballObject)
+    protected override void ActivatePowerUp(float modifier)
     {
-        base.ActivatePowerUp(ballObject);
+        List<Ball> balls = player.GetBalls();
 
-        var ball = ballObject.GetComponent<Ball>();
+        balls.ForEach(x => x.DecreaseSizeModifierBy(remainingModifier));
+        balls.ForEach(x => x.IncreaseSizeModifierBy(modifier));
 
-        //check if ball is already powered up
-        var poweredUpBall = poweredUpBalls.SingleOrDefault(x => x.IsPoweredUp(ball));
-
-        if (poweredUpBall == null)
-        {
-            var newPoweredUpBall = new PoweredUpBallSize(ball, duration, numberOfSteps, wearOffTime, sizeModifier);
-            poweredUpBalls.Add(newPoweredUpBall);
-        }
-        else
-        {
-            poweredUpBall.RefreshPowerUp();
-        }
+        base.ActivatePowerUp(modifier);
     }
 
-    private void Update()
+    protected override void UpdatePowerUp(float modifierChange)
     {
-        if (poweredUpBalls.Count > 0)
+        base.UpdatePowerUp(modifierChange);
+
+        player.GetBalls().ForEach(x => x.DecreaseSizeModifierBy(modifierChange));
+    }
+
+    public void OnBallInitialized(Ball ball)
+    {
+        if (remainingModifier > 0)
         {
-            poweredUpBalls.RemoveAll(x => x.IsExpired() || x.IsDestroyed());
-            poweredUpBalls.ForEach(x => x.UpdateTime(Time.deltaTime));
+            ball.IncreaseSizeModifierBy(remainingModifier);
         }
     }
 }

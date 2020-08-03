@@ -101,7 +101,7 @@ public class Block : MonoBehaviour
             powerUp.Collect(collidingGameObject);
         }
         
-        level.RemoveBlock(maxHits * blockScore);
+        level.RemoveBlock(this);
 
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
