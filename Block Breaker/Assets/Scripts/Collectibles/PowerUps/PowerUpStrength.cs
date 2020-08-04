@@ -9,9 +9,10 @@ using static UnityEngine.ParticleSystem;
 public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
 {
     [SerializeField] ParticleSystem strengthParticles;
-    [SerializeField] GameObject point;
 
-    private List<Transform> particleTransforms;
+    private List<ParticleSystem> activeParciles;
+
+    private Vector3 globalScale;
     private float particlesSizeModifier = 1.0f;
 
     protected override void Start()
@@ -23,7 +24,10 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         numberOfSteps = 1;
         wearOffTime = 1.0f;
 
-        particleTransforms = new List<Transform>();
+        activeParciles = new List<ParticleSystem>();
+
+        var prefabScale = strengthParticles.transform.localScale;
+        globalScale = new Vector3(prefabScale.x, prefabScale.y, prefabScale.z);
     }
 
     protected override void Update()
@@ -36,20 +40,20 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         }
     }
 
-    protected override void ActivatePowerUp(float modifier)
+    protected override void ActivatePowerUp(float newModifier)
     {
-        List<Ball> balls = player.GetBalls();
-
-        balls.ForEach(x => x.DecreaseStrengthModifierBy((int)remainingModifier));
-        balls.ForEach(x =>
+        player.GetBalls().ForEach(x =>
         {
-            x.IncreaseStrengthModifierBy((int)modifier);
-            var particles = InstantiateParticles(x);
+            x.DecreaseStrengthModifierBy((int)remainingModifier);
+            x.IncreaseStrengthModifierBy((int)newModifier);
 
-            Destroy(particles.gameObject, duration);
+            if (IsExpired())
+            {
+                InstantiateParticles(x);
+            }
         });
 
-        base.ActivatePowerUp(modifier);
+        base.ActivatePowerUp(newModifier);
     }
 
     protected override void UpdatePowerUp(float modifierChange)
@@ -57,9 +61,14 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         base.UpdatePowerUp(modifierChange);
 
         player.GetBalls().ForEach(x => x.DecreaseStrengthModifierBy((int)modifierChange));
+
+        if (IsExpired())
+        {
+            DestroyParticles();
+        }
     }
 
-    private ParticleSystem InstantiateParticles(Ball ball)
+    private void InstantiateParticles(Ball ball)
     {
         ParticleSystem particles = Instantiate(strengthParticles, ball.transform.position, ball.transform.rotation);
 
@@ -68,38 +77,33 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
 
         particles.Play();
 
-        var scale = particles.transform.localScale;
         particles.transform.parent = ball.transform;
-        particles.transform.localScale = scale;
+        particles.transform.localScale = globalScale;
 
-        particleTransforms.Add(particles.transform);
-
-        return particles;
+        activeParciles.Add(particles);
     }
 
-    public void UpdateParticles()
+    private void UpdateParticles()
     {
         var ball = player.GetBalls().FirstOrDefault();
 
         if (ball != null)
         {
-                particleTransforms.RemoveAll(x => x == null);
-
-                Debug.Log(particleTransforms.Count());
-
-                particleTransforms.ForEach(x =>
-                {
-                    x.localScale /= particlesSizeModifier;
-
-                    particlesSizeModifier = ball.GetSizeModifier();
-
-                    x.localScale *= particlesSizeModifier;
-                });
-
-            //var colorOverLife = strengthParticles.colorOverLifetime;
-
-            //colorOverLife.color = new MinMaxGradient(ball.GetTrailGradient());
+            if (ball.GetSizeModifier() != particlesSizeModifier)
+            {
+                UpdateParticleSize(ball.GetSizeModifier());
+            }
         }
+    }
+
+    private void UpdateParticleSize(float sizeModifier)
+    {
+        globalScale /= particlesSizeModifier;
+        particlesSizeModifier = sizeModifier;
+        globalScale *= particlesSizeModifier;
+
+        activeParciles.RemoveAll(x => x == null);
+        activeParciles.ForEach(x => x.transform.localScale = globalScale);
     }
 
     public void OnBallInitialized(Ball ball)
@@ -107,8 +111,13 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         if (remainingModifier > 0)
         {
             ball.IncreaseStrengthModifierBy((int)remainingModifier);
-            var particles = InstantiateParticles(ball);
-            Destroy(particles.gameObject, remainingDuration);
+            InstantiateParticles(ball);
         }
+    }
+
+    private void DestroyParticles()
+    {
+        activeParciles.ForEach(x => Destroy(x.gameObject));
+        activeParciles.Clear();
     }
 }

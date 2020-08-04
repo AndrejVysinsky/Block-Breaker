@@ -71,4 +71,9 @@ public class PowerUpWithDuration : PowerUp
     protected virtual void UpdatePowerUp(float modifierChange)
     {
     }
+
+    protected bool IsExpired()
+    {
+        return remainingDuration <= 0 || remainingModifier <= 0;
+    }
 }

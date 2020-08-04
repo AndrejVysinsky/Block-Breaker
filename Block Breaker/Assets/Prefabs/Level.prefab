@@ -52,6 +52,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7079906442886886154}
     m_Modifications:
+    - target: {fileID: 2256426518617130844, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256426518617130844, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].modifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256426518617130844, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 43e555a7401445143b7345779bfd1e9a,
+        type: 3}
     - target: {fileID: 2256426518823476477, guid: b2060c0f0f772844fba1915d80ff8683,
         type: 3}
       propertyPath: m_Name
@@ -112,6 +128,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4371685194223764027, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371685194223764027, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].modifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371685194223764027, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e15496aab3e7254ea9634a99ff275ab,
+        type: 3}
+    - target: {fileID: 6465475240201258039, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465475240201258039, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].modifier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465475240201258039, guid: b2060c0f0f772844fba1915d80ff8683,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 118e0ae739c03224f8653bf9cb634369,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2060c0f0f772844fba1915d80ff8683, type: 3}
 --- !u!114 &1968200581399708927 stripped
@@ -126,6 +174,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d64507b2db5b643a39b035663b06e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4371685193759313743 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4371685194223764027, guid: b2060c0f0f772844fba1915d80ff8683,
+    type: 3}
+  m_PrefabInstance: {fileID: 475073908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfc49784f32c8e4280459feaf517f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2256426518679063080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2256426518617130844, guid: b2060c0f0f772844fba1915d80ff8683,
+    type: 3}
+  m_PrefabInstance: {fileID: 475073908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc04eb2061d51f4c8fce930664fb653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6465475239996721475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6465475240201258039, guid: b2060c0f0f772844fba1915d80ff8683,
+    type: 3}
+  m_PrefabInstance: {fileID: 475073908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e9c672ef651dc4ab847999bb5fd3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &903162567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,9 +219,49 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
         type: 3}
+      propertyPath: collectibles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
       propertyPath: collectibles.Array.data[0].powerUp
       value: 
       objectReference: {fileID: 1968200581399708927}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: collectibles.Array.data[1].powerUp
+      value: 
+      objectReference: {fileID: 4371685193759313743}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: collectibles.Array.data[1].spawnChance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: collectibles.Array.data[2].powerUp
+      value: 
+      objectReference: {fileID: 2256426518679063080}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: collectibles.Array.data[2].spawnChance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: collectibles.Array.data[3].powerUp
+      value: 
+      objectReference: {fileID: 6465475239996721475}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: collectibles.Array.data[3].spawnChance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: collectibles.Array.data[0].spawnChance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7079906443210561997, guid: d170af03cafb5e6418dc5ee232a39f04,
         type: 3}
       propertyPath: m_LocalPosition.x

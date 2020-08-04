@@ -15,14 +15,15 @@ public class PowerUpSize : PowerUpWithDuration, IBallInitializedEvent
         wearOffTime = 2.0f;
     }
 
-    protected override void ActivatePowerUp(float modifier)
+    protected override void ActivatePowerUp(float newModifier)
     {
-        List<Ball> balls = player.GetBalls();
+        player.GetBalls().ForEach(x =>
+        {
+            x.DecreaseSizeModifierBy(remainingModifier);
+            x.IncreaseSizeModifierBy(newModifier);
+        });
 
-        balls.ForEach(x => x.DecreaseSizeModifierBy(remainingModifier));
-        balls.ForEach(x => x.IncreaseSizeModifierBy(modifier));
-
-        base.ActivatePowerUp(modifier);
+        base.ActivatePowerUp(newModifier);
     }
 
     protected override void UpdatePowerUp(float modifierChange)
