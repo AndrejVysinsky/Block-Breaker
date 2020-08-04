@@ -25,12 +25,12 @@ PrefabInstance:
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Name
-      value: Unbreakable Block Variant (3)
+      value: BlockUnbreakable
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}

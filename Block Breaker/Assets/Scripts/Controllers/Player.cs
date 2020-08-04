@@ -7,34 +7,90 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Ball ball;
+    [SerializeField] Ball ballPrefab;
     [SerializeField] Paddle paddle;
+    [SerializeField] TrajectoryDisplay trajectoryDisplay;
 
     private GameController gameController;
 
     private List<Ball> balls = new List<Ball>();
 
+    private Ball defaultBall;
+    private bool defaultBallLaunched = false;
+
+    private Camera mainCamera;
+
     void Start()
     {
         gameController = GameController.Instance;
         paddle = Instantiate(paddle);
+
+        paddle.GetComponent<Paddle>().enabled = false;
+
+        defaultBall = Instantiate(ballPrefab);
+        defaultBall.SetVelocityVector(new Vector2(0, 0));
+        defaultBall.transform.parent = paddle.transform;
+
+        mainCamera = Camera.main;
     }
 
-    public void LaunchBall()
+    private void Update()
+    {
+        if (defaultBallLaunched == false)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                LaunchDefaultBall();
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                //ShowBallTrajectory();
+            }
+        }
+    }
+
+    private void LaunchDefaultBall()
+    {
+        defaultBallLaunched = true;
+        Destroy(defaultBall.gameObject);
+
+        paddle.GetComponent<Paddle>().enabled = true;
+        
+        LaunchBallFromPaddle();
+    }
+
+    private void ShowBallTrajectory()
+    {
+        float mousePosX = mainCamera.ScreenToWorldPoint(Input.mousePosition).x;
+        float mousePosY = 10;
+
+        Vector3 toPosition = new Vector3(mousePosX, mousePosY, 0);
+
+        Debug.Log($"mouseX: {mousePosX}, ballX: {defaultBall.transform.position.x}");
+
+        trajectoryDisplay.ShowTrajectory(defaultBall.transform.position, toPosition, mousePosY);
+    }
+
+    public void LaunchExtraBall()
     {
         if (gameController.Balls > 0)
         {
-            float distanceY = ball.transform.position.y - paddle.transform.position.y;
-            Vector2 ballPosition = new Vector2(paddle.transform.position.x, paddle.transform.position.y + distanceY);
-
-            InstantiateBall(ballPosition);
+            LaunchBallFromPaddle();
             gameController.Balls--;
         }
     }
 
+    private void LaunchBallFromPaddle()
+    {
+        Vector3 ballPosition = ballPrefab.transform.position;
+        ballPosition.x = paddle.transform.position.x;
+        InstantiateBall(ballPosition);
+    }
+
     public void InstantiateBall(Vector3 position)
     {
-        Ball newBall = Instantiate(ball, position, Quaternion.identity);
+        Ball newBall = Instantiate(ballPrefab, position, Quaternion.identity);
 
         SendBallInitializedMessage(newBall);
 

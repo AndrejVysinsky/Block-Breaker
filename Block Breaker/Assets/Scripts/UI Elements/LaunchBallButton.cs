@@ -15,6 +15,6 @@ public class LaunchBallButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        player.LaunchBall();
+        player.LaunchExtraBall();
     }
 }
