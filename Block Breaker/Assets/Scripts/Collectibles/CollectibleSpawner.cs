@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
+    [Range(0, 100)]
+    [SerializeField] float baseSpawnChance;
+    [Range(0, 10)]
+    [SerializeField] float blockHitBonusChance;
+
     [Serializable]
     public struct Collectible
     {
@@ -12,8 +17,18 @@ public class CollectibleSpawner : MonoBehaviour
     }
 
     [SerializeField] Collectible[] collectibles;
+
+    public void TryToSpawnCollectible(int blockHits, Vector2 position)
+    {
+        int random = UnityEngine.Random.Range(0, 100);
+
+        if (random <= baseSpawnChance + blockHitBonusChance * blockHits)
+        {
+            SpawnCollectible(position);
+        }
+    }
     
-    public void SpawnCollectible(Vector2 position)
+    private void SpawnCollectible(Vector2 position)
     {
         var collectible = ChooseRandom();
 

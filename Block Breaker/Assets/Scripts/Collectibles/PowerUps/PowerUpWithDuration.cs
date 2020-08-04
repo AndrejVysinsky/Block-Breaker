@@ -74,6 +74,6 @@ public class PowerUpWithDuration : PowerUp
 
     protected bool IsExpired()
     {
-        return remainingDuration <= 0 || remainingModifier <= 0;
+        return remainingModifier == 0;
     }
 }

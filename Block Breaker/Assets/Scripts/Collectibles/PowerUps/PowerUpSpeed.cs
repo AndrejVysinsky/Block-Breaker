@@ -7,7 +7,7 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
 {
     private Gradient gradient = new Gradient();
     private Color originalColor = new Color32(184, 231, 255, 255);
-    private Color powerUpColor = new Color32(255, 255, 255, 255);
+    private Color powerUpColor = new Color32(242, 255, 0, 255);
 
 
     protected override void Start()
@@ -33,7 +33,7 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
             x.DecreaseSpeedModifierBy(remainingModifier);
             x.IncreaseSpeedModifierBy(newModifier);
             x.SetColor32(gradient.Evaluate(1));
-            x.SetTrailColor32(gradient.Evaluate(1));
+            //x.SetTrailColor32(gradient.Evaluate(1));
         });
 
         base.ActivatePowerUp(newModifier);
@@ -49,19 +49,19 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
 
             float colorValue = remainingModifier / modifier;
             x.SetColor32(gradient.Evaluate(colorValue));
-            x.SetTrailColor32(gradient.Evaluate(colorValue));
+            //x.SetTrailColor32(gradient.Evaluate(colorValue));
         });
     }
     
     public void OnBallInitialized(Ball ball)
     {
-        if (remainingModifier > 0)
+        if (IsExpired() == false)
         {
             ball.IncreaseSpeedModifierBy(remainingModifier);
 
             float colorValue = remainingModifier / modifier;
             ball.SetColor32(gradient.Evaluate(colorValue));
-            ball.SetTrailColor32(gradient.Evaluate(colorValue));
+            //ball.SetTrailColor32(gradient.Evaluate(colorValue));
         }
     }
 }

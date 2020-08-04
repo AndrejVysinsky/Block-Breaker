@@ -108,7 +108,7 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
 
     public void OnBallInitialized(Ball ball)
     {
-        if (remainingModifier > 0)
+        if (IsExpired() == false)
         {
             ball.IncreaseStrengthModifierBy((int)remainingModifier);
             InstantiateParticles(ball);
@@ -117,7 +117,13 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
 
     private void DestroyParticles()
     {
-        activeParciles.ForEach(x => Destroy(x.gameObject));
+        activeParciles.ForEach(x => 
+        {
+            if (x != null)
+            {
+                Destroy(x.gameObject);
+            }
+        });
         activeParciles.Clear();
     }
 }

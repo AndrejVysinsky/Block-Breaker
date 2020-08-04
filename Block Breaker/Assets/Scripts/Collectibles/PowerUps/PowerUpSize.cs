@@ -35,7 +35,7 @@ public class PowerUpSize : PowerUpWithDuration, IBallInitializedEvent
 
     public void OnBallInitialized(Ball ball)
     {
-        if (remainingModifier > 0)
+        if (IsExpired() == false)
         {
             ball.IncreaseSizeModifierBy(remainingModifier);
         }

@@ -49,7 +49,8 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
         var powerUpVariation = powerUpVariations[random];
 
         //spawn collectible
-        var spawnedCollectible = Instantiate(collectiblePrefab, position, Quaternion.identity);
+        var collectiblePosition = new Vector3(position.x, position.y, collectiblePrefab.transform.position.z);
+        var spawnedCollectible = Instantiate(collectiblePrefab, collectiblePosition, Quaternion.identity);
         spawnedCollectibles.Add(spawnedCollectible);
 
         //assign params from powerup variation
