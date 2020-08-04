@@ -3660,12 +3660,12 @@ PrefabInstance:
     - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
         type: 3}
       propertyPath: collectibles.Array.data[1].spawnChance
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
         type: 3}
       propertyPath: collectibles.Array.data[2].spawnChance
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
         type: 3}
