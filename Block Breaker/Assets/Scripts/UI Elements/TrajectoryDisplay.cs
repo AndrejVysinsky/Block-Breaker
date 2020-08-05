@@ -9,7 +9,9 @@ public class TrajectoryDisplay : MonoBehaviour
 {
     [SerializeField] GameObject TrajectoryPointPrefeb;
 
+    private float distance = 5f;
     private int numOfTrajectoryPoints = 3;
+
     private List<GameObject> trajectoryPoints;
 
     private void Start()
@@ -25,11 +27,11 @@ public class TrajectoryDisplay : MonoBehaviour
         }
     }
 
-    public void ShowTrajectory(Vector3 fromPosition, Vector3 toPosition, float distance)
+    public void ShowTrajectory(Vector3 fromPosition, Vector3 toPosition)
     {
         Vector3 currentPosition = fromPosition;
 
-        toPosition = Vector3.MoveTowards(fromPosition, toPosition, 5);
+        toPosition = GetPointBetweenPoints(fromPosition, toPosition);
 
         trajectoryPoints.ForEach(point =>
         {
@@ -40,22 +42,37 @@ public class TrajectoryDisplay : MonoBehaviour
         });
     }
 
-    void SetTrajectoryPoints(Vector3 pStartPosition, Vector3 pVelocity)
+    private Vector2 GetPointBetweenPoints(Vector2 p1, Vector2 p2)
     {
-        float velocity = Mathf.Sqrt((pVelocity.x * pVelocity.x) + (pVelocity.y * pVelocity.y));
-        float angle = Mathf.Rad2Deg * (Mathf.Atan2(pVelocity.y, pVelocity.x));
-        float fTime = 0;
-        fTime += 0.1f;
-        for (int i = 0; i < numOfTrajectoryPoints; i++)
-        {
-            float dx = velocity * fTime * Mathf.Cos(angle * Mathf.Deg2Rad);
-            float dy = velocity * fTime * Mathf.Sin(angle * Mathf.Deg2Rad) - (Physics2D.gravity.magnitude * fTime * fTime / 2.0f);
-            Vector3 pos = new Vector3(pStartPosition.x + i, pStartPosition.y + i, 2); // The value 2 here is replaced with transform.position.z when it doesn't work
-            trajectoryPoints[i].transform.position = pos;
-            trajectoryPoints[i].GetComponent<SpriteRenderer>().enabled = true;
-            trajectoryPoints[i].transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(pVelocity.y - (Physics.gravity.magnitude) * fTime, pVelocity.x) * Mathf.Rad2Deg);
-            fTime += 0.1f;
-        }
+        float dist_btw_points = Mathf.Sqrt(Mathf.Pow((p2.x - p1.x), 2) + Mathf.Pow((p2.y - p1.y), 2));
+
+        float distance_ratio = distance / dist_btw_points;
+        float x = p1.x + distance_ratio * (p2.x - p1.x);
+        float y = p1.y + distance_ratio * (p2.y - p1.y);
+
+        return new Vector2(x, y);
     }
 
+    public void HideTrajectory()
+    {
+        trajectoryPoints.ForEach(point => point.GetComponent<SpriteRenderer>().enabled = false);
+    }
+    /*
+    private void LaunchDefaultBall()
+    {
+        defaultBallLaunched = true;
+        Destroy(defaultBall.gameObject);
+
+        paddle.GetComponent<Paddle>().enabled = true;
+
+        var ball = LaunchBallFromPaddle();
+
+        float velocity = ball.GetBaseVelocity();
+
+        Vector2 direction = mousePosition - ball.transform.position;
+
+        float velPerUnit = velocity / (Mathf.Abs(direction.x) + Mathf.Abs(direction.y));
+
+        ball.SetVelocityVector(new Vector2(velPerUnit * direction.x, velPerUnit * direction.y));
+    }*/
 }

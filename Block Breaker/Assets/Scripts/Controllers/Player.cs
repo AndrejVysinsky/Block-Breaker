@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private bool defaultBallLaunched = false;
 
     private Camera mainCamera;
+    private Vector3 mousePosition;
 
     void Start()
     {
@@ -38,16 +39,26 @@ public class Player : MonoBehaviour
     {
         if (defaultBallLaunched == false)
         {
+            if (Input.GetMouseButton(0))
+            {
+                CalculateMousePosition();
+                trajectoryDisplay.ShowTrajectory(defaultBall.transform.position, mousePosition);
+            }
+
             if (Input.GetMouseButtonUp(0))
             {
                 LaunchDefaultBall();
-            }
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                //ShowBallTrajectory();
+                trajectoryDisplay.HideTrajectory();
             }
         }
+    }
+
+    private void CalculateMousePosition()
+    {
+        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        if (mousePosition.y < defaultBall.transform.position.y + 3)
+            mousePosition.y = defaultBall.transform.position.y + 3;
     }
 
     private void LaunchDefaultBall()
@@ -56,20 +67,16 @@ public class Player : MonoBehaviour
         Destroy(defaultBall.gameObject);
 
         paddle.GetComponent<Paddle>().enabled = true;
-        
-        LaunchBallFromPaddle();
-    }
 
-    private void ShowBallTrajectory()
-    {
-        float mousePosX = mainCamera.ScreenToWorldPoint(Input.mousePosition).x;
-        float mousePosY = 10;
+        var ball = LaunchBallFromPaddle();
 
-        Vector3 toPosition = new Vector3(mousePosX, mousePosY, 0);
+        float velocity = ball.GetBaseVelocity();
 
-        Debug.Log($"mouseX: {mousePosX}, ballX: {defaultBall.transform.position.x}");
+        Vector2 direction = mousePosition - ball.transform.position;
 
-        trajectoryDisplay.ShowTrajectory(defaultBall.transform.position, toPosition, mousePosY);
+        float velPerUnit = velocity / (Mathf.Abs(direction.x) + Mathf.Abs(direction.y));
+
+        ball.SetVelocityVector(new Vector2(velPerUnit * direction.x, velPerUnit * direction.y));
     }
 
     public void LaunchExtraBall()
@@ -81,14 +88,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void LaunchBallFromPaddle()
+    private Ball LaunchBallFromPaddle()
     {
         Vector3 ballPosition = ballPrefab.transform.position;
         ballPosition.x = paddle.transform.position.x;
-        InstantiateBall(ballPosition);
+        return InstantiateBall(ballPosition);
     }
 
-    public void InstantiateBall(Vector3 position)
+    public Ball InstantiateBall(Vector3 position)
     {
         Ball newBall = Instantiate(ballPrefab, position, Quaternion.identity);
 
@@ -97,6 +104,8 @@ public class Player : MonoBehaviour
         balls.Add(newBall);
 
         gameController.ActiveBalls++;
+
+        return newBall;
     }
 
     private void SendBallInitializedMessage(Ball ball)
