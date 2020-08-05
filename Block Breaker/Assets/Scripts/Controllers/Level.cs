@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class Level : MonoBehaviour
 {
     [SerializeField] CollectibleSpawner collectibleSpawner;
+    [SerializeField] ProgressBar progressBar;
     
     private GameController gameController;
 
@@ -23,12 +24,18 @@ public class Level : MonoBehaviour
 
         blockCount = breakableBlocks.Count();
         hitsNeededToDestroyAllBlocks = breakableBlocks.Sum(b => b.GetMaxHits());
-        blockScoreMean = breakableBlocks.Sum(x => x.GetBlockScore()) / blockCount;
+
+        int totalBlockScore = breakableBlocks.Sum(x => x.GetBlockScore() * x.GetMaxHits());
+
+        blockScoreMean = totalBlockScore / blockCount;
+
+        progressBar.SetMaxValue(totalBlockScore);
     }
 
     public void RemoveBlock(Block block)
     {
         blockCount--;
+
         gameController.Score += block.GetBlockScore() * block.GetMaxHits();
 
         collectibleSpawner.TryToSpawnCollectible(block.GetMaxHits(), block.transform.position);

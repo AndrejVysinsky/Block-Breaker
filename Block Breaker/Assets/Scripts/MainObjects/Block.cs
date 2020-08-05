@@ -18,6 +18,8 @@ public class Block : MonoBehaviour
     private int hitCount = 0;
     private Gradient gradient;
 
+    private bool isBeingDestroyed = false;
+
     private void Start()
     {
         level = FindObjectOfType<Level>();
@@ -56,7 +58,11 @@ public class Block : MonoBehaviour
             hitCount += collision.gameObject.GetComponent<Ball>().GetStrength();
             if (hitCount >= maxHits)
             {
-                HandleBlockDestroy(collision.gameObject);
+                if (isBeingDestroyed == false)
+                {
+                    HandleBlockDestroy(collision.gameObject);
+                    isBeingDestroyed = true;
+                }
             }
             else
             {
