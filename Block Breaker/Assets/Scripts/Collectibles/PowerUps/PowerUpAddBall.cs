@@ -17,14 +17,29 @@ public class PowerUpAddBall : PowerUp
             {
                 float baseVelocity = x.GetBaseVelocity();
 
-                float velX = Random.Range(0, baseVelocity);
-                float velY = baseVelocity - velX;
-
-                Vector2 vector = new Vector2(velX, velY);
+                Vector2 vector = GetRandomVelocityVector(baseVelocity);
 
                 player.InstantiateBall(x.gameObject.transform.position);
                 player.GetBalls().Last().SetVelocityVector(vector);
             }
         });
+    }
+
+    private Vector2 GetRandomVelocityVector(float baseVelocity)
+    {
+        float velX = Random.Range(0, baseVelocity);
+        float velY = baseVelocity - velX;
+
+        if (Random.Range(0f, 1f) <= 0.5)
+        {
+            velX = -velX;
+        }
+
+        if (Random.Range(0f, 1f) <= 0.5)
+        {
+            velY = -velY;
+        }
+
+        return new Vector2(velX, velY);
     }
 }
