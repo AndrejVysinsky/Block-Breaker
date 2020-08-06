@@ -366,14 +366,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185079725049213715, guid: 252462caf50a512478d527d439e06bad,
         type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7185079725049213715, guid: 252462caf50a512478d527d439e06bad,
-        type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 130715641}
+    - target: {fileID: 7185079725263391245, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185079725263391247, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 43e555a7401445143b7345779bfd1e9a,
+        type: 3}
+    - target: {fileID: 7185079725263391247, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185079725263391247, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185079725263391247, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185079725263391247, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185079726508395321, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185079726508395323, guid: 252462caf50a512478d527d439e06bad,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 252462caf50a512478d527d439e06bad, type: 3}
 --- !u!20 &130715641 stripped
