@@ -97,7 +97,15 @@ public class Player : MonoBehaviour
 
     public Ball InstantiateBall(Vector3 position)
     {
+        if (balls.Count >= 500)
+            return null;
+
         Ball newBall = Instantiate(ballPrefab, position, Quaternion.identity);
+
+        if (GameController.Instance.isPerformanceModeActive)
+        {
+            newBall.GetComponent<TrailRenderer>().enabled = false;
+        }
 
         SendBallInitializedMessage(newBall);
 

@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     public event Action<int> BallAmountUpdate;
     public event Action<int> LevelUpdate;
 
+    public bool isPerformanceModeActive;
+
     private int score = 0;
     public int Score 
     { 
