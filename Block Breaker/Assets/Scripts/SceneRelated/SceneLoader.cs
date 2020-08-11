@@ -24,14 +24,19 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadScene(nextSceneIndex));
     }
 
-    IEnumerator LoadScene(int sceneIndex)
+    public void LoadSceneAtIndex(int buildIndex)
+    {
+        StartCoroutine(LoadScene(buildIndex));
+    }
+
+    IEnumerator LoadScene(int buildIndex)
     {
         transition.SetTrigger("Start");
 
         //pauses coroutine for specified amount of seconds
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(buildIndex);
     }
 
     public void LoadGameOverScene()
