@@ -8,7 +8,6 @@ public class Block : MonoBehaviour
     [SerializeField] int maxHits;
     [SerializeField] int blockScore = 10;
     [SerializeField] ParticleSystem damageParticles;
-    [SerializeField] PowerUp powerUp;
 
     //cached references
     private Level level;
@@ -105,11 +104,6 @@ public class Block : MonoBehaviour
 
     private void HandleBlockDestroy(GameObject collidingGameObject)
     {
-        if (powerUp != null)
-        {
-            powerUp.Collect(collidingGameObject);
-        }
-        
         level.RemoveBlock(this);
 
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)

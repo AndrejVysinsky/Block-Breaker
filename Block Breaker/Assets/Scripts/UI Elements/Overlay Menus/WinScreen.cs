@@ -19,8 +19,6 @@ public class WinScreen : MonoBehaviour
         ownedStarsCount = level.BestStars;
         earnedStarsCount = level.GetNumberOfStars() - ownedStarsCount;
 
-        Debug.Log($"Level stars: {level.GetNumberOfStars()}\n Best: {level.BestStars}\n Earned: {earnedStarsCount}");
-
         if (earnedStarsCount < 0)
             earnedStarsCount = 0;
 

@@ -28,20 +28,6 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
         GameEventListeners.Instance.AddListener(gameObject);
     }
 
-    public virtual void Collect(GameObject gameObject)
-    {
-        if (gameObject.tag != "Ball")
-        {
-            return;
-        }
-
-        ActivatePowerUp(gameObject);
-    }
-
-    protected virtual void ActivatePowerUp(GameObject gameObject)
-    {
-    }
-
     public void SpawnCollectible(Vector2 position)
     {
         //select variation

@@ -22,40 +22,11 @@ public class ScoreCounter : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(displayedScore);
-
-        if (totalScore > 0)
-        {
-            CountToPositiveScore();
-        }
-        else
-        {
-            CountToNegativeScore();
-        }
-    }
-
-    private void CountToPositiveScore()
-    {
-        if (displayedScore < totalScore)
+        if (Mathf.Abs(displayedScore) < Mathf.Abs(totalScore))
         {
             displayedScore += totalScore * 0.0015f;
 
-            if (displayedScore > totalScore)
-            {
-                displayedScore = totalScore;
-            }
-
-            scoreText.text = ((int)displayedScore).ToString();
-        }
-    }
-
-    private void CountToNegativeScore()
-    {
-        if (displayedScore > totalScore)
-        {
-            displayedScore += totalScore * 0.0015f;
-
-            if (displayedScore < totalScore)
+            if (Mathf.Abs(displayedScore) > Mathf.Abs(totalScore))
             {
                 displayedScore = totalScore;
             }
