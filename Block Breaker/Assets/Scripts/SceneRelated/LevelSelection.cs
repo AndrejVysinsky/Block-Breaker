@@ -52,7 +52,7 @@ public class LevelSelection : MonoBehaviour
             card.GetComponentInChildren<TextMeshProUGUI>().text = (i).ToString();
 
             int index = new int();
-            index = startIndex + 1;
+            index = i + 1;
 
             card.GetComponent<Button>().onClick.AddListener(delegate { sceneLoader.LoadSceneAtIndex(index); });
         }

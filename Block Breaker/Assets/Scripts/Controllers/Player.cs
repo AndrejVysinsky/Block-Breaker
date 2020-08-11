@@ -34,18 +34,21 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (defaultBallLaunched == false)
+        if (!Level.Instance.IsPointerOverGameObject())
         {
-            if (Input.GetMouseButton(0))
+            if (defaultBallLaunched == false)
             {
-                CalculateMousePosition();
-                trajectoryDisplay.ShowTrajectory(defaultBall.transform.position, mousePosition);
-            }
+                if (Input.GetMouseButton(0))
+                {
+                    CalculateMousePosition();
+                    trajectoryDisplay.ShowTrajectory(defaultBall.transform.position, mousePosition);
+                }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                LaunchDefaultBall();
-                trajectoryDisplay.HideTrajectory();
+                if (Input.GetMouseButtonUp(0))
+                {
+                    LaunchDefaultBall();
+                    trajectoryDisplay.HideTrajectory();
+                }
             }
         }
     }
