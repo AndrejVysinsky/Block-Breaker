@@ -47,8 +47,6 @@ public class WinScreen : MonoBehaviour
         {
             animator.SetBool($"star{i}earned", true);
         }
-
-        animator.SetInteger("ownedStars", ownedStarsCount);
     }
 
     private void LateUpdate()
