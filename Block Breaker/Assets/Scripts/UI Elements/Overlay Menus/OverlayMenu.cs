@@ -20,6 +20,7 @@ public class OverlayMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        pauseScreen.GetComponent<PauseMenu>().DeactivateButtons();
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
     }

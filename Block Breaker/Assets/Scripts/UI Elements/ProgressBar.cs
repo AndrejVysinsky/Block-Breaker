@@ -58,5 +58,15 @@ public class ProgressBar : MonoBehaviour, IScoreChangedEvent
         slider.maxValue = value;
     }
 
-    
+    public int GetNumberOfStars()
+    {
+        for (int i = stars.Length - 1; i >= 0; i--)
+        {
+            if (stars[i].activeSelf)
+            {
+                return i + 1;
+            }
+        }
+        return 0;
+    }
 }

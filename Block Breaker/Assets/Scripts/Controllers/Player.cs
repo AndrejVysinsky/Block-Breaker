@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] Paddle paddle;
     [SerializeField] TrajectoryDisplay trajectoryDisplay;
 
-    private GameController gameController;
-
     private List<Ball> balls = new List<Ball>();
 
     private Ball defaultBall;
@@ -23,7 +21,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        gameController = GameController.Instance;
         paddle = Instantiate(paddle);
 
         paddle.GetComponent<Paddle>().enabled = false;
@@ -81,11 +78,7 @@ public class Player : MonoBehaviour
 
     public void LaunchExtraBall()
     {
-        if (gameController.Balls > 0)
-        {
-            LaunchBallFromPaddle();
-            gameController.Balls--;
-        }
+        LaunchBallFromPaddle();
     }
 
     private Ball LaunchBallFromPaddle()
@@ -110,8 +103,6 @@ public class Player : MonoBehaviour
         SendBallInitializedMessage(newBall);
 
         balls.Add(newBall);
-
-        gameController.ActiveBalls++;
 
         return newBall;
     }
@@ -148,7 +139,10 @@ public class Player : MonoBehaviour
         balls.Remove(ball);
         Destroy(ball.gameObject);
 
-        gameController.BallOutOfScreen(scorePenalty);
+        if (balls.Count == 0)
+        {
+            Level.Instance.OutOfBalls();
+        }
     }
 
     public List<Ball> GetBalls()

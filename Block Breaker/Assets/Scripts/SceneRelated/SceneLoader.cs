@@ -29,8 +29,20 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadScene(buildIndex));
     }
 
+    public void LoadLevelSelection()
+    {
+        StartCoroutine(LoadScene(1));
+    }
+
+    public void ReloadLevel()
+    {
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex));
+    }
+
     IEnumerator LoadScene(int buildIndex)
     {
+        Time.timeScale = 1f;
+
         transition.SetTrigger("Start");
 
         //pauses coroutine for specified amount of seconds

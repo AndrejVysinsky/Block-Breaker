@@ -42,15 +42,18 @@ public class LevelSelection : MonoBehaviour
 
     private void PopulateScrollView()
     {
-        for (int i = 0; i < levels.Count + 25; i++) 
+        int startIndex = SceneManager.GetActiveScene().buildIndex;
+
+        for (int i = startIndex; i < levels.Count + 25; i++) 
         {
             var card = Instantiate(levelCardPrefab);
             card.transform.SetParent(levelCardContainer.transform, false);
 
-            int index = new int();
-            index = i + 1;
+            card.GetComponentInChildren<TextMeshProUGUI>().text = (i).ToString();
 
-            card.GetComponentInChildren<TextMeshProUGUI>().text = (index).ToString();
+            int index = new int();
+            index = startIndex + 1;
+
             card.GetComponent<Button>().onClick.AddListener(delegate { sceneLoader.LoadSceneAtIndex(index); });
         }
     }

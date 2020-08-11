@@ -8,19 +8,28 @@ public class WinScreen : MonoBehaviour
     private int ownedStarsCount;
     private int earnedStarsCount;
 
+    private Level level;
+
     private void Start()
     {
+        level = Level.Instance;
+
         ActivateWinScreenVariant();
-        
-        ownedStarsCount = 1;
-        earnedStarsCount = 2;
+
+        ownedStarsCount = level.BestStars;
+        earnedStarsCount = level.GetNumberOfStars() - ownedStarsCount;
+
+        Debug.Log($"Level stars: {level.GetNumberOfStars()}\n Best: {level.BestStars}\n Earned: {earnedStarsCount}");
+
+        if (earnedStarsCount < 0)
+            earnedStarsCount = 0;
 
         SetupAnimator();
     }
 
     private void ActivateWinScreenVariant()
     {
-        bool isNewRecord = true;
+        bool isNewRecord = level.Score > level.BestScore;
 
         if (isNewRecord)
         {

@@ -9,26 +9,35 @@ public class Level : MonoBehaviour
 {
     [SerializeField] CollectibleSpawner collectibleSpawner;
     [SerializeField] ProgressBar progressBar;
-    
-    private GameController gameController;
+    [SerializeField] OverlayMenu overlayMenu;
+
+    public static Level Instance { get; private set; }
 
     private int blockCount = 0;
-    private int hitsNeededToDestroyAllBlocks = 0;
-    private int blockScoreMean = 0;
+
+    public int Score { get; set; }
+    public int BestScore { get; private set; }
+    public int BestStars { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
-        gameController = GameController.Instance;
-
         Block[] breakableBlocks = FindObjectsOfType<Block>().Where(b => b.CompareTag("Breakable")).ToArray();
 
         blockCount = breakableBlocks.Count();
-        hitsNeededToDestroyAllBlocks = breakableBlocks.Sum(b => b.GetMaxHits());
 
         int totalBlockScore = breakableBlocks.Sum(x => x.GetBlockScore() * x.GetMaxHits());
-
-        blockScoreMean = totalBlockScore / blockCount;
-
         progressBar.SetMaxValue(totalBlockScore);
     }
 
@@ -36,14 +45,21 @@ public class Level : MonoBehaviour
     {
         blockCount--;
 
-        gameController.Score += block.GetBlockScore() * block.GetMaxHits();
-
         collectibleSpawner.TryToSpawnCollectible(block.GetMaxHits(), block.transform.position);
 
         if (blockCount == 0)
         {
-            gameController.AddTimeBonus(hitsNeededToDestroyAllBlocks, blockScoreMean);
-            gameController.LoadNextLevel();         
+            overlayMenu.GameWon();
         }
+    }
+
+    public void OutOfBalls()
+    {
+        overlayMenu.GameOver();
+    }
+
+    public int GetNumberOfStars()
+    {
+        return progressBar.GetNumberOfStars();
     }
 }

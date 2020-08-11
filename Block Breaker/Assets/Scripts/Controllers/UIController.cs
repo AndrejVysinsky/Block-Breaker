@@ -8,9 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour, IScoreChangedEvent
 {
-    
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI ballsText;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] TextMeshProUGUI timeText;
 
@@ -18,34 +16,14 @@ public class UIController : MonoBehaviour, IScoreChangedEvent
 
     private void Start()
     {
-        GameController controller = GameController.Instance;
         GameEventListeners.Instance.AddListener(gameObject);
 
-        controller.ScoreUpdate += OnScoreUpdate;
-        controller.BallAmountUpdate += OnBallAmountUpdate;
-        controller.LevelUpdate += OnLevelUpdate;
-
-        controller.ForceUpdate();
+        levelText.text = SceneManager.GetActiveScene().name;
     }
 
     private void Update()
     {
         UpdateTime();
-    }
-
-    public void OnScoreUpdate(int newScore)
-    {
-        scoreText.text = newScore.ToString();
-    }
-
-    public void OnBallAmountUpdate(int balls)
-    {
-        ballsText.text = $"x{balls}";
-    }
-
-    public void OnLevelUpdate(int level)
-    {
-        levelText.text = $"Level {level}";
     }
 
     public void UpdateTime()
@@ -63,5 +41,13 @@ public class UIController : MonoBehaviour, IScoreChangedEvent
         ScoreTextScript script = Instantiate(scoreTextScript, position, Quaternion.identity);
         
         script.DisplayScore = score.ToString();
+
+        Level.Instance.Score += score;
+        DisplayScore(Level.Instance.Score);
+    }
+
+    private void DisplayScore(int score)
+    {
+        scoreText.text = score.ToString();
     }
 }
