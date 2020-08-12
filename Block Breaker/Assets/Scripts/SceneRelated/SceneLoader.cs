@@ -16,9 +16,8 @@ public class SceneLoader : MonoBehaviour
 
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
-            //transition from Game Over scene to Start Menu
+            //transition from last level to Start Menu
             nextSceneIndex = 0;
-            GameController.Instance.ResetGame();
         }
 
         StartCoroutine(LoadScene(nextSceneIndex));

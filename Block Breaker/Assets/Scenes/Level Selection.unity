@@ -270,7 +270,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 693143169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 988311370}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadSceneAtIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &693143169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,85 +637,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2993395671cc748ab9b81f80aa9715, type: 3}
---- !u!1001 &1415521398
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3864808757810770836, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: isPerformanceModeActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770837, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808757810770843, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_Name
-      value: GameController
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864808758272240992, guid: 4176ebb44dec17f4faffb16a823b8bf6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4176ebb44dec17f4faffb16a823b8bf6, type: 3}
 --- !u!1 &1439197982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,5 +1212,5 @@ Transform:
   - {fileID: 982789972}
   - {fileID: 1661815810}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

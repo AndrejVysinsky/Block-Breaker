@@ -52,7 +52,7 @@ public class Block : MonoBehaviour
     {
         if (CompareTag("Breakable"))
         {
-            if (GameController.Instance.isPerformanceModeActive == false)
+            if (PlayerPrefs.GetInt("performanceMode") == 0)
             {
                 InstantiateParticles(collision);
             }

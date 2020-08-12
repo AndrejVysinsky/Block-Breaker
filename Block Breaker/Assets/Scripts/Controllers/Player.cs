@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
 
         Ball newBall = Instantiate(ballPrefab, position, Quaternion.identity);
 
-        if (GameController.Instance.isPerformanceModeActive)
+        if (PlayerPrefs.GetInt("performanceMode") == 1)
         {
             newBall.GetComponent<TrailRenderer>().enabled = false;
         }
