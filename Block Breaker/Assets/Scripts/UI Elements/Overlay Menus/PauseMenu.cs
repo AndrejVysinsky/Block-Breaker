@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
 
         if (bestScore == int.MinValue)
         {
-            bestScoreText.text = "You have not completed this level!";
+            bestScoreText.text = "No record!";
         }
         else
         {

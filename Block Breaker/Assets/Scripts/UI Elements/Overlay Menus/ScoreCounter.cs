@@ -14,6 +14,8 @@ public class ScoreCounter : MonoBehaviour
         displayedScore = 0;
         totalScore = Level.Instance.Score;
 
+        scoreText.text = displayedScore.ToString();
+
         if (bestScoreText != null)
         {
             bestScoreText.text = Level.Instance.BestScore.ToString();
