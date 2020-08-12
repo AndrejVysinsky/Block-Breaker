@@ -104,12 +104,12 @@ public class Block : MonoBehaviour
 
     private void HandleBlockDestroy(GameObject collidingGameObject)
     {
-        level.RemoveBlock(this);
-
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
             ExecuteEvents.Execute<IScoreChangedEvent>(gameObject, null, (x, y) => x.OnScoreChanged(transform.position, maxHits * blockScore));
         }
+
+        level.RemoveBlock(this);
 
         Destroy(gameObject);
     }

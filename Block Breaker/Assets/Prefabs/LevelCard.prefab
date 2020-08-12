@@ -369,6 +369,8 @@ MonoBehaviour:
   - {fileID: 8288460366213117926}
   - {fileID: 1936383920436024388}
   - {fileID: 742937479379274250}
+  lockedSprite: {fileID: 21300000, guid: a3a3ba5d31e18ab449ae6219d52ac439, type: 3}
+  notCompletedSprite: {fileID: 21300000, guid: d3cf285c579cae340aee906b2a9f91fe, type: 3}
 --- !u!114 &8829625084282268620
 MonoBehaviour:
   m_ObjectHideFlags: 0

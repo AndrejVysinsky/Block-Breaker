@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelCard : MonoBehaviour
 {
@@ -9,13 +10,23 @@ public class LevelCard : MonoBehaviour
     [SerializeField] GameObject starContainer;
     [SerializeField] GameObject[] collectedStars;
 
-    public void PopulateCardData(int levelID, bool isUnlocked, int numberOfCollectedStars)
+    [SerializeField] Sprite lockedSprite;
+    [SerializeField] Sprite notCompletedSprite;
+
+    public void PopulateCardData(int levelID, bool isUnlocked, bool isCompleted, int numberOfCollectedStars)
     {
         levelText.text = levelID.ToString();
 
-        if (!isUnlocked)
+        if (!isCompleted)
         {
             starContainer.SetActive(false);
+            GetComponent<Image>().sprite = notCompletedSprite;
+        }
+
+        if (!isUnlocked)
+        {
+            GetComponent<Image>().sprite = lockedSprite;
+            GetComponent<Button>().enabled = false;
             return;
         }
 

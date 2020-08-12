@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -44,7 +45,7 @@ public class Level : MonoBehaviour
 
         if (levelData == null)
         {
-            BestScore = 0;
+            BestScore = int.MinValue;
             BestStars = 0;
         }
         else

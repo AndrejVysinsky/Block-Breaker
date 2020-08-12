@@ -10,7 +10,16 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        bestScoreText.text = Level.Instance.BestScore.ToString();
+        int bestScore = Level.Instance.BestScore;
+
+        if (bestScore == int.MinValue)
+        {
+            bestScoreText.text = "You have not completed this level!";
+        }
+        else
+        {
+            bestScoreText.text = bestScore.ToString();
+        }
 
         int starsEarned = Level.Instance.BestStars;
 

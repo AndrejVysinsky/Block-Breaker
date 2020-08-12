@@ -80,4 +80,10 @@ public class PlayerData : MonoBehaviour
     {
         return savedData.Count;
     }
+
+    public void EraseData()
+    {
+        savedData = new List<LevelData>();
+        SaveData();
+    }
 }

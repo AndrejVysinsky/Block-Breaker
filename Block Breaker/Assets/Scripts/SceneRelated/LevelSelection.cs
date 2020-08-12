@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class LevelSelection : MonoBehaviour
 {
     [SerializeField] GameObject levelCardContainer;
-
     [SerializeField] GameObject levelCardPrefab;
 
     [SerializeField] SceneLoader sceneLoader;
@@ -64,12 +63,32 @@ public class LevelSelection : MonoBehaviour
 
         int stars = 0;
         bool isUnlocked = false;
+        bool isCompleted = false;
         if (levelData != null)
         {
             stars = levelData.Stars;
             isUnlocked = true;
+            isCompleted = true;
+        }
+        else
+        {
+            if (i > 0)
+            {
+                var previousLevelData = PlayerData.Instance.GetLevelData(levels[i - 1]);
+
+                if (previousLevelData != null)
+                {
+                    isUnlocked = true;
+                }
+            }
+            isCompleted = false;
         }
 
-        levelCard.GetComponent<LevelCard>().PopulateCardData(i + 1, isUnlocked, stars);
+        if (PlayerData.Instance.GetNumberOfCompletedLevels() == 0 && i == 0)
+        {
+            isUnlocked = true;
+        }
+
+        levelCard.GetComponent<LevelCard>().PopulateCardData(i + 1, isUnlocked, isCompleted, stars);
     }
 }
