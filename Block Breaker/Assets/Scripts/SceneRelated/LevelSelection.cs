@@ -42,19 +42,34 @@ public class LevelSelection : MonoBehaviour
 
     private void PopulateScrollView()
     {
-        int startIndex = SceneManager.GetActiveScene().buildIndex;
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
 
-        for (int i = startIndex; i < levels.Count + 25; i++) 
+        for (int i = 0; i < levels.Count; i++) 
         {
-            var card = Instantiate(levelCardPrefab);
-            card.transform.SetParent(levelCardContainer.transform, false);
-
-            card.GetComponentInChildren<TextMeshProUGUI>().text = (i).ToString();
+            var levelCard = Instantiate(levelCardPrefab);
+            levelCard.transform.SetParent(levelCardContainer.transform, false);
 
             int index = new int();
-            index = i + 1;
+            index = buildIndex + i + 1;
 
-            card.GetComponent<Button>().onClick.AddListener(delegate { sceneLoader.LoadSceneAtIndex(index); });
+            levelCard.GetComponent<Button>().onClick.AddListener(delegate { sceneLoader.LoadSceneAtIndex(index); });
+
+            PopulateLevelData(levelCard, i);
         }
+    }
+
+    private void PopulateLevelData(GameObject levelCard, int i)
+    {
+        var levelData = PlayerData.Instance.GetLevelData(levels[i]);
+
+        int stars = 0;
+        bool isUnlocked = false;
+        if (levelData != null)
+        {
+            stars = levelData.Stars;
+            isUnlocked = true;
+        }
+
+        levelCard.GetComponent<LevelCard>().PopulateCardData(i + 1, isUnlocked, stars);
     }
 }

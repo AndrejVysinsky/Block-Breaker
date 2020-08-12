@@ -34,6 +34,33 @@ public class Level : MonoBehaviour
 
     void Start()
     {
+        LoadLevelData();
+        CountBreakableBlocks();
+    }
+
+    private void LoadLevelData()
+    {
+        var levelData = PlayerData.Instance.GetLevelData(SceneManager.GetActiveScene().name);
+
+        if (levelData == null)
+        {
+            BestScore = 0;
+            BestStars = 0;
+        }
+        else
+        {
+            BestScore = levelData.Score;
+            BestStars = levelData.Stars;
+        }
+    }
+
+    private void SaveLevelData()
+    {
+        PlayerData.Instance.AddLevelData(SceneManager.GetActiveScene().name, Score, GetNumberOfStars());
+    }
+
+    private void CountBreakableBlocks()
+    {
         Block[] breakableBlocks = FindObjectsOfType<Block>().Where(b => b.CompareTag("Breakable")).ToArray();
 
         blockCount = breakableBlocks.Count();
@@ -50,6 +77,7 @@ public class Level : MonoBehaviour
 
         if (blockCount == 0)
         {
+            SaveLevelData();
             overlayMenu.GameWon();
         }
     }
