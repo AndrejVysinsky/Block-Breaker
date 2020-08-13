@@ -15,6 +15,7 @@ public class PlayerData : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            InitializeData();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -23,7 +24,7 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void InitializeData()
     {
         savedData = new List<LevelData>();
         LoadData();

@@ -57,7 +57,10 @@ public class Level : MonoBehaviour
 
     private void SaveLevelData()
     {
-        PlayerData.Instance.AddLevelData(SceneManager.GetActiveScene().name, Score, GetNumberOfStars());
+        if (Score > BestScore)
+        {
+            PlayerData.Instance.AddLevelData(SceneManager.GetActiveScene().name, Score, GetNumberOfStars());
+        }
     }
 
     private void CountBreakableBlocks()
