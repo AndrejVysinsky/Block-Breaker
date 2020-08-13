@@ -8,10 +8,13 @@ public class LevelCard : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] GameObject starContainer;
-    [SerializeField] GameObject[] collectedStars;
+    [SerializeField] GameObject[] stars;
 
     [SerializeField] Sprite lockedSprite;
     [SerializeField] Sprite notCompletedSprite;
+
+    [SerializeField] Sprite inactiveStar;
+    [SerializeField] Sprite activeStar;
 
     public void PopulateCardData(int levelID, bool isUnlocked, bool isCompleted, int numberOfCollectedStars)
     {
@@ -32,7 +35,7 @@ public class LevelCard : MonoBehaviour
 
         for (int i = 0; i < numberOfCollectedStars; i++)
         {
-            collectedStars[i].SetActive(true);
+            stars[i].GetComponent<Image>().sprite = activeStar;
         }
     }
 }
