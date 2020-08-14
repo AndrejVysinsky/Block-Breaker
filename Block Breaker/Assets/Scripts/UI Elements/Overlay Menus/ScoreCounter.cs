@@ -26,7 +26,7 @@ public class ScoreCounter : MonoBehaviour
     {
         if (Mathf.Abs(displayedScore) < Mathf.Abs(totalScore))
         {
-            displayedScore += totalScore * 0.0015f;
+            displayedScore += totalScore * 0.003f;
 
             if (Mathf.Abs(displayedScore) > Mathf.Abs(totalScore))
             {
