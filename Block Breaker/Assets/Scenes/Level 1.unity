@@ -2294,21 +2294,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1015674535}
     m_Modifications:
-    - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Name
@@ -2466,30 +2451,10 @@ PrefabInstance:
       propertyPath: overlayMenu
       value: 
       objectReference: {fileID: 1605884159}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+    - target: {fileID: 8386154637497714669, guid: 8cf0cd8aff841484cb392657d0aaacb0,
         type: 3}
-      propertyPath: collectibles.Array.data[1].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[2].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[3].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[0].spawnChance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: baseSpawnChance
-      value: 100
+      propertyPath: powerUpVariations.Array.data[0].modifier
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf0cd8aff841484cb392657d0aaacb0, type: 3}
