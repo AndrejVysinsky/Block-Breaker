@@ -7,7 +7,7 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
 {
     private Gradient gradient = new Gradient();
     private Color originalColor = new Color32(184, 231, 255, 255);
-    private Color powerUpColor = new Color32(242, 255, 0, 255);
+    private Color powerUpColor = new Color32(255, 255, 255, 255);
 
 
     protected override void Start()
