@@ -40,14 +40,14 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadScene(int buildIndex)
     {
-        Time.timeScale = 1f;
-
         transition.SetTrigger("Start");
 
         //pauses coroutine for specified amount of seconds
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
 
         SceneManager.LoadScene(buildIndex);
+
+        Time.timeScale = 1f;
     }
 
     public void LoadGameOverScene()

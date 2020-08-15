@@ -3559,6 +3559,10 @@ PrefabInstance:
       propertyPath: m_PixelPerfect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1259334664, guid: bf2993395671cc748ab9b81f80aa9715, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4060397329437032692, guid: bf2993395671cc748ab9b81f80aa9715,
         type: 3}
       propertyPath: m_LocalPosition.x
