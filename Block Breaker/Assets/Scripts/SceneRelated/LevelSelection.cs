@@ -59,7 +59,7 @@ public class LevelSelection : MonoBehaviour
 
     private void PopulateLevelData(GameObject levelCard, int i)
     {
-        var levelData = PlayerData.Instance.GetLevelData(levels[i]);
+        var levelData = ApplicationDataManager.Instance.GetLevelData(levels[i]);
 
         int stars = 0;
         bool isUnlocked = false;
@@ -74,7 +74,7 @@ public class LevelSelection : MonoBehaviour
         {
             if (i > 0)
             {
-                var previousLevelData = PlayerData.Instance.GetLevelData(levels[i - 1]);
+                var previousLevelData = ApplicationDataManager.Instance.GetLevelData(levels[i - 1]);
 
                 if (previousLevelData != null)
                 {
@@ -84,7 +84,7 @@ public class LevelSelection : MonoBehaviour
             isCompleted = false;
         }
 
-        if (PlayerData.Instance.GetNumberOfCompletedLevels() == 0 && i == 0)
+        if (ApplicationDataManager.Instance.GetNumberOfCompletedLevels() == 0 && i == 0)
         {
             isUnlocked = true;
         }

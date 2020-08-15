@@ -2451,36 +2451,6 @@ PrefabInstance:
       propertyPath: overlayMenu
       value: 
       objectReference: {fileID: 1605884159}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[4].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[3].spawnChance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[2].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[1].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[0].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386154637497714669, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: powerUpVariations.Array.data[0].modifier
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf0cd8aff841484cb392657d0aaacb0, type: 3}
 --- !u!1001 &1690283008
@@ -3001,12 +2971,12 @@ PrefabInstance:
     - target: {fileID: 627873678197089352, guid: c42a9b26ec4963e4a9008370308f925a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.12
+      value: 7.9
       objectReference: {fileID: 0}
     - target: {fileID: 627873678197089352, guid: c42a9b26ec4963e4a9008370308f925a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.12
+      value: 9.96
       objectReference: {fileID: 0}
     - target: {fileID: 627873678197089352, guid: c42a9b26ec4963e4a9008370308f925a,
         type: 3}

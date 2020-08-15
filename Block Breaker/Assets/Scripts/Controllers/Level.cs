@@ -41,7 +41,7 @@ public class Level : MonoBehaviour
 
     private void LoadLevelData()
     {
-        var levelData = PlayerData.Instance.GetLevelData(SceneManager.GetActiveScene().name);
+        var levelData = ApplicationDataManager.Instance.GetLevelData(SceneManager.GetActiveScene().name);
 
         if (levelData == null)
         {
@@ -59,7 +59,7 @@ public class Level : MonoBehaviour
     {
         if (Score > BestScore)
         {
-            PlayerData.Instance.AddLevelData(SceneManager.GetActiveScene().name, Score, GetNumberOfStars());
+            ApplicationDataManager.Instance.AddLevelData(SceneManager.GetActiveScene().name, Score, GetNumberOfStars());
         }
     }
 

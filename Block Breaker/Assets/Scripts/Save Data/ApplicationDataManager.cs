@@ -1,14 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+public class ApplicationDataManager : MonoBehaviour
 {
-    public static PlayerData Instance { get; private set; }
+    public static ApplicationDataManager Instance { get; private set; }
 
-    private List<LevelData> savedData;
+    [Serializable]
+    private class PlayerData
+    {
+        public List<LevelData> levelData;
+        public int numberOfOwnedStars;
+        public int numberOfTripleBallPowerups;
+        public int numberOfShieldPowerUps;
+
+        public PlayerData()
+        {
+            levelData = new List<LevelData>();
+        }
+    }
+
+    private PlayerData playerData;
 
     private void Awake()
     {
@@ -26,7 +41,7 @@ public class PlayerData : MonoBehaviour
 
     private void InitializeData()
     {
-        savedData = new List<LevelData>();
+        playerData = new PlayerData();
         LoadData();
     }
 
@@ -36,7 +51,7 @@ public class PlayerData : MonoBehaviour
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
-            savedData = (List<LevelData>)bf.Deserialize(file);
+            playerData = (PlayerData)bf.Deserialize(file);
             file.Close();
         }
     }
@@ -45,13 +60,13 @@ public class PlayerData : MonoBehaviour
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
-        bf.Serialize(file, savedData);
+        bf.Serialize(file, playerData);
         file.Close();
     }
 
     public void AddLevelData(string levelName, int score, int stars)
     {
-        var level = savedData.FirstOrDefault(x => x.LevelName == levelName);
+        var level = playerData.levelData.FirstOrDefault(x => x.LevelName == levelName);
 
         if (level == null)
         {
@@ -61,10 +76,16 @@ public class PlayerData : MonoBehaviour
             level.Score = score;
             level.Stars = stars;
 
-            savedData.Add(level);
+            playerData.levelData.Add(level);
+            playerData.numberOfOwnedStars += stars;
         }
         else
         {
+            if (stars > level.Stars)
+            {
+                playerData.numberOfOwnedStars += stars - level.Stars;
+            }
+
             level.Score = score;
             level.Stars = stars;
         }
@@ -74,17 +95,32 @@ public class PlayerData : MonoBehaviour
 
     public LevelData GetLevelData(string levelName)
     {
-        return savedData.FirstOrDefault(x => x.LevelName == levelName);
+        return playerData.levelData.FirstOrDefault(x => x.LevelName == levelName);
     }
 
     public int GetNumberOfCompletedLevels()
     {
-        return savedData.Count;
+        return playerData.levelData.Count;
+    }
+
+    public int GetNumberOfOwnedStars()
+    {
+        return playerData.numberOfOwnedStars;
+    }
+
+    public int GetNumberOfTripleBallPowerups()
+    {
+        return playerData.numberOfTripleBallPowerups;
+    }
+
+    public int GetNumberOfShieldPowerUps()
+    {
+        return playerData.numberOfShieldPowerUps;
     }
 
     public void EraseData()
     {
-        savedData = new List<LevelData>();
+        playerData = new PlayerData();
         SaveData();
     }
 }
