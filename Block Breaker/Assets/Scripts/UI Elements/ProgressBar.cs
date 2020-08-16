@@ -7,7 +7,7 @@ public class ProgressBar : MonoBehaviour, IScoreChangedEvent
     [SerializeField] GameObject[] stars;
     [SerializeField] GameObject[] points;
 
-    private float[] tresholds = new float[] {0.226f, 0.5f, 0.775f };
+    private float[] tresholds = new float[] {0.206f, 0.5f, 0.795f };
 
     private float currentValue;
 

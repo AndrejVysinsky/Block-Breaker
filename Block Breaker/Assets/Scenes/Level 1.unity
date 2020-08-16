@@ -1462,10 +1462,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 322046390, guid: 80b84a7e3d216964c97eb3e2784494ef, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 322046390, guid: 80b84a7e3d216964c97eb3e2784494ef, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -2456,6 +2452,105 @@ PrefabInstance:
       propertyPath: overlayMenu
       value: 
       objectReference: {fileID: 1605884159}
+    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: collectibles.Array.data[4].spawnChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: collectibles.Array.data[0].spawnChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: baseSpawnChance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: blockHitBonusChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[4].modifier
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[4].spawnChance
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[4].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c14d612be0f5f64b8fae7466b8c0516,
+        type: 3}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[5].modifier
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[5].spawnChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[5].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2237b6c082675ed43adf47d9fdb36e9d,
+        type: 3}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[6].modifier
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[6].spawnChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[6].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 553159f98c5ca26468662e0320287bfb,
+        type: 3}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[7].modifier
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[7].spawnChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[7].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d9f03beddf31764f851edfba9b628c5,
+        type: 3}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[0].spawnChance
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201401086561139453, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: powerUpVariations.Array.data[1].spawnChance
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf0cd8aff841484cb392657d0aaacb0, type: 3}
 --- !u!1001 &1690283008
