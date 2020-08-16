@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class PowerUpShield : PowerUpWithDuration
 {
-    [SerializeField] GameObject shield;
+    [SerializeField] GameObject shieldPrefab;
+
+    private GameObject shield;
 
     protected override void Start()
     {
@@ -22,7 +24,7 @@ public class PowerUpShield : PowerUpWithDuration
     {
         if (shield == null)
         {
-            shield = Instantiate(shield);
+            shield = Instantiate(shieldPrefab);
         }
 
         ChangeSizeBy(-remainingModifier);

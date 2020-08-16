@@ -11,7 +11,7 @@ public class PowerUpPaddleWidth : PowerUpWithDuration
         base.Start();
 
         duration = 10.0f;
-        numberOfSteps = 200;
+        numberOfSteps = 20;
         wearOffTime = 2.0f;
     }
 
@@ -22,8 +22,8 @@ public class PowerUpPaddleWidth : PowerUpWithDuration
             paddle = player.GetPaddle();
         }
 
-        paddle.ChangeSizeBy(-remainingModifier);
-        paddle.ChangeSizeBy(newModifier);
+        paddle.DecreaseScaleXBy(remainingModifier);
+        paddle.IncreaseScaleXBy(newModifier);
 
         base.ActivatePowerUp(newModifier);
     }
@@ -32,14 +32,14 @@ public class PowerUpPaddleWidth : PowerUpWithDuration
     {
         base.UpdatePowerUp(modifierChange);
 
-        paddle.ChangeSizeBy(-modifierChange);
+        paddle.DecreaseScaleXBy(modifierChange);
     }
 
     public void OnBallInitialized(Ball ball)
     {
         if (IsExpired() == false)
         {
-            paddle.ChangeSizeBy(remainingModifier);
+            paddle.IncreaseScaleXBy(remainingModifier);
         }
     }
 }
