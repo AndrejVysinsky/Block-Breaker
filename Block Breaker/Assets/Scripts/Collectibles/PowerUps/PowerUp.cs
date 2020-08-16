@@ -11,6 +11,7 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
     public struct PowerUpVariation
     {
         public float modifier;
+        public float spawnChance;
         public Sprite sprite;
     }
     [SerializeField] List<PowerUpVariation> powerUpVariations;
@@ -30,9 +31,8 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
 
     public void SpawnCollectible(Vector2 position)
     {
-        //select variation
-        var random = UnityEngine.Random.Range(0, powerUpVariations.Count());
-        var powerUpVariation = powerUpVariations[random];
+        //select random variation
+        var randomPowerUpVariation = ChooseRandomVariation();
 
         //spawn collectible
         var collectiblePosition = new Vector3(position.x, position.y, collectiblePrefab.transform.position.z);
@@ -40,16 +40,38 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
         spawnedCollectibles.Add(spawnedCollectible);
 
         //assign params from powerup variation
-        spawnedCollectible.SetValue(powerUpVariation.modifier);
-        spawnedCollectible.SetSprite(powerUpVariation.sprite);
+        spawnedCollectible.SetValue(randomPowerUpVariation.modifier);
+        spawnedCollectible.SetSprite(randomPowerUpVariation.sprite);
+    }
+
+    private PowerUpVariation ChooseRandomVariation()
+    {
+        float random = UnityEngine.Random.Range(0, 100);
+
+        foreach (var powerUpVariation in powerUpVariations)
+        {
+            if (random < powerUpVariation.spawnChance)
+            {
+                return powerUpVariation;
+            }
+            random -= powerUpVariation.spawnChance;
+        }
+
+        throw new InvalidOperationException(
+            "The proportions in the collection do not add up to 1.");
     }
 
     public virtual void OnCollected(Collectible collectible)
     {
         if (spawnedCollectibles.Contains(collectible))
         {
-            ActivatePowerUp(collectible.GetCollectibleValue());
+            ActivatePowerUp(collectible.GetCollectibleValue(), collectible.transform.position);
         }
+    }
+
+    protected virtual void ActivatePowerUp(float modifier, Vector3 position)
+    {
+        ActivatePowerUp(modifier);
     }
 
     protected virtual void ActivatePowerUp(float modifier)

@@ -10,7 +10,7 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
 {
     private Gradient gradient = new Gradient();
     private Color originalColor = new Color32(184, 231, 255, 255);
-    private Color powerUpColor = new Color32(233, 72, 53, 255);
+    private Color powerUpColor = new Color32(233, 102, 102, 255);
 
     protected override void Start()
     {
