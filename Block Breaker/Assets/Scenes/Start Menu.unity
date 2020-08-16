@@ -2628,7 +2628,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000091552734, y: 0.000030517578}
-  m_SizeDelta: {x: -1.5, y: 1350}
+  m_SizeDelta: {x: -1.5, y: 1220}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &431777638
 MonoBehaviour:
@@ -5415,7 +5415,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1272923870}
-    characterCount: 16
+    characterCount: 21
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -6808,7 +6808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -1260}
+  m_AnchoredPosition: {x: 150, y: -1130}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593328633

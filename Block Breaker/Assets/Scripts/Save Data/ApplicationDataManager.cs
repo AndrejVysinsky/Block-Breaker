@@ -113,21 +113,9 @@ public class ApplicationDataManager : MonoBehaviour
         return playerData.numberOfTripleBallPowerups;
     }
 
-    public void SetNumberOfTripleBallPowerUps(int number)
-    {
-        playerData.numberOfTripleBallPowerups = number;
-        SaveData();
-    }
-
     public int GetNumberOfShieldPowerUps()
     {
         return playerData.numberOfShieldPowerUps;
-    }
-
-    public void SetNumberOfShieldPowerUps(int number)
-    {
-        playerData.numberOfShieldPowerUps = number;
-        SaveData();
     }
 
     public void EraseData()

@@ -1480,14 +1480,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1190200797, guid: 80b84a7e3d216964c97eb3e2784494ef, type: 3}
-      propertyPath: ballPowerUp
-      value: 
-      objectReference: {fileID: 1812584959}
-    - target: {fileID: 1317898971, guid: 80b84a7e3d216964c97eb3e2784494ef, type: 3}
-      propertyPath: shieldPowerUp
-      value: 
-      objectReference: {fileID: 1644787592}
     - target: {fileID: 1797029104, guid: 80b84a7e3d216964c97eb3e2784494ef, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -2459,55 +2451,8 @@ PrefabInstance:
       propertyPath: overlayMenu
       value: 
       objectReference: {fileID: 1605884159}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[0].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[1].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[2].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[3].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[4].spawnChance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[5].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-        type: 3}
-      propertyPath: collectibles.Array.data[6].spawnChance
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf0cd8aff841484cb392657d0aaacb0, type: 3}
---- !u!114 &1644787592 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8386154637497714669, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1643597937}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba3f3f3fe0ca874fbb25cb51ab1cdf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1690283008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2577,18 +2522,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d456f74ecc9ba0418068f1c2f54c4e7, type: 3}
---- !u!114 &1812584959 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1968200581399708927, guid: 8cf0cd8aff841484cb392657d0aaacb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1643597937}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d64507b2db5b643a39b035663b06e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2082059715
 PrefabInstance:
   m_ObjectHideFlags: 0

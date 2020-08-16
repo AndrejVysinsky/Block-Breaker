@@ -77,9 +77,4 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
     protected virtual void ActivatePowerUp(float modifier)
     {
     }
-
-    public virtual void ExternalActivation(float modifier)
-    {
-        ActivatePowerUp(modifier);
-    }
 }
