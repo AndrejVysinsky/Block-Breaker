@@ -8,9 +8,14 @@ using static UnityEngine.ParticleSystem;
 
 public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
 {
-    private Gradient gradient = new Gradient();
     private Color originalColor = new Color32(184, 231, 255, 255);
-    private Color powerUpColor = new Color32(233, 102, 102, 255);
+
+    private Gradient ballGradient = new Gradient();
+    private Color ballPowerUpColor = new Color32(233, 200, 200, 255);
+
+    private Gradient tailGradient = new Gradient();
+    private Color tailPowerUpColor = new Color32(233, 50, 50, 255);
+    
 
     protected override void Start()
     {
@@ -21,6 +26,12 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         numberOfSteps = 1;
         wearOffTime = 1.0f;
 
+        SetupGradient(ballGradient, ballPowerUpColor);
+        SetupGradient(tailGradient, tailPowerUpColor);
+    }
+
+    private void SetupGradient(Gradient gradient, Color32 powerUpColor)
+    {
         gradient.colorKeys = new GradientColorKey[2]
         {
             new GradientColorKey(originalColor, 0.0f),
@@ -34,8 +45,8 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         {
             x.DecreaseStrengthModifierBy((int)remainingModifier);
             x.IncreaseStrengthModifierBy((int)newModifier);
-            x.SetColor32(gradient.Evaluate(1));
-            x.SetTrailColor32(gradient.Evaluate(1));
+            x.SetColor32(ballGradient.Evaluate(1));
+            x.SetTrailColor32(tailGradient.Evaluate(1));
         });
 
         base.ActivatePowerUp(newModifier);
@@ -50,8 +61,8 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
             x.DecreaseStrengthModifierBy((int)modifierChange);
 
             float colorValue = remainingModifier / modifier;
-            x.SetColor32(gradient.Evaluate(colorValue));
-            x.SetTrailColor32(gradient.Evaluate(colorValue));
+            x.SetColor32(ballGradient.Evaluate(colorValue));
+            x.SetTrailColor32(tailGradient.Evaluate(colorValue));
         });
     }
 
@@ -62,8 +73,8 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
             ball.IncreaseStrengthModifierBy((int)remainingModifier);
 
             float colorValue = remainingModifier / modifier;
-            ball.SetColor32(gradient.Evaluate(colorValue));
-            ball.SetTrailColor32(gradient.Evaluate(colorValue));
+            ball.SetColor32(ballGradient.Evaluate(colorValue));
+            ball.SetTrailColor32(tailGradient.Evaluate(colorValue));
         }
     }
 }
