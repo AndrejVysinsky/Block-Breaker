@@ -22,7 +22,7 @@ public class CollectibleSpawner : MonoBehaviour
     {
         int random = UnityEngine.Random.Range(0, 100);
 
-        if (random <= baseSpawnChance + blockHitBonusChance * blockHits)
+        if (random <= baseSpawnChance + (blockHits - 1) * blockHitBonusChance)
         {
             SpawnCollectible(position);
         }

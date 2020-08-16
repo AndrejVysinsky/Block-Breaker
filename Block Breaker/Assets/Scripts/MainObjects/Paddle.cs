@@ -61,4 +61,13 @@ public class Paddle : MonoBehaviour
     {
         return (((oldValue - oldMin) * (newMax - newMin)) / (oldMax - oldMin)) + newMin;
     }
+
+    public void ChangeSizeBy(float amount)
+    {
+        Vector2 scale = transform.localScale;
+
+        scale.x += amount;
+
+        transform.localScale = scale;
+    }
 }

@@ -152,4 +152,9 @@ public class Player : MonoBehaviour
     {
         return balls;
     }
+
+    public Paddle GetPaddle()
+    {
+        return paddle;
+    }
 }

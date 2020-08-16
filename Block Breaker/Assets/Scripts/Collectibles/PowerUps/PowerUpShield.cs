@@ -7,15 +7,12 @@ using UnityEngine;
 
 public class PowerUpShield : PowerUpWithDuration
 {
-    [SerializeField] GameObject shieldPrefab;
-
-    private GameObject shield;
+    [SerializeField] GameObject shield;
 
     protected override void Start()
     {
         base.Start();
 
-        modifier = 1.0f;
         duration = 10.0f;
         numberOfSteps = 200;
         wearOffTime = 5.0f;
@@ -25,7 +22,7 @@ public class PowerUpShield : PowerUpWithDuration
     {
         if (shield == null)
         {
-            shield = Instantiate(shieldPrefab);
+            shield = Instantiate(shield);
         }
 
         ChangeSizeBy(-remainingModifier);
