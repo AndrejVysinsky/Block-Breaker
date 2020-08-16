@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4542527719971891124}
-  - component: {fileID: 6360677574831282785}
+  - component: {fileID: 4676976741661999351}
   m_Layer: 0
   m_Name: PowerUpStrength
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6360677574831282785
+--- !u!114 &4676976741661999351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,8 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6150451212510763036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e9c672ef651dc4ab847999bb5fd3b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 33bc926b1483d994ba5139daa71d402c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strengthParticles: {fileID: 627873678197089353, guid: c42a9b26ec4963e4a9008370308f925a,
+  powerUpVariations:
+  - modifier: 5
+    sprite: {fileID: 21300000, guid: 85a156df39a561243b289580c55f812d, type: 3}
+  collectiblePrefab: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
     type: 3}

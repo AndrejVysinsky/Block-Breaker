@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
 {
-    private Gradient gradient = new Gradient();
-    private Color originalColor = new Color32(184, 231, 255, 255);
-    private Color powerUpColor = new Color32(255, 255, 255, 255);
-
-
     protected override void Start()
     {
         base.Start();
@@ -18,12 +13,6 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
         duration = 10.0f;
         numberOfSteps = 20;
         wearOffTime = 3.0f;
-
-        gradient.colorKeys = new GradientColorKey[2]
-        {
-            new GradientColorKey(originalColor, 0.0f),
-            new GradientColorKey(powerUpColor, 1.0f)
-        };
     }
 
     protected override void ActivatePowerUp(float newModifier)
@@ -32,8 +21,6 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
         {
             x.DecreaseSpeedModifierBy(remainingModifier);
             x.IncreaseSpeedModifierBy(newModifier);
-            x.SetColor32(gradient.Evaluate(1));
-            //x.SetTrailColor32(gradient.Evaluate(1));
         });
 
         base.ActivatePowerUp(newModifier);
@@ -43,14 +30,7 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
     {
         base.UpdatePowerUp(modifierChange);
 
-        player.GetBalls().ForEach(x =>
-        {
-            x.DecreaseSpeedModifierBy(modifierChange);
-
-            float colorValue = remainingModifier / modifier;
-            x.SetColor32(gradient.Evaluate(colorValue));
-            //x.SetTrailColor32(gradient.Evaluate(colorValue));
-        });
+        player.GetBalls().ForEach(x => x.DecreaseSpeedModifierBy(modifierChange));
     }
     
     public void OnBallInitialized(Ball ball)
@@ -58,10 +38,6 @@ public class PowerUpSpeed : PowerUpWithDuration, IBallInitializedEvent
         if (IsExpired() == false)
         {
             ball.IncreaseSpeedModifierBy(remainingModifier);
-
-            float colorValue = remainingModifier / modifier;
-            ball.SetColor32(gradient.Evaluate(colorValue));
-            //ball.SetTrailColor32(gradient.Evaluate(colorValue));
         }
     }
 }

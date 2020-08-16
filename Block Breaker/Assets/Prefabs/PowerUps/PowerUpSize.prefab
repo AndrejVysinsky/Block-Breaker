@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3839712800228648025}
+  - component: {fileID: -1991911462947907888}
   m_Layer: 0
   m_Name: PowerUpSize
   m_TagString: Untagged
@@ -30,3 +31,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1991911462947907888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059107875110944790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc04eb2061d51f4c8fce930664fb653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpVariations:
+  - modifier: 1
+    sprite: {fileID: 21300000, guid: 1607d9ec46d41e446a675678712d0240, type: 3}
+  - modifier: -0.3
+    sprite: {fileID: 21300000, guid: 1607d9ec46d41e446a675678712d0240, type: 3}
+  collectiblePrefab: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
+    type: 3}

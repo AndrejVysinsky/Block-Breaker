@@ -8,12 +8,9 @@ using static UnityEngine.ParticleSystem;
 
 public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
 {
-    [SerializeField] ParticleSystem strengthParticles;
-
-    private List<ParticleSystem> activeParciles;
-
-    private Vector3 globalScale;
-    private float particlesSizeModifier = 1.0f;
+    private Gradient gradient = new Gradient();
+    private Color originalColor = new Color32(184, 231, 255, 255);
+    private Color powerUpColor = new Color32(233, 72, 53, 255);
 
     protected override void Start()
     {
@@ -24,20 +21,11 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         numberOfSteps = 1;
         wearOffTime = 1.0f;
 
-        activeParciles = new List<ParticleSystem>();
-
-        var prefabScale = strengthParticles.transform.localScale;
-        globalScale = new Vector3(prefabScale.x, prefabScale.y, prefabScale.z);
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        if (remainingDuration > 0)
+        gradient.colorKeys = new GradientColorKey[2]
         {
-           UpdateParticles();
-        }
+            new GradientColorKey(originalColor, 0.0f),
+            new GradientColorKey(powerUpColor, 1.0f)
+        };
     }
 
     protected override void ActivatePowerUp(float newModifier)
@@ -46,11 +34,8 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         {
             x.DecreaseStrengthModifierBy((int)remainingModifier);
             x.IncreaseStrengthModifierBy((int)newModifier);
-
-            if (IsExpired())
-            {
-                InstantiateParticles(x);
-            }
+            x.SetColor32(gradient.Evaluate(1));
+            x.SetTrailColor32(gradient.Evaluate(1));
         });
 
         base.ActivatePowerUp(newModifier);
@@ -60,50 +45,14 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
     {
         base.UpdatePowerUp(modifierChange);
 
-        player.GetBalls().ForEach(x => x.DecreaseStrengthModifierBy((int)modifierChange));
-
-        if (IsExpired())
+        player.GetBalls().ForEach(x =>
         {
-            DestroyParticles();
-        }
-    }
+            x.DecreaseStrengthModifierBy((int)modifierChange);
 
-    private void InstantiateParticles(Ball ball)
-    {
-        ParticleSystem particles = Instantiate(strengthParticles, ball.transform.position, ball.transform.rotation);
-
-        ColorOverLifetimeModule colorOverLifetime = particles.colorOverLifetime;
-        colorOverLifetime.color = new MinMaxGradient(ball.GetTrailGradient());
-
-        particles.Play();
-
-        particles.transform.parent = ball.transform;
-        particles.transform.localScale = globalScale;
-
-        activeParciles.Add(particles);
-    }
-
-    private void UpdateParticles()
-    {
-        var ball = player.GetBalls().FirstOrDefault();
-
-        if (ball != null)
-        {
-            if (ball.GetSizeModifier() != particlesSizeModifier)
-            {
-                UpdateParticleSize(ball.GetSizeModifier());
-            }
-        }
-    }
-
-    private void UpdateParticleSize(float sizeModifier)
-    {
-        globalScale /= particlesSizeModifier;
-        particlesSizeModifier = sizeModifier;
-        globalScale *= particlesSizeModifier;
-
-        activeParciles.RemoveAll(x => x == null);
-        activeParciles.ForEach(x => x.transform.localScale = globalScale);
+            float colorValue = remainingModifier / modifier;
+            x.SetColor32(gradient.Evaluate(colorValue));
+            x.SetTrailColor32(gradient.Evaluate(colorValue));
+        });
     }
 
     public void OnBallInitialized(Ball ball)
@@ -111,19 +60,10 @@ public class PowerUpStrength : PowerUpWithDuration, IBallInitializedEvent
         if (IsExpired() == false)
         {
             ball.IncreaseStrengthModifierBy((int)remainingModifier);
-            InstantiateParticles(ball);
-        }
-    }
 
-    private void DestroyParticles()
-    {
-        activeParciles.ForEach(x => 
-        {
-            if (x != null)
-            {
-                Destroy(x.gameObject);
-            }
-        });
-        activeParciles.Clear();
+            float colorValue = remainingModifier / modifier;
+            ball.SetColor32(gradient.Evaluate(colorValue));
+            ball.SetTrailColor32(gradient.Evaluate(colorValue));
+        }
     }
 }
