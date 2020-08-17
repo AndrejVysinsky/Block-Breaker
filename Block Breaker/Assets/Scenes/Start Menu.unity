@@ -759,6 +759,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1844869481981104902, guid: 96127b836e4c02a41a5b08a9f45ee53d,
+        type: 3}
+      propertyPath: canvasScalers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844869481981104902, guid: 96127b836e4c02a41a5b08a9f45ee53d,
+        type: 3}
+      propertyPath: canvasScalers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1480326027}
     - target: {fileID: 6666327562737549908, guid: 96127b836e4c02a41a5b08a9f45ee53d,
         type: 3}
       propertyPath: m_Name
@@ -1126,7 +1136,7 @@ MonoBehaviour:
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: -11.62
-  m_Inertia: 0
+  m_Inertia: 1
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 0}
