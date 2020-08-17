@@ -8,10 +8,12 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] Ball ballPrefab;
-    [SerializeField] Paddle paddle;
+    [SerializeField] Paddle paddlePrefab;
     [SerializeField] TrajectoryDisplay trajectoryDisplay;
 
     private List<Ball> balls = new List<Ball>();
+
+    private Paddle paddle;
 
     private Ball defaultBall;
     private bool defaultBallLaunched = false;
@@ -21,15 +23,29 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        paddle = Instantiate(paddle);
+        mainCamera = Camera.main;
+
+        DefaultBallSetup();
+    }
+
+    public void DefaultBallSetup()
+    {
+        defaultBallLaunched = false;
+
+        if (paddle == null)
+        {
+            paddle = Instantiate(paddlePrefab);
+        }
+        else
+        {
+            paddle.transform.position = paddlePrefab.transform.position;
+        }
 
         paddle.GetComponent<Paddle>().enabled = false;
 
         defaultBall = Instantiate(ballPrefab);
         defaultBall.SetVelocityVector(new Vector2(0, 0));
         defaultBall.transform.parent = paddle.transform;
-
-        mainCamera = Camera.main;
     }
 
     private void Update()

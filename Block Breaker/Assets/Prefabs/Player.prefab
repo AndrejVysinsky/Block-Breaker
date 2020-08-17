@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 6952842416858491160, guid: aa71c4492f1bd0a4c893078d5423d4ab,
     type: 3}
-  paddle: {fileID: 4678805280368675235, guid: 8bc58f068c5b91942b6959c97c1b6f4a, type: 3}
+  paddlePrefab: {fileID: 4678805280368675235, guid: 8bc58f068c5b91942b6959c97c1b6f4a,
+    type: 3}
   trajectoryDisplay: {fileID: 0}
