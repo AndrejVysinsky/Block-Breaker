@@ -11,10 +11,13 @@ public class Paddle : MonoBehaviour
     [SerializeField] float screenWidthInUnits = 32f;
 
     private Vector2 paddlePos;
+    private Camera mainCamera;
 
     void Start()
     {
         paddlePos = new Vector2(transform.position.x, transform.position.y);
+
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -22,7 +25,8 @@ public class Paddle : MonoBehaviour
         //position in units
         if (!Level.Instance.IsPointerOverGameObject())
         {
-            float mousePosX = Input.mousePosition.x / Screen.width * screenWidthInUnits;
+            float mousePosX = mainCamera.ScreenToWorldPoint(Input.mousePosition).x;
+
             paddlePos.x = Mathf.Clamp(mousePosX, minX, maxX);
             transform.position = paddlePos;
         }
