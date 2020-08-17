@@ -23,6 +23,8 @@ public class OverlayMenu : MonoBehaviour
         pauseScreen.GetComponent<PauseMenu>().DeactivateButtons();
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
+
+        Level.Instance.StartInputDelay();
     }
 
     public void BackToMenu()

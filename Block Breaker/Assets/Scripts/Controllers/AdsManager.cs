@@ -29,16 +29,18 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     private IEnumerator ShowAd(string placement)
     {
-        while (!Advertisement.IsReady())
+        while (false)
             yield return null;
 
         //Advertisement.Show(placement);
 
-            overlayButtons.SetActive(false);
-            overlayMenu.SetActive(false);
-            Time.timeScale = 1.0f;
+        //TESTING ONLY
+        overlayButtons.SetActive(false);
+        overlayMenu.SetActive(false);
+        Time.timeScale = 1.0f;
 
-            player.DefaultBallSetup();
+        Level.Instance.StartInputDelay();
+        player.DefaultBallSetup();
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
@@ -49,6 +51,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             overlayMenu.SetActive(false);
             Time.timeScale = 1.0f;
 
+            Level.Instance.StartInputDelay();
             player.DefaultBallSetup();
         }
     }

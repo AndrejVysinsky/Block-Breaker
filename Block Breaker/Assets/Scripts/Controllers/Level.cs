@@ -17,9 +17,13 @@ public class Level : MonoBehaviour
 
     private int blockCount = 0;
 
+    public bool IsPaused { get; set; }
+
     public int Score { get; set; }
     public int BestScore { get; private set; }
     public int BestStars { get; private set; }
+
+    private IEnumerator inputDelay;
 
     private void Awake()
     {
@@ -103,5 +107,22 @@ public class Level : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
+    }
+
+    public void StartInputDelay()
+    {
+        inputDelay = InputDelay();
+        StartCoroutine(inputDelay);
+    }
+
+    private IEnumerator InputDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        inputDelay = null;
+    }
+
+    public bool IsInputDelayed()
+    {
+        return inputDelay != null;
     }
 }
