@@ -66,7 +66,7 @@ public class Collectible : MonoBehaviour, ICollectible
     public void MoveDown()
     {
         Vector2 newPos = transform.position;
-        newPos.y -= 0.05f;
+        newPos.y -= 0.08f;
 
         rigidbody2D.MovePosition(newPos);
     }
