@@ -29,7 +29,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void ShowRegularAd()
     {
-        StartCoroutine(ShowAd(regularAd));
+        var appDataManager = ApplicationDataManager.Instance;
+
+        if (appDataManager.HideAds() == false && IsTimeForRegularAd())
+        {
+            appDataManager.AdsShown++;
+            StartCoroutine(ShowAd(regularAd));
+        }
     }
 
     private IEnumerator ShowAd(string placement)
@@ -37,10 +43,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         while (!Advertisement.IsReady())
             yield return null;
 
-        //Advertisement.Show(placement);
+        Advertisement.Show(placement);
 
         //TESTING ONLY
-        lastChanceButton.SetActive(false);
+       /* lastChanceButton.SetActive(false);
         lastChanceText.SetActive(false);
         tryAgainText.SetActive(true);
 
@@ -49,7 +55,23 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         Time.timeScale = 1.0f;
 
         Level.Instance.StartInputDelay();
-        player.DefaultBallSetup();
+        player.DefaultBallSetup();*/
+    }
+
+    private bool IsTimeForRegularAd()
+    {
+        int sessionTimeInMinutes = (int)(Time.time / 60);
+        int numberOfShownAds = ApplicationDataManager.Instance.AdsShown;
+        int timeBetweenAdsInMinutes = 3;
+
+        sessionTimeInMinutes -= timeBetweenAdsInMinutes * numberOfShownAds;
+
+        if (sessionTimeInMinutes >= timeBetweenAdsInMinutes)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)

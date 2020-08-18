@@ -14,8 +14,7 @@ public class ApplicationDataManager : MonoBehaviour
     {
         public List<LevelData> levelData;
         public int numberOfOwnedStars;
-        public int numberOfTripleBallPowerups;
-        public int numberOfShieldPowerUps;
+        public bool hideAds;
 
         public PlayerData()
         {
@@ -24,6 +23,8 @@ public class ApplicationDataManager : MonoBehaviour
     }
 
     private PlayerData playerData;
+
+    public int AdsShown { get; set; }
 
     private void Awake()
     {
@@ -108,14 +109,9 @@ public class ApplicationDataManager : MonoBehaviour
         return playerData.numberOfOwnedStars;
     }
 
-    public int GetNumberOfTripleBallPowerups()
+    public bool HideAds()
     {
-        return playerData.numberOfTripleBallPowerups;
-    }
-
-    public int GetNumberOfShieldPowerUps()
-    {
-        return playerData.numberOfShieldPowerUps;
+        return playerData.hideAds;
     }
 
     public void EraseData()
