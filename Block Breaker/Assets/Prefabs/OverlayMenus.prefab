@@ -3808,6 +3808,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4060397329437032693, guid: bf2993395671cc748ab9b81f80aa9715,
+        type: 3}
+      propertyPath: adsManager
+      value: 
+      objectReference: {fileID: 1166324576}
     - target: {fileID: 4060397329437032694, guid: bf2993395671cc748ab9b81f80aa9715,
         type: 3}
       propertyPath: m_Name
@@ -4904,12 +4909,12 @@ PrefabInstance:
     - target: {fileID: 3828344755191670411, guid: 5b3ec58500da3fd48b31d0b845a22ccb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 3828344755191670411, guid: 5b3ec58500da3fd48b31d0b845a22ccb,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 170
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 3828344755191670411, guid: 5b3ec58500da3fd48b31d0b845a22ccb,
         type: 3}
@@ -5161,12 +5166,12 @@ PrefabInstance:
     - target: {fileID: 1957001320421388767, guid: 10087e5c9f311d742a79b7e0b5127496,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 1957001320421388767, guid: 10087e5c9f311d742a79b7e0b5127496,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 170
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 1957001320421388767, guid: 10087e5c9f311d742a79b7e0b5127496,
         type: 3}
