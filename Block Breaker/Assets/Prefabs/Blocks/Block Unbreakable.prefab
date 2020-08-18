@@ -10,22 +10,28 @@ PrefabInstance:
     - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.38431373
+      value: 0.4627451
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.38431373
+      value: 0.4627451
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.38431373
+      value: 0.4627451
       objectReference: {fileID: 0}
+    - target: {fileID: 4128163210374999110, guid: b1e6258ceb530bb40a39306485dab971,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 43e555a7401445143b7345779bfd1e9a,
+        type: 3}
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_Name
-      value: BlockUnbreakable
+      value: Block Unbreakable
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999111, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
@@ -37,6 +43,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Unbreakable
       objectReference: {fileID: 0}
+    - target: {fileID: 4128163210374999160, guid: b1e6258ceb530bb40a39306485dab971,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.1130434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128163210374999160, guid: b1e6258ceb530bb40a39306485dab971,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.5565217
+      objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -45,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
         type: 3}
