@@ -376,12 +376,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
---- !u!1 &97742347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 383048491, guid: 252462caf50a512478d527d439e06bad,
-    type: 3}
-  m_PrefabInstance: {fileID: 102189129}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &102189129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -390,29 +384,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1166324576, guid: 252462caf50a512478d527d439e06bad, type: 3}
-      propertyPath: overlayObjects.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1166324576, guid: 252462caf50a512478d527d439e06bad, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 318809343}
-    - target: {fileID: 1166324576, guid: 252462caf50a512478d527d439e06bad, type: 3}
-      propertyPath: overlayObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 97742347}
-    - target: {fileID: 1166324576, guid: 252462caf50a512478d527d439e06bad, type: 3}
-      propertyPath: overlayObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1510703965}
-    - target: {fileID: 1166324576, guid: 252462caf50a512478d527d439e06bad, type: 3}
-      propertyPath: overlayButtons
-      value: 
-      objectReference: {fileID: 97742347}
-    - target: {fileID: 1166324576, guid: 252462caf50a512478d527d439e06bad, type: 3}
-      propertyPath: overlayMenu
-      value: 
-      objectReference: {fileID: 1510703965}
     - target: {fileID: 7185079724841090857, guid: 252462caf50a512478d527d439e06bad,
         type: 3}
       propertyPath: m_Name
@@ -2442,12 +2416,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4128163210374999161, guid: b1e6258ceb530bb40a39306485dab971,
     type: 3}
   m_PrefabInstance: {fileID: 1364185202}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1510703965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1043893905, guid: 252462caf50a512478d527d439e06bad,
-    type: 3}
-  m_PrefabInstance: {fileID: 102189129}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1605884159 stripped
 MonoBehaviour:

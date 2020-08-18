@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.UI;
 
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
@@ -8,6 +9,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     [SerializeField] GameObject overlayButtons;
     [SerializeField] GameObject overlayMenu;
+
+    [SerializeField] GameObject lastChanceButton;
+    [SerializeField] GameObject lastChanceText;
+    [SerializeField] GameObject tryAgainText;
 
     private string regularAd = "video";
     private string rewardAd = "rewardedVideo";
@@ -29,12 +34,16 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     private IEnumerator ShowAd(string placement)
     {
-        while (false)
+        while (!Advertisement.IsReady())
             yield return null;
 
         //Advertisement.Show(placement);
 
         //TESTING ONLY
+        lastChanceButton.SetActive(false);
+        lastChanceText.SetActive(false);
+        tryAgainText.SetActive(true);
+
         overlayButtons.SetActive(false);
         overlayMenu.SetActive(false);
         Time.timeScale = 1.0f;
@@ -47,6 +56,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if (placementId == rewardAd && showResult == ShowResult.Finished)
         {
+            lastChanceButton.SetActive(false);
+            lastChanceText.SetActive(false);
+            tryAgainText.SetActive(true);
+
             overlayButtons.SetActive(false);
             overlayMenu.SetActive(false);
             Time.timeScale = 1.0f;
