@@ -316,7 +316,7 @@ PrefabInstance:
     - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
         type: 3}
       propertyPath: baseSpawnChance
-      value: 35
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
         type: 3}

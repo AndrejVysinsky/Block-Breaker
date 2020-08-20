@@ -41,6 +41,8 @@ public class Level : MonoBehaviour
     {
         LoadLevelData();
         CountBreakableBlocks();
+
+        Debug.Log("Pocet blokov: " + blockCount);
     }
 
     private void LoadLevelData()
