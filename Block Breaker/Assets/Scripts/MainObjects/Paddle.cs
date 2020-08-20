@@ -42,20 +42,18 @@ public class Paddle : MonoBehaviour
 
     private void BounceOffBall(Collision2D collision)
     {
-        var ball = collision.gameObject.GetComponent<Ball>();
-
-        float ballX = collision.transform.position.x;
-
-        float paddleLength = GetComponent<BoxCollider2D>().size.x;
+        float paddleLength = GetComponent<BoxCollider2D>().size.x * transform.localScale.x;
         float paddleX = transform.position.x - paddleLength / 2;
 
-        float velocityX = TranslateInterval(paddleX, paddleX + paddleLength, -10, 10, ballX);
+        var ball = collision.gameObject.GetComponent<Ball>();
+        float ballX = Mathf.Clamp(collision.transform.position.x, paddleX, paddleX + paddleLength);
 
+        float velocityX = TranslateInterval(paddleX, paddleX + paddleLength, -12, 12, ballX);
 
         var oldVector = ball.GetVelocityVector();
-        var totalSpeed = Math.Abs(oldVector.x) + Math.Abs(oldVector.y);
+        var totalSpeed = Mathf.Abs(oldVector.x) + Mathf.Abs(oldVector.y);
 
-        var remainingSpeed = totalSpeed - Math.Abs(velocityX);
+        var remainingSpeed = totalSpeed - Mathf.Abs(velocityX);
         var newVector = new Vector2(velocityX, remainingSpeed);
 
         ball.SetVelocityVector(newVector);
@@ -63,7 +61,12 @@ public class Paddle : MonoBehaviour
 
     private float TranslateInterval(float oldMin, float oldMax, float newMin, float newMax, float oldValue)
     {
-        return (((oldValue - oldMin) * (newMax - newMin)) / (oldMax - oldMin)) + newMin;
+        float oldIntervalLength = oldMax - oldMin;
+        float newIntervalLength = newMax - newMin;
+
+        float ratio = (oldValue - oldMin) / oldIntervalLength;
+
+        return ratio * newIntervalLength + newMin;
     }
 
     public void IncreaseScaleXBy(float amount)
