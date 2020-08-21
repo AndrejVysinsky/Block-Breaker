@@ -444,8 +444,15 @@ MonoBehaviour:
   - {fileID: 6645335920434485106}
   - {fileID: 4615257767383979551}
   - {fileID: 7330042811190916602}
+  defaultSprite: {fileID: 21300000, guid: 06b27c00b160a32468776a6db66bc093, type: 3}
   lockedSprite: {fileID: 21300000, guid: a3a3ba5d31e18ab449ae6219d52ac439, type: 3}
   notCompletedSprite: {fileID: 21300000, guid: d3cf285c579cae340aee906b2a9f91fe, type: 3}
+  defaultSpriteSpecial: {fileID: 21300000, guid: 038259195f114ad48aa9d208978dc516,
+    type: 3}
+  lockedSpriteSpecial: {fileID: 21300000, guid: c96beefcd4528554cbff562378ef2a16,
+    type: 3}
+  notCompletedSpriteSpecial: {fileID: 21300000, guid: 4f53177b23e1870489e966dbd0c1889c,
+    type: 3}
   inactiveStar: {fileID: 21300000, guid: 92013cba3af288443bbabfcda00c1f1c, type: 3}
   activeStar: {fileID: 21300000, guid: d7ee44d1a9c3fe344b6b19f79bce5ec3, type: 3}
 --- !u!114 &8829625084282268620
