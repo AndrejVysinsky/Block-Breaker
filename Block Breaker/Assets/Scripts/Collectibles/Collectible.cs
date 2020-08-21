@@ -21,14 +21,9 @@ public class Collectible : MonoBehaviour, ICollectible
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
 
-        rigidbody2D.velocity = new Vector2(0f, 5f);
+        rigidbody2D.velocity = new Vector2(0f, -5f);
 
         isColliding = false;
-    }
-
-    private void Update()
-    {
-        MoveDown();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,14 +57,6 @@ public class Collectible : MonoBehaviour, ICollectible
     public float GetCollectibleValue()
     {
         return value;
-    }
-
-    public void MoveDown()
-    {
-        Vector2 newPos = transform.position;
-        newPos.y -= 0.08f;
-
-        rigidbody2D.MovePosition(newPos);
     }
 
     public void Collect()
