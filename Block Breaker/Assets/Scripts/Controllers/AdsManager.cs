@@ -17,9 +17,12 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     private string regularAd = "video";
     private string rewardAd = "rewardedVideo";
 
+    private int timeBetweenAdsInMinutes = 3;
+
     void Start()
     {
         Advertisement.Initialize("3772019", true);
+        Advertisement.AddListener(this);
     }
 
     public void ShowRewardAd()
@@ -62,7 +65,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         int sessionTimeInMinutes = (int)(Time.time / 60);
         int numberOfShownAds = ApplicationDataManager.Instance.AdsShown;
-        int timeBetweenAdsInMinutes = 3;
 
         sessionTimeInMinutes -= timeBetweenAdsInMinutes * numberOfShownAds;
 

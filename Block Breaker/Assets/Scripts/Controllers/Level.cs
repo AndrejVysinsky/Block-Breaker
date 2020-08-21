@@ -43,6 +43,8 @@ public class Level : MonoBehaviour
         CountBreakableBlocks();
 
         Debug.Log("Pocet blokov: " + blockCount);
+
+        //Application.targetFrameRate = 60;
     }
 
     private void LoadLevelData()

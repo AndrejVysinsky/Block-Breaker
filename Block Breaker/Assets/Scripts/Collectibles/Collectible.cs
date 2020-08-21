@@ -79,16 +79,21 @@ public class Collectible : MonoBehaviour, ICollectible
             ExecuteEvents.Execute<ICollectedEvent>(gameObject, null, (x, y) => x.OnCollected(this));
         }
 
-        Despawn();
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        var audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
+
+        Despawn(audioSource.clip.length);
     }
 
     public void Despawn()
     {
-        var audioSource = GetComponent<AudioSource>();
-        audioSource.Play();
+        Destroy(gameObject);
+    }
 
-        GetComponent<SpriteRenderer>().enabled = false;
-
-        Destroy(gameObject, audioSource.clip.length);
+    public void Despawn(float timeToDespawn)
+    {
+        Destroy(gameObject, timeToDespawn);
     }
 }
