@@ -13,6 +13,8 @@ public class LevelSelection : MonoBehaviour
 
     [SerializeField] SceneLoader sceneLoader;
 
+    [SerializeField] AudioSource audioSource;
+
     private List<string> levels;
 
     private void Start()
@@ -52,6 +54,7 @@ public class LevelSelection : MonoBehaviour
             index = buildIndex + i + 1;
 
             levelCard.GetComponent<Button>().onClick.AddListener(delegate { sceneLoader.LoadSceneAtIndex(index); });
+            levelCard.GetComponent<Button>().onClick.AddListener(delegate { audioSource.Play(); });
 
             PopulateLevelData(levelCard, i);
         }

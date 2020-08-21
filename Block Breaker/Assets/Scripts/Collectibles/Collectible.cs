@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -83,6 +84,11 @@ public class Collectible : MonoBehaviour, ICollectible
 
     public void Despawn()
     {
-        Destroy(gameObject);
+        var audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
+
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        Destroy(gameObject, audioSource.clip.length);
     }
 }

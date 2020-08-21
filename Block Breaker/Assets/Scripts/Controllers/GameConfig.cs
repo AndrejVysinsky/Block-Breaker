@@ -17,16 +17,16 @@ public class GameConfig : MonoBehaviour
 
     private void Start()
     {
-        SetPrefValue(performanceModeToggle, performanceKey);
-        SetPrefValue(soundToggle, soundKey);
-        SetPrefValue(musicToggle, musicKey);
+        SetPrefValue(performanceModeToggle, performanceKey, 0);
+        SetPrefValue(soundToggle, soundKey, 1);
+        //SetPrefValue(musicToggle, musicKey);
     }
 
-    private void SetPrefValue(Toggle toggle, string key)
+    private void SetPrefValue(Toggle toggle, string key, int defaultValue)
     {
         if (!PlayerPrefs.HasKey(key))
         {
-            PlayerPrefs.SetInt(key, 0);
+            PlayerPrefs.SetInt(key, defaultValue);
             toggle.isOn = false;
             PlayerPrefs.Save();
         }

@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraAspect : MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
     [SerializeField] CanvasScaler[] canvasScalers;
 
     void Start()
     {
+        ManageAudio();
         AspectNet();
+    }
+
+    public void ManageAudio()
+    {
+        if (PlayerPrefs.GetInt("sound") == 1)
+        {
+            GetComponent<AudioListener>().enabled = true;
+        }
+        else
+        {
+            GetComponent<AudioListener>().enabled = false;
+        }
     }
 
     private void AspectNet()
