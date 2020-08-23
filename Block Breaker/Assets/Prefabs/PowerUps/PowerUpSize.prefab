@@ -45,8 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpVariations:
   - modifier: 1
-    sprite: {fileID: 21300000, guid: 1607d9ec46d41e446a675678712d0240, type: 3}
-  - modifier: -0.3
+    spawnChance: 100
     sprite: {fileID: 21300000, guid: 1607d9ec46d41e446a675678712d0240, type: 3}
   collectiblePrefab: {fileID: 6178195285852493471, guid: caa9ca8e39a521d4281131f355ac37a1,
     type: 3}

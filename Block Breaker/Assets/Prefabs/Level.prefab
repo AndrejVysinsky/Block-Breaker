@@ -168,8 +168,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954274254136220799, guid: b2060c0f0f772844fba1915d80ff8683,
         type: 3}
-      propertyPath: powerUpVariations.Array.data[0].spawnChance
-      value: 70
+      propertyPath: powerUpVariations.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954274254136220799, guid: b2060c0f0f772844fba1915d80ff8683,
         type: 3}

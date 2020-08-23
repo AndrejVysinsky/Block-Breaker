@@ -17,11 +17,16 @@ public class CameraScript : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("sound") == 1)
         {
-            GetComponent<AudioListener>().enabled = true;
+            //working in editor but not in android build
+            //GetComponent<AudioListener>().enabled = true;
+
+            AudioListener.volume = 1;
         }
         else
         {
-            GetComponent<AudioListener>().enabled = false;
+            //GetComponent<AudioListener>().enabled = false;
+
+            AudioListener.volume = 0;
         }
     }
 
