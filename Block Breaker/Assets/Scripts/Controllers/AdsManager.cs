@@ -17,11 +17,11 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     private string regularAd = "video";
     private string rewardAd = "rewardedVideo";
 
-    private int timeBetweenAdsInMinutes = 3;
+    private int timeBetweenAdsInMinutes = 5;
 
     void Start()
     {
-        Advertisement.Initialize("3772019", true);
+        Advertisement.Initialize("3772019", testMode: false);
         Advertisement.AddListener(this);
     }
 
@@ -47,18 +47,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             yield return null;
 
         Advertisement.Show(placement);
-
-        //TESTING ONLY
-       /* lastChanceButton.SetActive(false);
-        lastChanceText.SetActive(false);
-        tryAgainText.SetActive(true);
-
-        overlayButtons.SetActive(false);
-        overlayMenu.SetActive(false);
-        Time.timeScale = 1.0f;
-
-        Level.Instance.StartInputDelay();
-        player.DefaultBallSetup();*/
     }
 
     private bool IsTimeForRegularAd()
