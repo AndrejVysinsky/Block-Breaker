@@ -27,7 +27,7 @@ public class GameConfig : MonoBehaviour
         if (!PlayerPrefs.HasKey(key))
         {
             PlayerPrefs.SetInt(key, defaultValue);
-            toggle.isOn = false;
+            toggle.isOn = defaultValue == 1;
             PlayerPrefs.Save();
         }
         else
