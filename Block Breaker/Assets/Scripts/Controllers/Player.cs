@@ -50,9 +50,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!Level.Instance.IsPointerOverGameObject() && !Level.Instance.IsInputDelayed())
+        if (defaultBallLaunched == false)
         {
-            if (defaultBallLaunched == false)
+            if (!Level.Instance.IsPointerOverGameObject() && !Level.Instance.IsInputDelayed())
             {
                 if (Input.GetMouseButton(0))
                 {

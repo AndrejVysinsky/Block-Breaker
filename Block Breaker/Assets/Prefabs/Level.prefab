@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: collectibles.Array.data[6].spawnChance
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
+        type: 3}
+      propertyPath: maxActiveCollectibleType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7079906443210561997, guid: d170af03cafb5e6418dc5ee232a39f04,
         type: 3}
       propertyPath: m_LocalPosition.x
