@@ -56,6 +56,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
         sessionTimeInMinutes -= timeBetweenAdsInMinutes * numberOfShownAds;
 
+        Debug.Log($"sessionInMin: {sessionTimeInMinutes}, inSec: {Time.time}");
+
         if (sessionTimeInMinutes >= timeBetweenAdsInMinutes)
         {
             return true;
