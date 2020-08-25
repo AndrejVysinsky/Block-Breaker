@@ -44,6 +44,11 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
         spawnedCollectible.SetSprite(randomPowerUpVariation.sprite);
     }
 
+    public int GetNumberOfSpawnedCollectibles()
+    {
+        return spawnedCollectibles.Count;
+    }
+
     private PowerUpVariation ChooseRandomVariation()
     {
         float random = UnityEngine.Random.Range(0, 100);
@@ -67,6 +72,13 @@ public class PowerUp : MonoBehaviour, ICollectedEvent
         {
             ActivatePowerUp(collectible.GetCollectibleValue(), collectible.transform.position);
         }
+
+        spawnedCollectibles.Remove(collectible);
+    }
+
+    public virtual void OnMissed(Collectible collectible)
+    {
+        spawnedCollectibles.Remove(collectible);
     }
 
     protected virtual void ActivatePowerUp(float modifier, Vector3 position)

@@ -2,6 +2,6 @@
 
 public interface ICollectible
 {
-    void Collect();
+    void Collected();
     void Despawn();
 }

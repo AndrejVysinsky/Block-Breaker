@@ -33,13 +33,13 @@ public class Collectible : MonoBehaviour, ICollectible
 
         if (collision.gameObject.CompareTag("Paddle"))
         {
-            Collect();
+            Collected();
             isColliding = true;
         }
 
         if (collision.gameObject.CompareTag("LoseCollider"))
         {
-            Despawn();
+            Missed();
             isColliding = true;
         }
     }
@@ -59,7 +59,7 @@ public class Collectible : MonoBehaviour, ICollectible
         return value;
     }
 
-    public void Collect()
+    public void Collected()
     {
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
@@ -72,6 +72,16 @@ public class Collectible : MonoBehaviour, ICollectible
         audioSource.Play();
 
         Despawn(audioSource.clip.length);
+    }
+
+    public void Missed()
+    {
+        foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
+        {
+            ExecuteEvents.Execute<ICollectedEvent>(gameObject, null, (x, y) => x.OnMissed(this));
+        }
+
+        Despawn();
     }
 
     public void Despawn()

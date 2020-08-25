@@ -8,4 +8,6 @@ using UnityEngine.EventSystems;
 public interface ICollectedEvent : IEventSystemHandler
 {
     void OnCollected(Collectible collectible);
+
+    void OnMissed(Collectible collectible);
 }

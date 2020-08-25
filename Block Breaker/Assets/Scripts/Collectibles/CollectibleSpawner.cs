@@ -9,6 +9,8 @@ public class CollectibleSpawner : MonoBehaviour
     [Range(0, 10)]
     [SerializeField] float blockHitBonusChance;
 
+    [SerializeField] int maxActiveCollectibleType;
+
     [Serializable]
     public struct Collectible
     {
@@ -32,7 +34,10 @@ public class CollectibleSpawner : MonoBehaviour
     {
         var collectible = ChooseRandom();
 
-        collectible.powerUp.SpawnCollectible(position);
+        if (collectible.powerUp.GetNumberOfSpawnedCollectibles() < maxActiveCollectibleType)
+        {
+            collectible.powerUp.SpawnCollectible(position);
+        }
     }
     
     private Collectible ChooseRandom()
