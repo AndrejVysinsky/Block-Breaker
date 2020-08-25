@@ -19,8 +19,6 @@ public class Ball : MonoBehaviour
     private float sizeModifier = 1.0f;
     private int strengthModifier = 1;
 
-    private int scorePenalty = -50;
-
     private void Awake()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -175,16 +173,11 @@ public class Ball : MonoBehaviour
         return trailRenderer.colorGradient;
     }
 
-    public int GetScorePenalty()
-    {
-        return scorePenalty;
-    }
-
     public void SendOutOfScreenMessage()
     {
         foreach (GameObject gameObject in GameEventListeners.Instance.listeners)
         {
-            ExecuteEvents.Execute<IScoreChangedEvent>(gameObject, null, (x, y) => x.OnScoreChanged(transform.position, scorePenalty));
+            ExecuteEvents.Execute<IScoreChangedEvent>(gameObject, null, (x, y) => x.OnScoreChanged(transform.position, Level.Instance.GetBallPenalty()));
         }
     }
 }

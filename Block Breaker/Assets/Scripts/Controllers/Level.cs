@@ -13,6 +13,8 @@ public class Level : MonoBehaviour
     [SerializeField] ProgressBar progressBar;
     [SerializeField] OverlayMenu overlayMenu;
 
+    [SerializeField] int ballPenalty;
+
     public static Level Instance { get; private set; }
 
     private int blockCount = 0;
@@ -41,10 +43,6 @@ public class Level : MonoBehaviour
     {
         LoadLevelData();
         CountBreakableBlocks();
-
-        Debug.Log("Pocet blokov: " + blockCount);
-
-        //Application.targetFrameRate = 60;
     }
 
     private void LoadLevelData()
@@ -102,6 +100,11 @@ public class Level : MonoBehaviour
     public int GetNumberOfStars()
     {
         return progressBar.GetNumberOfStars();
+    }
+
+    public int GetBallPenalty()
+    {
+        return ballPenalty;
     }
 
     public bool IsPointerOverGameObject()

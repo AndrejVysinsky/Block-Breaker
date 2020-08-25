@@ -3932,6 +3932,21 @@ PrefabInstance:
       propertyPath: overlayMenu
       value: 
       objectReference: {fileID: 1605884159}
+    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: collectibles.Array.data[5].spawnChance
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: collectibles.Array.data[3].spawnChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079906442886886155, guid: 8cf0cd8aff841484cb392657d0aaacb0,
+        type: 3}
+      propertyPath: collectibles.Array.data[1].spawnChance
+      value: 26
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf0cd8aff841484cb392657d0aaacb0, type: 3}
 --- !u!1001 &1659736423

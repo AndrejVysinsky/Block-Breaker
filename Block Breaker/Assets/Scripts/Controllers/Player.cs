@@ -153,7 +153,6 @@ public class Player : MonoBehaviour
     public void RemoveBall(Ball ball)
     {
         ball.SendOutOfScreenMessage();
-        int scorePenalty = ball.GetScorePenalty();
 
         balls.Remove(ball);
         Destroy(ball.gameObject);
