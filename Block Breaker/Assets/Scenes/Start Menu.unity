@@ -563,7 +563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -211.00003, y: 350.30978}
+  m_AnchoredPosition: {x: -211, y: 350.3098}
   m_SizeDelta: {x: -668.4784, y: -1601.6063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101510974
@@ -613,18 +613,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1844869481981104902, guid: 96127b836e4c02a41a5b08a9f45ee53d,
         type: 3}
-      propertyPath: canvasScalers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1844869481981104902, guid: 96127b836e4c02a41a5b08a9f45ee53d,
-        type: 3}
       propertyPath: canvasScalers.Array.data[0]
       value: 
       objectReference: {fileID: 1480326027}
     - target: {fileID: 6666327562737549908, guid: 96127b836e4c02a41a5b08a9f45ee53d,
         type: 3}
       propertyPath: m_Name
-      value: Camera
+      value: CameraGame
       objectReference: {fileID: 0}
     - target: {fileID: 6666327562737549992, guid: 96127b836e4c02a41a5b08a9f45ee53d,
         type: 3}
@@ -5494,7 +5489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 990, y: -116.06}
+  m_AnchoredPosition: {x: 990, y: -116.06006}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1395942132
@@ -8858,7 +8853,7 @@ PrefabInstance:
     - target: {fileID: 7560772076064540522, guid: fc4ed22c30f98524f8ac195c3f36df75,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -116.06
+      value: -116.06006
       objectReference: {fileID: 0}
     - target: {fileID: 7560772076064540522, guid: fc4ed22c30f98524f8ac195c3f36df75,
         type: 3}
