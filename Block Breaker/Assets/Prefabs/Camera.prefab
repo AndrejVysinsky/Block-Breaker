@@ -173,3 +173,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasScalers:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -17,7 +17,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     private string regularAd = "video";
     private string rewardAd = "rewardedVideo";
 
-    private int timeBetweenAdsInMinutes = 5;
+    private int timeBetweenAdsInMinutes = 8;
 
     void Start()
     {
