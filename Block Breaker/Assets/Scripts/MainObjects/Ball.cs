@@ -32,7 +32,12 @@ public class Ball : MonoBehaviour
     {
         HandleVelocityChanges();
 
-        GetComponent<AudioSource>().Play();
+        var audio = GetComponent<AudioSource>();
+
+        if (!audio.isPlaying)
+        {
+            audio.Play();
+        }
     }
 
     private void HandleVelocityChanges()

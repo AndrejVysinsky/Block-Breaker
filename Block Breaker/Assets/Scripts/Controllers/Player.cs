@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 
     public Ball InstantiateBall(Vector3 position)
     {
-        if (balls.Count >= 200)
+        if (balls.Count >= 50)
             return null;
 
         Ball newBall = Instantiate(ballPrefab, position, Quaternion.identity);

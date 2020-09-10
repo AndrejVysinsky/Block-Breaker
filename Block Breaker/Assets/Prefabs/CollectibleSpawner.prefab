@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3816944f3247cca41988df7b8f5a12dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseSpawnChance: 35
+  blockHitBonusChance: 0
+  maxActiveCollectibleType: 0
   collectibles:
   - powerUp: {fileID: 6263524064016311066, guid: 818bd39f9421bf0408c668aeea6f0523,
       type: 3}

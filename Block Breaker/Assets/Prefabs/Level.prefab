@@ -47,7 +47,7 @@ MonoBehaviour:
   collectibleSpawner: {fileID: 7079906442886886155}
   progressBar: {fileID: 0}
   overlayMenu: {fileID: 0}
-  ballPenalty: -100
+  ballPenalty: -75
 --- !u!1001 &475073908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -313,11 +313,6 @@ PrefabInstance:
         type: 3}
       propertyPath: collectibles.Array.data[0].spawnChance
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
-        type: 3}
-      propertyPath: baseSpawnChance
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7079906443210561996, guid: d170af03cafb5e6418dc5ee232a39f04,
         type: 3}
